@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+.form-element{
+
+    margin-bottom:30px;
+}
+
+
+#Tableau
+{
+	background-color:#968552;
+	position:absolute;
+	top:0%;
+	left:50%;
+}

@@ -1,0 +1,184 @@
+function CalculeDesPoints()
+	{
+		var resultat = 0;
+		var multiplicateur = 0;
+		var mahjong = parseInt(document.getElementById("Mahjong").value);
+		var mahjongPart = parseInt(document.getElementById("mahjong part").value);
+		var combinaisonPart = 0;
+		var combinaisonUne = parseInt(document.getElementById("combinaison 1").value);
+		var combinaisonDeux = parseInt(document.getElementById("combinaison 2").value);
+		var combinaisonTroie = parseInt(document.getElementById("combinaison 3").value);
+		var combinaisonQuatre = parseInt(document.getElementById("combinaison 4").value);
+		var combinaisonCinq = parseInt(document.getElementById("combinaison 5").value);
+		var nbDragon = parseInt(document.getElementById("dragon").value);
+		var vent = parseInt(document.getElementById("vent").value);
+		var nbFleur = parseInt(document.getElementById("nb fleur").value);
+		var fleur = parseInt(document.getElementById("fleur").value);
+		if(document.getElementById("pasdeChow").checked)
+		{
+			combinaisonPart = combinaisonPart + 1;	
+		}
+		if(document.getElementById("mahDerniertuile").checked)
+		{
+			combinaisonPart = combinaisonPart + 1;	
+		}
+		if(document.getElementById("mahVolantKong").checked)
+		{
+			combinaisonPart = combinaisonPart + 1;	
+		}
+		if(document.getElementById("hulk").checked)
+		{
+			combinaisonPart = combinaisonPart + 1;	
+		}
+		if(document.getElementById("kingkong").checked)
+		{
+			combinaisonPart = combinaisonPart + 2;	
+		}
+		if(document.getElementById("wok").checked)
+		{
+			combinaisonPart = combinaisonPart + 2;	
+		}
+		if(document.getElementById("yinyang").checked)
+		{
+			combinaisonPart = combinaisonPart + 2;	
+		}
+		if(document.getElementById("porteExt").checked)
+		{
+			combinaisonPart = combinaisonPart + 2;	
+		}
+		if(document.getElementById("mainPure").checked)
+		{
+			combinaisonPart = combinaisonPart + 3;	
+		}
+		if(document.getElementById("drago").checked)
+		{
+			combinaisonPart = combinaisonPart + 4;	
+		}
+		if(mahjong == 20)
+		{
+			mahjong = mahjong + mahjongPart;
+		}
+		resultat = mahjong + combinaisonUne + combinaisonDeux + combinaisonTroie;
+		resultat = resultat + combinaisonQuatre + combinaisonCinq + nbFleur;
+		multiplicateur = combinaisonPart + nbDragon + vent + fleur;
+		multiplicateur = Math.pow(2,multiplicateur);
+		var temp = resultat / 10;
+		resultat = parseInt(resultat / 10);
+		if(temp != resultat)
+		{
+			resultat = resultat + 1;	
+		}
+		resultat = resultat * 10;
+		resultat = resultat * multiplicateur;
+		
+		
+		
+		alert(resultat);
+		document.getElementById("score").textContent = resultat;
+		resetpage();
+			
+	}
+	function somme1()
+	{
+		var celluleprise = "1_1";
+		var celluencourt = 1;
+		var somme = 0;
+		while(celluencourt <= 16 && document.getElementById(celluleprise).value != "" )
+		{
+			somme += parseInt(document.getElementById(celluleprise).value);
+			celluencourt += 1;
+			celluleprise = celluencourt + "_1";
+		}
+		document.getElementById("total1").textContent = somme;
+		
+	}
+	function somme2()
+	{
+		var celluleprise = "1_2";
+		var celluencourt = 1;
+		var somme = 0;
+		while(celluencourt <= 16 && document.getElementById(celluleprise).value != "" )
+		{
+			somme += parseInt(document.getElementById(celluleprise).value);
+			celluencourt += 1;
+			celluleprise = celluencourt + "_2";
+		}
+		document.getElementById("total2").textContent = somme;
+	}
+	function somme3()
+	{
+		var celluleprise = "1_3";
+		var celluencourt = 1;
+		var somme = 0;
+		while(celluencourt <= 16 && document.getElementById(celluleprise).value != "" )
+		{
+			somme += parseInt(document.getElementById(celluleprise).value);
+			celluencourt += 1;
+			celluleprise = celluencourt + "_3";
+		}
+		document.getElementById("total3").textContent = somme;
+	}
+	function somme4()
+	{
+		var celluleprise = "1_4";
+		var celluencourt = 1;
+		var somme = 0;
+		while(celluencourt <= 16 && document.getElementById(celluleprise).value != "" )
+		{
+			somme += parseInt(document.getElementById(celluleprise).value);
+			celluencourt += 1;
+			celluleprise = celluencourt + "_4";
+		}
+		document.getElementById("total4").textContent = somme;
+	}
+	function total()
+	{
+		somme1();
+		somme2();
+		somme3();
+		somme4();
+	}
+	function resetall()
+	{
+		resetpage();
+		var celluleprise = "1_1";
+		var ligneencourt = 1;
+		var coloneencourt = 1;
+		var somme = 0;
+		while(ligneencourt <= 16)
+		{
+			while(coloneencourt <= 4)
+			{
+				document.getElementById(celluleprise).value = "";
+				coloneencourt += 1;
+				celluleprise = ligneencourt + "_" + coloneencourt;
+			}
+			coloneencourt = 1;
+			ligneencourt += 1;
+			celluleprise = ligneencourt + "_" + coloneencourt;
+		}
+	}
+	function resetpage()
+	{
+		document.getElementById("pasdeChow").checked = false;
+		document.getElementById("mahDerniertuile").checked = false;
+		document.getElementById("mahVolantKong").checked = false;
+		document.getElementById("hulk").checked = false;
+		document.getElementById("kingkong").checked = false;
+		document.getElementById("wok").checked = false;
+		document.getElementById("yinyang").checked = false;	
+		document.getElementById("porteExt").checked = false;	
+		document.getElementById("mainPure").checked = false;	
+		document.getElementById("drago").checked = false;	
+		document.getElementById("Mahjong").selectedIndex = 0;
+		document.getElementById("mahjong part").selectedIndex = 0;		
+		document.getElementById("combinaison 1").selectedIndex = 0;	
+		document.getElementById("combinaison 2").selectedIndex = 0;	
+		document.getElementById("combinaison 3").selectedIndex = 0;	
+		document.getElementById("combinaison 4").selectedIndex = 0;	
+		document.getElementById("combinaison 5").selectedIndex = 0;	
+		document.getElementById("dragon").selectedIndex = 0;	
+		document.getElementById("vent").selectedIndex = 0;	
+		document.getElementById("nb fleur").selectedIndex = 0;	
+		document.getElementById("fleur").selectedIndex = 0;	
+	}
