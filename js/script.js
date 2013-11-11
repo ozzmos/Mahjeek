@@ -33,7 +33,7 @@ function initializeDB(){
 
 
 function new_game(){
-    $("#new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #list-games, #rules, #about").hide();
     $("#new-game").show();
 }
 
@@ -80,7 +80,7 @@ function launch_game() {
 
 function list_games(){
     $("#g-list").html("");
-    $("#new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #list-games, #rules, #about").hide();
     $("#list-games").show();
 
     //List the games
@@ -103,13 +103,13 @@ function list_games(){
 }
 
 function show_rules(){
-    $("#new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #list-games, #rules, #about").hide();
     $("#rules").show();
 
 }
 
 function show_about(){
-    $("#new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #list-games, #rules, #about").hide();
     $("#about").show();
 }
 
@@ -216,8 +216,9 @@ function calcul() {
 
 
 $(document).ready(function(){
-    $("#new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #list-games, #rules, #about").hide();
     initializeDB();
+    $("#home").show();
 
 
 
