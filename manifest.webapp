@@ -1,0 +1,18 @@
+{
+    "version":"1.0",
+	"name": "Mahjong",
+    "description": "An application to to calculate Mahjong games",
+    "launch_path": "/index.html",
+	"fullscreen": "false",
+    "icons": {
+        "16": "/images/icon_016.png",
+        "32": "/images/icon_032.png",
+        "48": "/images/icon_048.png",
+        "128": "/images/icon_128.png"
+    },
+	"developer": {
+        "name": "Christophe Bastin",
+        "url": "http://www.ozzmos.net"
+    },
+    "default_locale": "fr"
+}
