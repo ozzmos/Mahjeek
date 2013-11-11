@@ -1,6 +1,121 @@
-function CalculeDesPoints()
-	{
-		var resultat = 0;
+var db;
+
+function initializeDB(){
+    if(window.indexedDB){
+        console.log("Support d\'indexedDB OK");
+    }
+    else{
+        alert("Votre navigateur ne supporte pas indexedDB");
+    }
+
+    var request = indexedDB.open('test', 1);
+
+    request.onsuccess = function (e){
+        db = e.target.result;
+    };
+
+    request.onerror = function (e){
+        console.log(e);
+    };
+
+    request.onupgradeneeded = function (e){
+        db = e.target.result;
+
+        if (db.objectStoreNames.contains("game")) {
+            db.deleteObjectStore("game");
+        }
+
+        var objectStore = db.createObjectStore('game', { keyPath: 'id', autoIncrement:true});
+
+        console.log("La table game a été créée ");
+    };
+}
+
+
+function new_game(){
+    $("#new-game, #list-games, #rules, #about").hide();
+    $("#new-game").show();
+}
+
+
+function launch_game() {
+    var gameName = document.getElementById("gameName").value;
+    var player1 = document.getElementById("player1").value;
+    var windPlayer1 = document.getElementById("windPlayer1").value;
+    var player2 = document.getElementById("player2").value;
+    var windPlayer2 = document.getElementById("windPlayer2").value;
+    var player3 = document.getElementById("player3").value;
+    var windPlayer3 = document.getElementById("windPlayer3").value;
+    var player4 = document.getElementById("player4").value;
+    var windPlayer4 = document.getElementById("windPlayer4").value;
+
+    // Create the object game
+    var transaction = db.transaction(['game'], 'readwrite');
+
+
+    var value = {};
+    value.gameName = gameName;
+    value.player1 = player1;
+    value.windPlayer1 = windPlayer1;
+    value.player2 = player2;
+    value.windPlayer2 = windPlayer2;
+    value.player3 = player3;
+    value.windPlayer3 = windPlayer3;
+    value.player4 = player4;
+    value.windPlayer4 = windPlayer4;
+
+    var store = transaction.objectStore('game');
+    var request = store.add(value);
+    request.onsuccess = function (e){
+        console.log ("Une nouvelle partie a été commencée");
+    };
+
+    request.onerror = function (e){
+        console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
+    };
+
+    list_games();
+}
+
+
+function list_games(){
+    $("#g-list").html("");
+    $("#new-game, #list-games, #rules, #about").hide();
+    $("#list-games").show();
+
+    //List the games
+    var transaction = db.transaction([ 'game' ]);
+    var store = transaction.objectStore('game');
+
+    // open a cursor to retrieve all items from the 'notes' store
+    store.openCursor().onsuccess = function (e) {
+        var cursor = e.target.result;
+        if (cursor) {
+            var value = cursor.value;
+            var gameName = value.gameName;
+            var gameElement = "<li>"+gameName+"</li>";
+            $("#g-list").append(gameElement);
+
+            // move to the next item in the cursor
+            cursor.continue();
+        }
+    };
+}
+
+function show_rules(){
+    $("#new-game, #list-games, #rules, #about").hide();
+    $("#rules").show();
+
+}
+
+function show_about(){
+    $("#new-game, #list-games, #rules, #about").hide();
+    $("#about").show();
+}
+
+
+function calcul() {
+		/*var resultat = 0;
 		var multiplicateur = 0;
 		var mahjong = parseInt(document.getElementById("Mahjong").value);
 		var mahjongPart = parseInt(document.getElementById("mahjong part").value);
@@ -16,43 +131,43 @@ function CalculeDesPoints()
 		var fleur = parseInt(document.getElementById("fleur").value);
 		if(document.getElementById("pasdeChow").checked)
 		{
-			combinaisonPart = combinaisonPart + 1;	
+			combinaisonPart = combinaisonPart + 1;
 		}
 		if(document.getElementById("mahDerniertuile").checked)
 		{
-			combinaisonPart = combinaisonPart + 1;	
+			combinaisonPart = combinaisonPart + 1;
 		}
 		if(document.getElementById("mahVolantKong").checked)
 		{
-			combinaisonPart = combinaisonPart + 1;	
+			combinaisonPart = combinaisonPart + 1;
 		}
 		if(document.getElementById("hulk").checked)
 		{
-			combinaisonPart = combinaisonPart + 1;	
+			combinaisonPart = combinaisonPart + 1;
 		}
 		if(document.getElementById("kingkong").checked)
 		{
-			combinaisonPart = combinaisonPart + 2;	
+			combinaisonPart = combinaisonPart + 2;
 		}
 		if(document.getElementById("wok").checked)
 		{
-			combinaisonPart = combinaisonPart + 2;	
+			combinaisonPart = combinaisonPart + 2;
 		}
 		if(document.getElementById("yinyang").checked)
 		{
-			combinaisonPart = combinaisonPart + 2;	
+			combinaisonPart = combinaisonPart + 2;
 		}
 		if(document.getElementById("porteExt").checked)
 		{
-			combinaisonPart = combinaisonPart + 2;	
+			combinaisonPart = combinaisonPart + 2;
 		}
 		if(document.getElementById("mainPure").checked)
 		{
-			combinaisonPart = combinaisonPart + 3;	
+			combinaisonPart = combinaisonPart + 3;
 		}
 		if(document.getElementById("drago").checked)
 		{
-			combinaisonPart = combinaisonPart + 4;	
+			combinaisonPart = combinaisonPart + 4;
 		}
 		if(mahjong == 20)
 		{
@@ -66,18 +181,47 @@ function CalculeDesPoints()
 		resultat = parseInt(resultat / 10);
 		if(temp != resultat)
 		{
-			resultat = resultat + 1;	
+			resultat = resultat + 1;
 		}
 		resultat = resultat * 10;
 		resultat = resultat * multiplicateur;
-		
-		
-		
-		alert(resultat);
-		document.getElementById("score").textContent = resultat;
-		resetpage();
-			
-	}
+
+
+
+		alert(resultat);*/
+
+
+        // Create the object game
+        var transaction = db.transaction(['game'], 'readwrite');
+
+
+        var value = {};
+        value.resultat = 10;
+
+        var store = transaction.objectStore('game');
+        var request = store.add(value);
+        request.onsuccess = function (e){
+            alert ("Votre partie a été sauvegardée");
+        };
+
+        request.onerror = function (e){
+            alert("Votre partie n'a pas pu être sauvegardée : "+ e.value);
+        };
+
+		//document.getElementById("score").textContent = resultat;
+		//resetpage();
+}
+
+
+
+
+$(document).ready(function(){
+    $("#new-game, #list-games, #rules, #about").hide();
+    initializeDB();
+
+
+
+
 	function somme1()
 	{
 		var celluleprise = "1_1";
@@ -90,7 +234,7 @@ function CalculeDesPoints()
 			celluleprise = celluencourt + "_1";
 		}
 		document.getElementById("total1").textContent = somme;
-		
+
 	}
 	function somme2()
 	{
@@ -166,19 +310,22 @@ function CalculeDesPoints()
 		document.getElementById("hulk").checked = false;
 		document.getElementById("kingkong").checked = false;
 		document.getElementById("wok").checked = false;
-		document.getElementById("yinyang").checked = false;	
-		document.getElementById("porteExt").checked = false;	
-		document.getElementById("mainPure").checked = false;	
-		document.getElementById("drago").checked = false;	
+		document.getElementById("yinyang").checked = false;
+		document.getElementById("porteExt").checked = false;
+		document.getElementById("mainPure").checked = false;
+		document.getElementById("drago").checked = false;
 		document.getElementById("Mahjong").selectedIndex = 0;
-		document.getElementById("mahjong part").selectedIndex = 0;		
-		document.getElementById("combinaison 1").selectedIndex = 0;	
-		document.getElementById("combinaison 2").selectedIndex = 0;	
-		document.getElementById("combinaison 3").selectedIndex = 0;	
-		document.getElementById("combinaison 4").selectedIndex = 0;	
-		document.getElementById("combinaison 5").selectedIndex = 0;	
-		document.getElementById("dragon").selectedIndex = 0;	
-		document.getElementById("vent").selectedIndex = 0;	
-		document.getElementById("nb fleur").selectedIndex = 0;	
-		document.getElementById("fleur").selectedIndex = 0;	
+		document.getElementById("mahjong part").selectedIndex = 0;
+		document.getElementById("combinaison 1").selectedIndex = 0;
+		document.getElementById("combinaison 2").selectedIndex = 0;
+		document.getElementById("combinaison 3").selectedIndex = 0;
+		document.getElementById("combinaison 4").selectedIndex = 0;
+		document.getElementById("combinaison 5").selectedIndex = 0;
+		document.getElementById("dragon").selectedIndex = 0;
+		document.getElementById("vent").selectedIndex = 0;
+		document.getElementById("nb fleur").selectedIndex = 0;
+		document.getElementById("fleur").selectedIndex = 0;
 	}
+
+});
+
