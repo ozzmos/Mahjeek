@@ -33,7 +33,7 @@ function initializeDB(){
 
 
 function new_game(){
-    $("#home, #new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#new-game").show();
 }
 
@@ -74,13 +74,14 @@ function launch_game() {
         console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
     };
 
-    list_games();
+    play_game();
+    //list_games();
 }
 
 
 function list_games(){
     $("#g-list").html("");
-    $("#home, #new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#list-games").show();
 
     //List the games
@@ -102,20 +103,33 @@ function list_games(){
     };
 }
 
+function play_game(){
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    $("#current-game").show();
+
+}
+
+
+function calculation_game(){
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    $("#calculation-game").show();
+
+}
+
 function show_rules(){
-    $("#home, #new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#rules").show();
 
 }
 
 function show_about(){
-    $("#home, #new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#about").show();
 }
 
 
 function calcul() {
-		/*var resultat = 0;
+		var resultat = 0;
 		var multiplicateur = 0;
 		var mahjong = parseInt(document.getElementById("Mahjong").value);
 		var mahjongPart = parseInt(document.getElementById("mahjong part").value);
@@ -188,25 +202,15 @@ function calcul() {
 
 
 
-		alert(resultat);*/
+		//alert(resultat);
+        $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+        $("#calculation-game").show();
+        //alert(resultat);
+
 
 
         // Create the object game
-        var transaction = db.transaction(['game'], 'readwrite');
 
-
-        var value = {};
-        value.resultat = 10;
-
-        var store = transaction.objectStore('game');
-        var request = store.add(value);
-        request.onsuccess = function (e){
-            alert ("Votre partie a été sauvegardée");
-        };
-
-        request.onerror = function (e){
-            alert("Votre partie n'a pas pu être sauvegardée : "+ e.value);
-        };
 
 		//document.getElementById("score").textContent = resultat;
 		//resetpage();
@@ -216,10 +220,10 @@ function calcul() {
 
 
 $(document).ready(function(){
-    $("#home, #new-game, #list-games, #rules, #about").hide();
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     initializeDB();
-    $("#home").show();
-
+    //$("#home").show();
+    $("#current-game").show();
 
 
 
