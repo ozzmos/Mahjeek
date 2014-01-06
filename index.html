@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Mahjong</a>
+            <a class="navbar-brand" onclick="list_games()">Mahjong</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -143,13 +143,28 @@
             </tr>
         </table>
     </div>-->
-    <div>Tour</div>
+    <label id="hand"></label>
     <div class="form-group">
-        <label>Christophe</label>
-        <button>Calculer le score</button>
+        <label id="player1_value"></label>
+        <button onclick="calculation_game()">Calculer le score</button>
         <label> 0 points</label>
     </div>
-    <input type="button" value="Calculer points" onclick="calculation_game()" class="form-control"/>
+    <div class="form-group">
+        <label id="player2_value"></label>
+        <button onclick="calculation_game()">Calculer le score</button>
+        <label> 0 points</label>
+    </div>
+    <div class="form-group">
+        <label id="player3_value"></label>
+        <button onclick="calculation_game()">Calculer le score</button>
+        <label> 0 points</label>
+    </div>
+    <div class="form-group">
+        <label id="player4_value"></label>
+        <button onclick="calculation_game()">Calculer le score</button>
+        <label> 0 points</label>
+    </div>
+    <!--<input type="button" value="Calculer points" onclick="calculation_game()" class="form-control"/>-->
 </div>
 
 <div id="calculation-game">
