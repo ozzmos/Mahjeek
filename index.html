@@ -2,15 +2,28 @@
 <html>
 <head>
     <title>À propos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/headers.css">
+    <link rel="stylesheet"  type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<section role="region">
+    <header>
+        <button><span class="icon icon-menu">menu</span></button>
+        <menu type="toolbar">
+            <button><span class="icon icon-add">add</span></button>
+        </menu>
+        <h1>Inbox <em>(2)</em></h1>
+    </header>
+</section>
+<!--<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,9 +42,10 @@
             </ul>
         </div>
     </div>
-</div>
+</div>-->
 
 
+<!--
 <div class="container">
 
 <div id="home">
@@ -122,7 +136,7 @@
 
 </div>
 <div id="current-game">
-    <!--<div class="table-responsive">
+    &lt;!&ndash;<div class="table-responsive">
         <table class="table table-striped">
             <tr>
                 <td>V. tour</td>
@@ -142,7 +156,7 @@
                 <td><input size="7px" id="1_4"/></td>
             </tr>
         </table>
-    </div>-->
+    </div>&ndash;&gt;
     <label id="hand"></label>
     <div class="form-group">
         <label id="player1_value"></label>
@@ -164,7 +178,7 @@
         <button onclick="calculation_game()">Calculer le score</button>
         <label> 0 points</label>
     </div>
-    <!--<input type="button" value="Calculer points" onclick="calculation_game()" class="form-control"/>-->
+    &lt;!&ndash;<input type="button" value="Calculer points" onclick="calculation_game()" class="form-control"/>&ndash;&gt;
 </div>
 
 <div id="calculation-game">
@@ -495,6 +509,7 @@
 
 </div>
 </div>
+-->
 
 </body>
 </html>
