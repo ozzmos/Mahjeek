@@ -49,6 +49,7 @@ function launch_game() {
     var player4 = document.getElementById("player4").value;
     var windPlayer4 = document.getElementById("windPlayer4").value;
 
+
     // Create the object game
     var transaction = db.transaction(['game'], 'readwrite');
 
@@ -63,6 +64,7 @@ function launch_game() {
     value.windPlayer3 = windPlayer3;
     value.player4 = player4;
     value.windPlayer4 = windPlayer4;
+    value.hand = 1;
 
     var store = transaction.objectStore('game');
     var request = store.add(value);
@@ -94,7 +96,7 @@ function list_games(){
         if (cursor) {
             var value = cursor.value;
             var gameName = value.gameName;
-            var gameElement = "<li>"+gameName+"</li>";
+            var gameElement = "<li><a onclick='play_game()'>"+gameName+"</a></li>";
             $("#g-list").append(gameElement);
 
             // move to the next item in the cursor
@@ -105,6 +107,18 @@ function list_games(){
 
 function play_game(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    var transaction  = db.transaction(['game']);
+    var store  = transaction.objectStore('game');
+
+    store.openCursor().onsuccess = function (e) {
+        var cursor = e.target.result;
+        if (cursor) {
+            var value = cursor.value;
+            document.getElementById("hand").innerHTML = "Tour " + value.hand;
+
+        }
+    };
+
     $("#current-game").show();
 
 }
@@ -223,7 +237,7 @@ $(document).ready(function(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     initializeDB();
     //$("#home").show();
-    $("#current-game").show();
+    $("#list-games").show();
 
 
 
