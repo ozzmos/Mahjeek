@@ -7,22 +7,93 @@
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/headers.css">
+    <link rel="stylesheet" type="text/css" href="css/input_areas.css">
     <link rel="stylesheet"  type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<section role="region">
+
+<!-- Home Page -->
+<section id="home" role="region">
     <header>
         <button><span class="icon icon-menu">menu</span></button>
         <menu type="toolbar">
-            <button><span class="icon icon-add">add</span></button>
+            <button id="btn-add" onclick="shNewGame()"><span class="icon icon-add">add</span></button>
         </menu>
         <h1>Mahjong</h1>
     </header>
 </section>
+
+<!-- New Game -->
+<section id="new-game" role="region">
+    <header>
+        <button><span class="icon icon-close">close</span></button>
+        <menu type="toolbar"><button>done</button></menu>
+        <h1>New Game</h1>
+    </header>
+<form>
+  <p>
+    <input type="text" placeholder="Nom de la partie" required="">
+    <button type="reset">Clear</button>
+  </p>
+  <p>
+     <input type="text" placeholder="Nom du joueur 1" required="">
+    <button type="reset">Clear</button>
+  </p>
+  <p>
+    <label>Vent joueur 1 :</label>
+            <select name="windPlayer3" id="windPlayer1" class="form-control">
+                <option value="Nord" selected>Nord</option>
+                <option value="Est">Est</option>
+                <option value="Sud">Sud</option>
+                <option value="Ouest">Ouest</option>
+            </select>
+  </p>
+  <p>
+     <input type="text" placeholder="Nom du joueur 2" required="">
+    <button type="reset">Clear</button>
+  </p>
+  <p>
+    <label>Vent joueur 2 :</label>
+            <select name="windPlayer2" id="windPlayer2" class="form-control">
+                <option value="Nord" selected>Nord</option>
+                <option value="Est">Est</option>
+                <option value="Sud">Sud</option>
+                <option value="Ouest">Ouest</option>
+            </select>
+  </p>
+  <p>
+     <input type="text" placeholder="Nom du joueur 3" required="">
+    <button type="reset">Clear</button>
+  </p>
+  <p>
+    <label>Vent joueur 3 :</label>
+            <select name="windPlayer3" id="windPlayer3" class="form-control">
+                <option value="Nord" selected>Nord</option>
+                <option value="Est">Est</option>
+                <option value="Sud">Sud</option>
+                <option value="Ouest">Ouest</option>
+            </select>
+  </p>
+   <p>
+     <input type="text" placeholder="Nom du joueur 4" required="">
+    <button type="reset">Clear</button>
+  </p>
+  <p>
+    <label>Vent joueur 4 :</label>
+            <select name="windPlayer4" id="windPlayer4" class="form-control">
+                <option value="Nord" selected>Nord</option>
+                <option value="Est">Est</option>
+                <option value="Sud">Sud</option>
+                <option value="Ouest">Ouest</option>
+            </select>
+  </p>
+</form>
+</section>
+
 <!--<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
