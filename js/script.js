@@ -80,14 +80,14 @@ function launch_game() {
     //list_games();
 }
 
-
+/* the home page lists existing games */
 function shHome(){
     $("#g-list").html("");
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-    $("#list-games").show();
+    $("#home").show();
 
     //List the games
-    var transaction = db.transaction([ 'game' ]);
+    /*var transaction = db.transaction([ 'game' ]);
     var store = transaction.objectStore('game');
 
     // open a cursor to retrieve all items from the 'notes' store
@@ -102,12 +102,12 @@ function shHome(){
             // move to the next item in the cursor
             cursor.continue();
         }
-    };
+    };*/
 }
 
-function play_game(){
+function shCurrentGame(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-    var transaction  = db.transaction(['game']);
+    /*var transaction  = db.transaction(['game']);
     var store  = transaction.objectStore('game');
 
     store.openCursor().onsuccess = function (e) {
@@ -117,14 +117,14 @@ function play_game(){
             document.getElementById("hand").innerHTML = "Tour " + value.hand;
 
         }
-    };
+    };*/
 
     $("#current-game").show();
 
 }
 
 
-function calculation_game(){
+function shCalculationGame(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#calculation-game").show();
 
