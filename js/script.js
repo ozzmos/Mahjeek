@@ -32,7 +32,7 @@ function initializeDB(){
 }
 
 
-function new_game(){
+function shNewGame(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#new-game").show();
 }
@@ -81,7 +81,7 @@ function launch_game() {
 }
 
 
-function list_games(){
+function shHome(){
     $("#g-list").html("");
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#list-games").show();
@@ -233,6 +233,7 @@ function calcul() {
 
 
 
+/*
 $(document).ready(function(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     initializeDB();
@@ -347,4 +348,5 @@ $(document).ready(function(){
 	}
 
 });
+*/
 
