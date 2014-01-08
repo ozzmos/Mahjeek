@@ -135,18 +135,19 @@
         </a>
         <h1>Calcul points</h1>
     </header>
-    <div class="form-group">
-        <label>Mahjong :</label>
-        <select name="Mahjong" id="Mahjong">
+    <form>
+        <p>
+            <label>Mahjong :</label>
+            <select name="Mahjong" id="Mahjong">
             <option value="0" selected>non</option>
             <option value="20">oui</option>
-        </select>
-    </div>
+            </select>
+        </p>
 
 
-    <div class="form-group">
-        <label>Mahjong particulier :</label>
-        <select name="Mahjong Part" id="mahjong part" class="form-control">
+        <p>
+             <label>Mahjong particulier :</label>
+            <select name="Mahjong Part" id="mahjong part" class="form-control">
             <option value="0" selected>non</option>
             <option value="10">9eme porte</option>
             <option value="10">7 nain</option>
@@ -156,55 +157,44 @@
             <option value="15">7 nain + Tuile provenant du mur</option>
             <option value="15">4chow et une pair + Tuile provenant du mur</option>
         </select>
-    </div>
+        </p>
 
-    <div class="form-group">
-        <label>Suite de Combinaison Particulier :</label>
-
-        <div class="checkbox">
-            <label><input type="checkbox" id="pasdeChow" value="1"/>Pas de chow</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong avec la dernier tuile du mur</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong en volant un Kong exposé</label>
-
-        </div>
-        <div class="checkbox">
+       <p>
+           <label>Suite de Combinaison Particulier :</label>
+            <p>
+                <label><input type="checkbox" id="pasdeChow" value="1"/>Pas de chow</label>
+            </p>
+            <p>
+                <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong avec la dernier tuile du mur</label>
+            </p>
+            <p>
+                <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong en volant un Kong exposé</label>
+            </p>
+            <p>
             <label><input type="checkbox" id="hulk" value="1"/>Hulk</label>
-
-        </div>
-        <div class="checkbox">
+            </p>
+            <p>
             <label><input type="checkbox" id="kingkong" value="1"/>King-Kong</label>
-
-        </div>
-        <div class="checkbox">
+            </p>
+            <p>
             <label><input type="checkbox" id="wok" value="1"/>Wok</label>
-
-        </div>
-        <div class="checkbox">
+            </p>
+            <p>
             <label><input type="checkbox" id="yinyang" value="1"/>Yin-Yang</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="porteExt" value="2"/>9Porte extérieur</label>
-
-        </div>
-
-        <div class="checkbox">
-            <label><input type="checkbox" id="mainPure" value="3"/>Main Pure </label>
-
-        </div>
-        <div class="checkbox">
+            </p>
+            <p>
+                <label><input type="checkbox" id="porteExt" value="2"/>9Porte extérieur</label>
+            </p>
+            <p>
+                <label><input type="checkbox" id="mainPure" value="3"/>Main Pure </label>
+            </p>
+            <p>
             <label><input type="checkbox" id="drago" value="4"/>Dragonnade</label>
-
-        </div>
-    </div>
+            </p>
 
 
-    <div class="form-group">
-        <label>Combinaison 1° :</label>
+        <p>
+            <label>Combinaison 1° :</label>
         <select name="Combinaison 1" id="combinaison 1" class="form-control">
             <option value="0" selected>non</option>
             <option value="2">Paire du Vent du joueur exposées</option>
@@ -230,12 +220,12 @@
             <option value="32">Kong ordinaires majeures cachées</option>
             <option value="32">Kong de Vents ou de Dragons cachées</option>
         </select>
-    </div>
+        </p>
 
 
-    <div class="form-group">
-        <label>Combinaison 2° :</label>
-        <select name="Combinaison 2" id="combinaison 2" class="form-control">
+        <p>
+            <label>Combinaison 2° :</label>
+            <select name="Combinaison 2" id="combinaison 2" class="form-control">
             <option value="0" selected>non</option>
             <option value="2">Paire du Vent du joueur exposées</option>
             <option value="2">Paire du Vent dominant exposées</option>
@@ -259,12 +249,12 @@
             <option value="16">Kong ordinaires mineures cachées</option>
             <option value="32">Kong ordinaires majeures cachées</option>
             <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
+            </select>
+        </p>
 
 
-    <div class="form-group">
-        <label>Combinaison 3° :</label>
+        <p>
+            <label>Combinaison 3° :</label>
         <select name="Combinaison 3" id="combinaison 3" class="form-control">
             <option value="0" selected>non</option>
             <option value="2">Paire du Vent du joueur exposées</option>
@@ -290,11 +280,11 @@
             <option value="32">Kong ordinaires majeures cachées</option>
             <option value="32">Kong de Vents ou de Dragons cachées</option>
         </select>
-    </div>
+        </p>
 
 
-    <div class="form-group">
-        <label>Combinaison 4° :</label>
+        <p>
+            <label>Combinaison 4° :</label>
         <select name="Combinaison 4" id="combinaison 4" class="form-control">
             <option value="0" selected>non</option>
             <option value="2">Paire du Vent du joueur exposées</option>
@@ -320,11 +310,12 @@
             <option value="32">Kong ordinaires majeures cachées</option>
             <option value="32">Kong de Vents ou de Dragons cachées</option>
         </select>
-    </div>
+        </p>
 
 
-    <div class="form-group">
-        <label>Combinaison 5° :</label>
+
+        <p>
+           <label>Combinaison 5° :</label>
         <select name="Combinaison 5" id="combinaison 5" class="form-control">
             <option value="0" selected>non</option>
             <option value="2">Paire du Vent du joueur exposées</option>
@@ -350,33 +341,34 @@
             <option value="32">Kong ordinaires majeures cachées</option>
             <option value="32">Kong de Vents ou de Dragons cachées</option>
         </select>
-    </div>
+        </p>
 
 
-    <div class="form-group">
-        <label>Nombre de brelan/carre de dragon :</label>
-        <select name="Dragon" id="dragon" class="form-control">
+        <p>
+            <label>Nombre de brelan/carre de dragon :</label>
+            <select name="Dragon" id="dragon" class="form-control">
             <option value="0" selected>non</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
-    </div>
+        </p>
 
 
-    <div class="form-group">
-        <label>Vent :</label>
-        <select name="Vent" id="vent" class="form-control">
+        <p>
+            <label>Vent :</label>
+            <select name="Vent" id="vent" class="form-control">
             <option value="0" selected>non</option>
             <option value="1">Brelan ou Carré du Vent du joueur</option>
             <option value="1">Brelan ou Carré du Vent dominant</option>
             <option value="2">Brelan ou Carré du Vent du joueur + Brelan ou Carré du Vent dominant</option>
         </select>
-    </div>
+        </p>
 
-    <div class="form-group">
-        <label>Nombre Fleur/Saison :</label>
-        <select name="nb fleur" id="nb fleur" class="form-control">
+
+        <p>
+            <label>Nombre Fleur/Saison :</label>
+            <select name="nb fleur" id="nb fleur" class="form-control">
             <option value="0" selected>non</option>
             <option value="4">1</option>
             <option value="8">2</option>
@@ -387,25 +379,30 @@
             <option value="28">7</option>
             <option value="32">8</option>
         </select>
-    </div>
+        </p>
 
-    <div class="form-group">
-        <label>Fleur/Saison :</label>
-        <select name="fleur" id="fleur" class="form-control">
+
+        <p>
+           <label>Fleur/Saison :</label>
+            <select name="fleur" id="fleur" class="form-control">
             <option value="0" selected>non</option>
             <option value="1">La Fleur ou la Saison du joueur</option>
             <option value="2">La Fleur et la Saison du joueur</option>
             <option value="4">Les 4 Fleurs et/ou les 4 Saisons</option>
         </select>
-    </div>
+        </p>
 
-    <div class="form-group">
-        <input type="button" value="Calculer le score" onclick="calcul()" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <input type="button" value="reset" onclick="resetall()" class="form-control"/>
+        <p>
+            <input type="button" value="Calculer le score" onclick="calcul()" class="form-control"/>
+        </p>
+        <p>
+            <input type="button" value="reset" onclick="resetall()" class="form-control"/>
+        </p>
 
-    </div>
+    </form>
+
+
+
 </section>
 
 
