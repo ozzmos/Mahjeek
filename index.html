@@ -25,6 +25,9 @@
         </menu>
         <h1>Mahjong</h1>
     </header>
+    <ul id="g-list">
+
+    </ul>
 </section>
 
 <!-- New Game -->
@@ -36,16 +39,16 @@
     </header>
 <form>
   <p>
-    <input type="text" placeholder="Nom de la partie" required="">
+    <input type="text" placeholder="Nom de la partie" required="" id="gameName">
     <button type="reset">Clear</button>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 1" required="">
+     <input type="text" placeholder="Nom du joueur 1" required="" id="player1">
     <button type="reset">Clear</button>
   </p>
   <p>
     <label>Vent joueur 1 :</label>
-            <select name="windPlayer3" id="windPlayer1" class="form-control">
+            <select name="windPlayer3" class="form-control" id="windPlayer1">
                 <option value="Nord" selected>Nord</option>
                 <option value="Est">Est</option>
                 <option value="Sud">Sud</option>
@@ -53,12 +56,12 @@
             </select>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 2" required="">
+     <input type="text" placeholder="Nom du joueur 2" required="" id="player2">
     <button type="reset">Clear</button>
   </p>
   <p>
     <label>Vent joueur 2 :</label>
-            <select name="windPlayer2" id="windPlayer2" class="form-control">
+            <select name="windPlayer2"  class="form-control" id="windPlayer2">
                 <option value="Nord" selected>Nord</option>
                 <option value="Est">Est</option>
                 <option value="Sud">Sud</option>
@@ -66,12 +69,12 @@
             </select>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 3" required="">
+     <input type="text" placeholder="Nom du joueur 3" required="" id="player3">
     <button type="reset">Clear</button>
   </p>
   <p>
     <label>Vent joueur 3 :</label>
-            <select name="windPlayer3" id="windPlayer3" class="form-control">
+            <select name="windPlayer3"  class="form-control" id="windPlayer3">
                 <option value="Nord" selected>Nord</option>
                 <option value="Est">Est</option>
                 <option value="Sud">Sud</option>
@@ -79,12 +82,12 @@
             </select>
   </p>
    <p>
-     <input type="text" placeholder="Nom du joueur 4" required="">
+     <input type="text" placeholder="Nom du joueur 4" required="" id="player4">
     <button type="reset">Clear</button>
   </p>
   <p>
     <label>Vent joueur 4 :</label>
-            <select name="windPlayer4" id="windPlayer4" class="form-control">
+            <select name="windPlayer4"  class="form-control" id="windPlayer4">
                 <option value="Nord" selected>Nord</option>
                 <option value="Est">Est</option>
                 <option value="Sud">Sud</option>
@@ -361,7 +364,7 @@
             <option value="0" selected>non</option>
             <option value="1">Brelan ou Carré du Vent du joueur</option>
             <option value="1">Brelan ou Carré du Vent dominant</option>
-            <option value="2">Brelan ou Carré du Vent du joueur + Brelan ou Carré du Vent dominant</option>
+            <option value="2">Brelan ou Carré du Vent(j)+ Brelan ou Carré du Vent(d)</option>
         </select>
         </p>
 
@@ -400,9 +403,6 @@
         </p>
 
     </form>
-
-
-
 </section>
 
 

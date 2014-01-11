@@ -37,7 +37,7 @@ function shNewGame(){
     $("#new-game").show();
 }
 
-
+/*
 function launch_game() {
     var gameName = document.getElementById("gameName").value;
     var player1 = document.getElementById("player1").value;
@@ -78,16 +78,16 @@ function launch_game() {
 
     play_game();
     //list_games();
-}
+}*/
 
 /* the home page lists existing games */
 function shHome(){
     $("#g-list").html("");
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-    $("#home").show();
+
 
     //List the games
-    /*var transaction = db.transaction([ 'game' ]);
+    var transaction = db.transaction([ 'game' ]);
     var store = transaction.objectStore('game');
 
     // open a cursor to retrieve all items from the 'notes' store
@@ -102,7 +102,9 @@ function shHome(){
             // move to the next item in the cursor
             cursor.continue();
         }
-    };*/
+    };
+
+    $("#home").show();
 }
 
 function shCurrentGame(){
@@ -118,6 +120,42 @@ function shCurrentGame(){
 
         }
     };*/
+     var gameName = document.getElementById("gameName").value;
+    var player1 = document.getElementById("player1").value;
+    var windPlayer1 = document.getElementById("windPlayer1").value;
+    var player2 = document.getElementById("player2").value;
+    var windPlayer2 = document.getElementById("windPlayer2").value;
+    var player3 = document.getElementById("player3").value;
+    var windPlayer3 = document.getElementById("windPlayer3").value;
+    var player4 = document.getElementById("player4").value;
+    var windPlayer4 = document.getElementById("windPlayer4").value;
+
+
+    // Create the object game
+    var transaction = db.transaction(['game'], 'readwrite');
+
+
+    var value = {};
+    value.gameName = gameName;
+    value.player1 = player1;
+    value.windPlayer1 = windPlayer1;
+    value.player2 = player2;
+    value.windPlayer2 = windPlayer2;
+    value.player3 = player3;
+    value.windPlayer3 = windPlayer3;
+    value.player4 = player4;
+    value.windPlayer4 = windPlayer4;
+    value.hand = 1;
+
+    var store = transaction.objectStore('game');
+    var request = store.add(value);
+    request.onsuccess = function (e){
+        console.log ("Une nouvelle partie a été commencée");
+    };
+
+    request.onerror = function (e){
+        console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
+    };
 
     $("#current-game").show();
 
@@ -230,7 +268,11 @@ function calcul() {
 		//resetpage();
 }
 
-
+$(document).ready(function(){
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game").hide();
+    initializeDB();
+    $("#home").show();
+});
 
 
 /*
