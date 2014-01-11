@@ -157,6 +157,12 @@ function shCurrentGame(){
         console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
     };
 
+    document.getElementById("player1_value").innerHTML = value.player1;
+    document.getElementById("player2_value").innerHTML = value.player2;
+    document.getElementById("player3_value").innerHTML = value.player3;
+    document.getElementById("player4_value").innerHTML = value.player4;
+
+
     $("#current-game").show();
 
 }
