@@ -1,4 +1,5 @@
 var db;
+var input_player;
 
 function initializeDB(){
     if(window.indexedDB){
@@ -168,9 +169,11 @@ function shCurrentGame(){
 }
 
 
-function shCalculationGame(){
+function shCalculationGame(input){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#calculation-game").show();
+
+    input_player = input;
 
 }
 
@@ -258,11 +261,11 @@ function calcul() {
 		resultat = resultat * 10;
 		resultat = resultat * multiplicateur;
 
-
+        input_player.value = resultat;
 
 		//alert(resultat);
         $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-        $("#calculation-game").show();
+        $("#current-game").show();
         //alert(resultat);
 
 
