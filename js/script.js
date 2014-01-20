@@ -110,26 +110,16 @@ function shHome(){
 
 function shCurrentGame(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-    /*var transaction  = db.transaction(['game']);
-    var store  = transaction.objectStore('game');
 
-    store.openCursor().onsuccess = function (e) {
-        var cursor = e.target.result;
-        if (cursor) {
-            var value = cursor.value;
-            document.getElementById("hand").innerHTML = "Tour " + value.hand;
-
-        }
-    };*/
-     var gameName = document.getElementById("gameName").value;
-    var player1 = document.getElementById("player1").value;
-    var windPlayer1 = document.getElementById("windPlayer1").value;
-    var player2 = document.getElementById("player2").value;
-    var windPlayer2 = document.getElementById("windPlayer2").value;
-    var player3 = document.getElementById("player3").value;
-    var windPlayer3 = document.getElementById("windPlayer3").value;
-    var player4 = document.getElementById("player4").value;
-    var windPlayer4 = document.getElementById("windPlayer4").value;
+    var game_name = document.getElementById("gameName").value;
+    var player1_name = document.getElementById("player1").value;
+    var wind_player1 = document.getElementById("windPlayer1").value;
+    var player2_name = document.getElementById("player2").value;
+    var wind_player2 = document.getElementById("windPlayer2").value;
+    var player3_name = document.getElementById("player3").value;
+    var wind_player3 = document.getElementById("windPlayer3").value;
+    var player4_name = document.getElementById("player4").value;
+    var wind_player4 = document.getElementById("windPlayer4").value;
 
 
     // Create the object game
@@ -137,16 +127,40 @@ function shCurrentGame(){
 
 
     var value = {};
-    value.gameName = gameName;
+    var player1 = {};
+    var player2 = {};
+    var player3 = {};
+    var player4 = {};
+    
+    
+    value.game_name = game_name;
+    
+    player1.name = player1_name;
+    player1.wind = wind_player1;
+    player1.score = 0;
+    player1.hand = 0;
+    
+    player2.name = player2_name;
+    player2.wind = wind_player2;
+    player2.score = 0;
+    player2.hand = 0;
+    
+    player3.name = player3_name;
+    player3.wind = wind_player3;
+    player3.score = 0;
+    player3.hand = 0;
+    
+    player4.name = player4_name;
+    player4.wind = wind_player4;
+    player4.score = 0;
+    player4.hand = 0;
+
     value.player1 = player1;
-    value.windPlayer1 = windPlayer1;
     value.player2 = player2;
-    value.windPlayer2 = windPlayer2;
     value.player3 = player3;
-    value.windPlayer3 = windPlayer3;
     value.player4 = player4;
-    value.windPlayer4 = windPlayer4;
-    value.hand = 1;
+    
+    
 
     var store = transaction.objectStore('game');
     var request = store.add(value);
@@ -158,10 +172,10 @@ function shCurrentGame(){
         console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
     };
 
-    document.getElementById("player1_value").innerHTML = value.player1;
-    document.getElementById("player2_value").innerHTML = value.player2;
-    document.getElementById("player3_value").innerHTML = value.player3;
-    document.getElementById("player4_value").innerHTML = value.player4;
+    document.getElementById("player1_value").innerHTML = value.player1.name;
+    document.getElementById("player2_value").innerHTML = value.player2.name;
+    document.getElementById("player3_value").innerHTML = value.player3.name;
+    document.getElementById("player4_value").innerHTML = value.player4.name;
 
 
     $("#current-game").show();
