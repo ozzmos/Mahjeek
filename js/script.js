@@ -189,6 +189,7 @@ function shCurrentGame(){
 
 function shCalculationGame(input){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    resetPage();
     $("#calculation-game").show();
 
     input_score = input;
@@ -207,6 +208,31 @@ function show_about(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#about").show();
 }
+
+function resetPage()
+	{
+		document.getElementById("pasdeChow").checked = false;
+		document.getElementById("mahDerniertuile").checked = false;
+		document.getElementById("mahVolantKong").checked = false;
+		document.getElementById("hulk").checked = false;
+		document.getElementById("kingkong").checked = false;
+		document.getElementById("wok").checked = false;
+		document.getElementById("yinyang").checked = false;
+		document.getElementById("porteExt").checked = false;
+		document.getElementById("mainPure").checked = false;
+		document.getElementById("drago").checked = false;
+		document.getElementById("Mahjong").selectedIndex = 0;
+		document.getElementById("mahjong part").selectedIndex = 0;
+		document.getElementById("combinaison 1").selectedIndex = 0;
+		document.getElementById("combinaison 2").selectedIndex = 0;
+		document.getElementById("combinaison 3").selectedIndex = 0;
+		document.getElementById("combinaison 4").selectedIndex = 0;
+		document.getElementById("combinaison 5").selectedIndex = 0;
+		document.getElementById("dragon").selectedIndex = 0;
+		document.getElementById("vent").selectedIndex = 0;
+		document.getElementById("nb fleur").selectedIndex = 0;
+		document.getElementById("fleur").selectedIndex = 0;
+	}
 
 
 function calcul() {
