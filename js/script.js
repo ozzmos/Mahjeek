@@ -1,5 +1,7 @@
 var db;
-var inpu_score;
+var input_score;
+var input_player;
+var current_game;
 
 function initializeDB(){
     if(window.indexedDB){
@@ -166,6 +168,8 @@ function shCurrentGame(){
     var request = store.add(value);
     request.onsuccess = function (e){
         console.log ("Une nouvelle partie a été commencée");
+        current_game = value;
+        console.log(current_game.player1.score);
     };
 
     request.onerror = function (e){
@@ -188,6 +192,8 @@ function shCalculationGame(input){
     $("#calculation-game").show();
 
     input_score = input;
+    input_player =  input_score.name;
+    console.log(input_player);
 
 }
 
@@ -276,6 +282,29 @@ function calcul() {
 		resultat = resultat * multiplicateur;
 
         input_score.value = resultat;
+        switch(input_player){
+            case("player1"):
+                current_game.player1.score += resultat;
+                console.log(current_game.player1.score);
+                current_game.player1.hand += 1;
+                document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
+                break;
+            case("player2"):
+                current_game.player2.score += resultat;
+                current_game.player2.hand += 1;
+                document.getElementById("player2-score").innerHTML =  "Points total : " + current_game.player2.score + " points";
+                break;
+            case("player3"):
+                current_game.player3.score += resultat;
+                current_game.player3.hand += 1;
+                document.getElementById("player3-score").innerHTML =  "Points total : " + current_game.player3.score + " points";
+                break;
+            case("player4"):
+                current_game.player4.score += resultat;
+                current_game.player4.hand += 1;
+                document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
+                break;
+        }
 
 		//alert(resultat);
         $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
