@@ -99,7 +99,7 @@ function shHome(){
         if (cursor) {
             var value = cursor.value;
             var game_name = value.game_name;
-            var gameElement = "<li><a onclick='play_game()'><p>"+game_name+"</p></a></li>";
+            var gameElement = "<li><a name="+value.id+" onclick='shCurrentGame(this)'>"+game_name+"</a></li>";
             $("#g-list").append(gameElement);
 
             // move to the next item in the cursor
@@ -110,7 +110,7 @@ function shHome(){
     $("#home").show();
 }
 
-function shCurrentGame(){
+function createGame(){
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
 
     var game_name = document.getElementById("gameName").value;
@@ -169,7 +169,6 @@ function shCurrentGame(){
     request.onsuccess = function (e){
         console.log ("Une nouvelle partie a été commencée");
         current_game = value;
-        console.log(current_game.player1.score);
     };
 
     request.onerror = function (e){
@@ -180,6 +179,38 @@ function shCurrentGame(){
     document.getElementById("player2_value").innerHTML = value.player2.name;
     document.getElementById("player3_value").innerHTML = value.player3.name;
     document.getElementById("player4_value").innerHTML = value.player4.name;
+
+
+    $("#current-game").show();
+
+}
+
+function shCurrentGame(game_name){
+    console.log("id de la partie:" + game_name.name);
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    var transaction = db.transaction(["game"]);
+    var objectStore = transaction.objectStore("game");
+    game_id = parseInt(game_name.name);
+    var request = objectStore.get(game_id);
+    request.onerror = function(event) {
+        console.log("Il n'existe aucune partie dont l'id est" + game_name.name);
+    };
+    request.onsuccess = function(event) {
+    // Do something with the request.result!
+        game_result = request.result;
+        console.log(request.result.game_name);
+        current_game = game_result;
+
+
+
+        document.getElementById("player1_value").innerHTML = current_game.player1.name;
+        document.getElementById("player2_value").innerHTML = current_game.player2.name;
+        document.getElementById("player3_value").innerHTML = current_game.player3.name;
+        document.getElementById("player4_value").innerHTML = current_game.player4.name;
+
+
+    };
+
 
 
     $("#current-game").show();
