@@ -3,25 +3,25 @@ var input_score;
 var input_player;
 var current_game;
 
-function initializeDB(){
-    if(window.indexedDB){
+function initializeDB() {
+    if (window.indexedDB) {
         console.log("Support d\'indexedDB OK");
     }
-    else{
+    else {
         alert("Votre navigateur ne supporte pas indexedDB");
     }
 
     var request = indexedDB.open('test', 1);
 
-    request.onsuccess = function (e){
+    request.onsuccess = function (e) {
         db = e.target.result;
     };
 
-    request.onerror = function (e){
+    request.onerror = function (e) {
         console.log(e);
     };
 
-    request.onupgradeneeded = function (e){
+    request.onupgradeneeded = function (e) {
         db = e.target.result;
 
         if (db.objectStoreNames.contains("game")) {
@@ -35,7 +35,7 @@ function initializeDB(){
 }
 
 
-function shNewGame(){
+function shNewGame() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#new-game").show();
 }
@@ -84,13 +84,13 @@ function launch_game() {
 }*/
 
 /* the home page lists existing games */
-function shHome(){
+function shHome() {
     $("#g-list").html("");
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
 
 
     //List the games
-    var transaction = db.transaction([ 'game' ]);
+    var transaction = db.transaction(['game']);
     var store = transaction.objectStore('game');
 
     // open a cursor to retrieve all items from the 'notes' store
@@ -110,7 +110,7 @@ function shHome(){
     $("#home").show();
 }
 
-function createGame(){
+function createGame() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
 
     var game_name = document.getElementById("gameName").value;
@@ -166,12 +166,12 @@ function createGame(){
 
     var store = transaction.objectStore('game');
     var request = store.add(value);
-    request.onsuccess = function (e){
+    request.onsuccess = function (e) {
         console.log ("Une nouvelle partie a été commencée");
         current_game = value;
     };
 
-    request.onerror = function (e){
+    request.onerror = function (e) {
         console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
     };
 
@@ -185,17 +185,17 @@ function createGame(){
 
 }
 
-function shCurrentGame(game_name){
+function shCurrentGame(game_name) {
     console.log("id de la partie:" + game_name.name);
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     var transaction = db.transaction(["game"]);
     var objectStore = transaction.objectStore("game");
     game_id = parseInt(game_name.name);
     var request = objectStore.get(game_id);
-    request.onerror = function(event) {
+    request.onerror = function (event) {
         console.log("Il n'existe aucune partie dont l'id est" + game_name.name);
     };
-    request.onsuccess = function(event) {
+    request.onsuccess = function (event) {
     // Do something with the request.result!
         game_result = request.result;
         console.log(request.result.game_name);
@@ -218,7 +218,7 @@ function shCurrentGame(game_name){
 }
 
 
-function shCalculationGame(input){
+function shCalculationGame(input) {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     resetPage();
     $("#calculation-game").show();
@@ -229,19 +229,18 @@ function shCalculationGame(input){
 
 }
 
-function show_rules(){
+function show_rules() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#rules").show();
 
 }
 
-function show_about(){
+function show_about() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     $("#about").show();
 }
 
-function resetPage()
-	{
+function resetPage() {
 		document.getElementById("pasdeChow").checked = false;
 		document.getElementById("mahDerniertuile").checked = false;
 		document.getElementById("mahVolantKong").checked = false;
@@ -281,48 +280,37 @@ function calcul() {
 		var vent = parseInt(document.getElementById("vent").value);
 		var nbFleur = parseInt(document.getElementById("nb fleur").value);
 		var fleur = parseInt(document.getElementById("fleur").value);
-		if(document.getElementById("pasdeChow").checked)
-		{
+		if(document.getElementById("pasdeChow").checked) {
 			combinaisonPart = combinaisonPart + 1;
 		}
-		if(document.getElementById("mahDerniertuile").checked)
-		{
+		if(document.getElementById("mahDerniertuile").checked) {
 			combinaisonPart = combinaisonPart + 1;
 		}
-		if(document.getElementById("mahVolantKong").checked)
-		{
+		if(document.getElementById("mahVolantKong").checked) {
 			combinaisonPart = combinaisonPart + 1;
 		}
-		if(document.getElementById("hulk").checked)
-		{
+		if(document.getElementById("hulk").checked) {
 			combinaisonPart = combinaisonPart + 1;
 		}
-		if(document.getElementById("kingkong").checked)
-		{
+		if(document.getElementById("kingkong").checked) {
 			combinaisonPart = combinaisonPart + 2;
 		}
-		if(document.getElementById("wok").checked)
-		{
+		if(document.getElementById("wok").checked) {
 			combinaisonPart = combinaisonPart + 2;
 		}
-		if(document.getElementById("yinyang").checked)
-		{
+		if(document.getElementById("yinyang").checked) {
 			combinaisonPart = combinaisonPart + 2;
 		}
-		if(document.getElementById("porteExt").checked)
-		{
+		if(document.getElementById("porteExt").checked) {
 			combinaisonPart = combinaisonPart + 2;
 		}
-		if(document.getElementById("mainPure").checked)
-		{
+		if(document.getElementById("mainPure").checked) {
 			combinaisonPart = combinaisonPart + 3;
 		}
-		if(document.getElementById("drago").checked)
-		{
+		if(document.getElementById("drago").checked) {
 			combinaisonPart = combinaisonPart + 4;
 		}
-		if(mahjong == 20)
-		{
+		if(mahjong == 20) {
 			mahjong = mahjong + mahjongPart;
 		}
 		resultat = mahjong + combinaisonUne + combinaisonDeux + combinaisonTroie;
@@ -331,15 +319,14 @@ function calcul() {
 		multiplicateur = Math.pow(2,multiplicateur);
 		var temp = resultat / 10;
 		resultat = parseInt(resultat / 10);
-		if(temp != resultat)
-		{
+		if(temp != resultat) {
 			resultat = resultat + 1;
 		}
 		resultat = resultat * 10;
 		resultat = resultat * multiplicateur;
 
         input_score.value = resultat;
-        switch(input_player){
+        switch(input_player) {
             case("player1"):
                 current_game.player1.score += resultat;
                 console.log(current_game.player1.score);
@@ -377,7 +364,7 @@ function calcul() {
 		//resetpage();
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game").hide();
     initializeDB();
     $("#home").show();
