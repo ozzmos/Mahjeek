@@ -235,6 +235,11 @@ function resetPage() {
 		document.getElementById("fleur").selectedIndex = 0;
 	}
 
+function backToCurrentGame() {
+    $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    $("#current-game").show();
+}
+
 
 function calcul() {
 		var resultat = 0;
@@ -321,9 +326,10 @@ function calcul() {
                 break;
         }
 
+        backToCurrentGame();
 		//alert(resultat);
-        $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-        $("#current-game").show();
+        //$("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+        //$("#current-game").show();
         //alert(resultat);
 
 
