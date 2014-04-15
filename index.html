@@ -26,7 +26,7 @@
         </menu>
         <h1>Mahjong</h1>
     </header>
-    <section data-type="list">
+    <section data-type="list" class="scrollable">
         <ul id="g-list">
     </ul>
     </section>
@@ -39,7 +39,7 @@
         <menu type="toolbar"><button onclick="createGame()">done</button></menu>
         <h1>New Game</h1>
     </header>
-<form>
+<form class="scrollable">
   <p>
     <input type="text" placeholder="Nom de la partie" required="" id="gameName">
     <button type="reset">Clear</button>
@@ -103,32 +103,39 @@
 <!-- current-game -->
 <section id="current-game" role="region">
     <header>
-         <a href="#" onclick="shHome()">
+        <a href="#" onclick="shHome()">
             <span class="icon icon-back"></span>
         </a>
+
         <h1>Current Game</h1>
     </header>
-    <label id="hand"></label>
-    <p>
-        <label id="player1_value"></label>
-        <input type="text" name="player1" placeholder="Points de la manche" onclick="shCalculationGame(this)" />
-        <label id="player1-score">Points total : 0 points</label>
-    </p>
-    <p>
-        <label id="player2_value"></label>
-        <input type="text" name="player2" placeholder="Points de la manche" onclick="shCalculationGame(this)" />
-        <label id="player2-score">Points total : 0 points</label>
-    </p>
-    <p>
-        <label id="player3_value"></label>
-        <input type="text" name="player3" placeholder="Points de la manche" onclick="shCalculationGame(this)" />
-        <label id="player3-score">Points total : 0 points</label>
-    </p>
-    <p>
-        <label id="player4_value"></label>
-        <input type="text" name="player4" placeholder="Points de la manche" onclick="shCalculationGame(this)" />
-        <label id="player4-score">Points total : 0 points</label>
-    </p>
+    <div class="scrollable">
+        <label id="hand"></label>
+
+        <p>
+            <label id="player1_value"></label>
+            <input type="text" name="player1" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
+            <label id="player1-score">Points total : 0 points</label>
+        </p>
+
+        <p>
+            <label id="player2_value"></label>
+            <input type="text" name="player2" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
+            <label id="player2-score">Points total : 0 points</label>
+        </p>
+
+        <p>
+            <label id="player3_value"></label>
+            <input type="text" name="player3" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
+            <label id="player3-score">Points total : 0 points</label>
+        </p>
+
+        <p>
+            <label id="player4_value"></label>
+            <input type="text" name="player4" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
+            <label id="player4-score">Points total : 0 points</label>
+        </p>
+    </div>
 </section>
 
 
@@ -141,7 +148,7 @@
         <menu type="toolbar"><button onclick="calcul()">done</button></menu>
         <h1>Calcul points</h1>
     </header>
-    <form>
+    <form class="scrollable">
         <p>
             <label>Mahjong :</label>
             <select name="Mahjong" id="Mahjong">
