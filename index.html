@@ -36,7 +36,7 @@
 <section id="new-game" role="region">
     <header>
         <button onclick="shHome()"><span class="icon icon-close">close</span></button>
-        <menu type="toolbar"><button onclick="createGame()">done</button></menu>
+        <menu type="toolbar"><button onclick="checkNewGameForm()">done</button></menu>
         <h1>New Game</h1>
     </header>
 <form class="scrollable">
@@ -96,6 +96,7 @@
                 <option value="Ouest">Ouest</option>
             </select>
   </p>
+  <p id="new-game-error" class="error"></p>
 </form>
 </section>
 
