@@ -32,6 +32,8 @@
     </section>
 </section>
 
+
+
 <!-- New Game -->
 <section id="new-game" role="region">
     <header>
@@ -39,7 +41,7 @@
         <menu type="toolbar"><button onclick="checkNewGameForm()">done</button></menu>
         <h1>New Game</h1>
     </header>
-<form class="scrollable">
+<form id="new-game-form" class="scrollable">
   <p>
     <input type="text" placeholder="Nom de la partie" required="" id="gameName">
     <button type="reset">Clear</button>
@@ -110,7 +112,7 @@
 
         <h1>Current Game</h1>
     </header>
-    <div class="scrollable">
+    <form id="current-game-form" class="scrollable">
         <label id="hand"></label>
 
         <p>
@@ -136,7 +138,7 @@
             <input type="text" name="player4" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
             <label id="player4-score">Points total : 0 points</label>
         </p>
-    </div>
+    </form>
 </section>
 
 

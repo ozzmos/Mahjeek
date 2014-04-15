@@ -37,6 +37,7 @@ function initializeDB() {
 
 function shNewGame() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+    document.getElementById("new-game-form").reset();
     $("#new-game").show();
 }
 
@@ -81,6 +82,7 @@ function checkNewGameForm() {
 
 function createGame() {
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
+
 
     var game_name = document.getElementById("gameName").value;
     var player1_name = document.getElementById("player1").value;
@@ -157,6 +159,7 @@ function createGame() {
 
 
 function shCurrentGame(game_name) {
+
     console.log("id de la partie:" + game_name.name);
     $("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
     var transaction = db.transaction(["game"]);
@@ -174,16 +177,16 @@ function shCurrentGame(game_name) {
 
 
 
-        document.getElementById("player1_value").innerHTML = current_game.player1.name;
-        document.getElementById("player2_value").innerHTML = current_game.player2.name;
-        document.getElementById("player3_value").innerHTML = current_game.player3.name;
-        document.getElementById("player4_value").innerHTML = current_game.player4.name;
+        document.getElementById("player1_value").innerHTML = "Player 1: " + current_game.player1.name;
+        document.getElementById("player2_value").innerHTML = "Player 2: " + current_game.player2.name;
+        document.getElementById("player3_value").innerHTML = "Player 3: " + current_game.player3.name;
+        document.getElementById("player4_value").innerHTML = "Player 4: " + current_game.player4.name;
 
 
     };
 
 
-
+    document.getElementById("current-game-form").reset();
     $("#current-game").show();
 
 }
