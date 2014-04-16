@@ -5,10 +5,10 @@ var current_game;
 
 function initializeDB() {
     if (window.indexedDB) {
-        console.log("Support d\'indexedDB OK");
+        console.log("indexedDB support OK");
     }
     else {
-        alert("Votre navigateur ne supporte pas indexedDB");
+        alert("Your browser doesn\'t support indexedDB");
     }
 
     var request = indexedDB.open('test', 1);
@@ -30,7 +30,7 @@ function initializeDB() {
 
         var objectStore = db.createObjectStore('game', { keyPath: 'id', autoIncrement:true});
 
-        console.log("La table game a été créée ");
+        console.log("the game table has been created");
     };
 }
 
@@ -138,12 +138,12 @@ function createGame() {
     var store = transaction.objectStore('game');
     var request = store.add(value);
     request.onsuccess = function (e) {
-        console.log ("Une nouvelle partie a été commencée");
+        console.log ("A new game has been started");
         current_game = value;
     };
 
     request.onerror = function (e) {
-        console.log("Votre partie n'a pas pu être sauvegardée : "+ e.value);
+        console.log("Your game can\'t be saved : "+ e.value);
     };
 
     document.getElementById("player1_value").innerHTML = value.player1.name;
@@ -167,7 +167,7 @@ function shCurrentGame(game_name) {
     game_id = parseInt(game_name.name);
     var request = objectStore.get(game_id);
     request.onerror = function (event) {
-        console.log("Il n'existe aucune partie dont l'id est" + game_name.name);
+        console.log("There is no game with id " + game_name.name);
     };
     request.onsuccess = function (event) {
     // Do something with the request.result!
@@ -227,11 +227,11 @@ function resetPage() {
 		document.getElementById("drago").checked = false;
 		document.getElementById("Mahjong").selectedIndex = 0;
 		document.getElementById("mahjong part").selectedIndex = 0;
-		document.getElementById("combinaison 1").selectedIndex = 0;
-		document.getElementById("combinaison 2").selectedIndex = 0;
-		document.getElementById("combinaison 3").selectedIndex = 0;
-		document.getElementById("combinaison 4").selectedIndex = 0;
-		document.getElementById("combinaison 5").selectedIndex = 0;
+		document.getElementById("combination1").selectedIndex = 0;
+		document.getElementById("combination2").selectedIndex = 0;
+		document.getElementById("combination3").selectedIndex = 0;
+		document.getElementById("combination4").selectedIndex = 0;
+		document.getElementById("combination5").selectedIndex = 0;
 		document.getElementById("dragon").selectedIndex = 0;
 		document.getElementById("vent").selectedIndex = 0;
 		document.getElementById("nb fleur").selectedIndex = 0;
@@ -250,11 +250,11 @@ function calcul() {
 		var mahjong = parseInt(document.getElementById("Mahjong").value);
 		var mahjongPart = parseInt(document.getElementById("mahjong part").value);
 		var combinaisonPart = 0;
-		var combinaisonUne = parseInt(document.getElementById("combinaison 1").value);
-		var combinaisonDeux = parseInt(document.getElementById("combinaison 2").value);
-		var combinaisonTroie = parseInt(document.getElementById("combinaison 3").value);
-		var combinaisonQuatre = parseInt(document.getElementById("combinaison 4").value);
-		var combinaisonCinq = parseInt(document.getElementById("combinaison 5").value);
+		var combinaisonUne = parseInt(document.getElementById("combination1").value);
+		var combinaisonDeux = parseInt(document.getElementById("combination2").value);
+		var combinaisonTroie = parseInt(document.getElementById("combination3").value);
+		var combinaisonQuatre = parseInt(document.getElementById("combination4").value);
+		var combinaisonCinq = parseInt(document.getElementById("combination5").value);
 		var nbDragon = parseInt(document.getElementById("dragon").value);
 		var vent = parseInt(document.getElementById("vent").value);
 		var nbFleur = parseInt(document.getElementById("nb fleur").value);
@@ -454,11 +454,11 @@ $(document).ready(function(){
 		document.getElementById("drago").checked = false;
 		document.getElementById("Mahjong").selectedIndex = 0;
 		document.getElementById("mahjong part").selectedIndex = 0;
-		document.getElementById("combinaison 1").selectedIndex = 0;
-		document.getElementById("combinaison 2").selectedIndex = 0;
-		document.getElementById("combinaison 3").selectedIndex = 0;
-		document.getElementById("combinaison 4").selectedIndex = 0;
-		document.getElementById("combinaison 5").selectedIndex = 0;
+		document.getElementById("combination1").selectedIndex = 0;
+		document.getElementById("combination2").selectedIndex = 0;
+		document.getElementById("combination3").selectedIndex = 0;
+		document.getElementById("combination4").selectedIndex = 0;
+		document.getElementById("combination5").selectedIndex = 0;
 		document.getElementById("dragon").selectedIndex = 0;
 		document.getElementById("vent").selectedIndex = 0;
 		document.getElementById("nb fleur").selectedIndex = 0;
