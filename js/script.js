@@ -2,6 +2,7 @@ var db;
 var input_score;
 var input_player;
 var current_game;
+var current_game_id;
 
 function initializeDB() {
     if (window.indexedDB) {
@@ -107,26 +108,27 @@ function createGame() {
     
     
     value.game_name = game_name;
+    value.hand = 1;
     
     player1.name = player1_name;
     player1.wind = wind_player1;
     player1.score = 0;
-    player1.hand = 0;
+    player1.hand = 1;
     
     player2.name = player2_name;
     player2.wind = wind_player2;
     player2.score = 0;
-    player2.hand = 0;
+    player2.hand = 1;
     
     player3.name = player3_name;
     player3.wind = wind_player3;
     player3.score = 0;
-    player3.hand = 0;
+    player3.hand = 1;
     
     player4.name = player4_name;
     player4.wind = wind_player4;
     player4.score = 0;
-    player4.hand = 0;
+    player4.hand = 1;
 
     value.player1 = player1;
     value.player2 = player2;
@@ -140,18 +142,28 @@ function createGame() {
     request.onsuccess = function (e) {
         console.log ("A new game has been started");
         current_game = value;
+        current_game_id = request.result;
+        console.log("Created object id: "+ request.result);
     };
 
     request.onerror = function (e) {
         console.log("Your game can\'t be saved : "+ e.value);
     };
 
+    document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
     document.getElementById("player1_value").innerHTML = value.player1.name;
     document.getElementById("player2_value").innerHTML = value.player2.name;
     document.getElementById("player3_value").innerHTML = value.player3.name;
     document.getElementById("player4_value").innerHTML = value.player4.name;
 
+    // reset scores
+    document.getElementById("player1-score").innerHTML = "Points total : " + value.player1.score + " points";
+    document.getElementById("player2-score").innerHTML = "Points total : " + value.player2.score + " points";
+    document.getElementById("player3-score").innerHTML = "Points total : " + value.player3.score + " points";
+    document.getElementById("player4-score").innerHTML = "Points total : " + value.player4.score + " points";
 
+    // reset player hand point
+    document.getElementById("current-game-form").reset();
     $("#current-game").show();
 
 }
@@ -176,17 +188,21 @@ function shCurrentGame(game_name) {
         current_game = game_result;
 
 
-
         document.getElementById("player1_value").innerHTML = "Player 1: " + current_game.player1.name;
         document.getElementById("player2_value").innerHTML = "Player 2: " + current_game.player2.name;
         document.getElementById("player3_value").innerHTML = "Player 3: " + current_game.player3.name;
         document.getElementById("player4_value").innerHTML = "Player 4: " + current_game.player4.name;
-
+        document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
+        document.getElementById("player2-score").innerHTML = "Points total : " + current_game.player2.score + " points";
+        document.getElementById("player3-score").innerHTML = "Points total : " + current_game.player3.score + " points";
+        document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
 
     };
 
-
+    // reset player hand point
     document.getElementById("current-game-form").reset();
+    // change score of the game
+
     $("#current-game").show();
 
 }
@@ -305,43 +321,65 @@ function calcul() {
 		resultat = resultat * multiplicateur;
 
         input_score.value = resultat;
-        switch(input_player) {
-            case("player1"):
-                current_game.player1.score += resultat;
-                console.log(current_game.player1.score);
-                current_game.player1.hand += 1;
-                document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
-                break;
-            case("player2"):
-                current_game.player2.score += resultat;
-                current_game.player2.hand += 1;
-                document.getElementById("player2-score").innerHTML =  "Points total : " + current_game.player2.score + " points";
-                break;
-            case("player3"):
-                current_game.player3.score += resultat;
-                current_game.player3.hand += 1;
-                document.getElementById("player3-score").innerHTML =  "Points total : " + current_game.player3.score + " points";
-                break;
-            case("player4"):
-                current_game.player4.score += resultat;
-                current_game.player4.hand += 1;
-                document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
-                break;
-        }
+
+        // Request the database object to update
+        var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
+        var request = objectStore.get(current_game_id);
+
+         request.onerror = function (event) {
+        console.log("There is no game with id " + current_game_id);
+        };
+
+        request.onsuccess = function (event) {
+            // Do something with the request.result!
+            data = request.result;
+            current_game = data;
+
+            switch(input_player) {
+                case("player1"):
+                    // update the values in the object
+                    data.player1.score += resultat;
+                    data.player1.hand += 1;
+
+                    document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
+                    break;
+                case("player2"):
+                    // update the values in the object
+                    data.player2.score += resultat;
+                     data.player2.hand += 1;
+
+
+                    document.getElementById("player2-score").innerHTML =  "Points total : " + current_game.player2.score + " points";
+                    break;
+                case("player3"):
+                    // update the values in the object
+                    data.player3.score += resultat;
+
+
+                    document.getElementById("player3-score").innerHTML =  "Points total : " + current_game.player3.score + " points";
+                    break;
+                case("player4"):
+                    // update the values in the object
+                    data.player4.score += resultat;
+
+
+                    document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
+                    break;
+            }
+
+            // Push the object in the database
+            var requestUpdate = objectStore.put(data);
+            requestUpdate.onerror = function(event) {
+                console.log("Unable to update the database");
+            };
+
+            requestUpdate.onsuccess = function (event) {
+                console.log("The database has been updated");
+            };
+
+        };
 
         backToCurrentGame();
-		//alert(resultat);
-        //$("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-        //$("#current-game").show();
-        //alert(resultat);
-
-
-
-        // Create the object game
-
-
-		//document.getElementById("score").textContent = resultat;
-		//resetpage();
 }
 
 $(document).ready(function() {
