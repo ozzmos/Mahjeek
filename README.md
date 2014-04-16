@@ -1,4 +1,4 @@
 Mahjong
 =======
 
-Mahjong Webapp
+Application to calculate Mahjong scores
