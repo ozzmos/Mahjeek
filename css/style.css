@@ -9,7 +9,7 @@ body {
 
 
 #page{
-    padding: 40px 15px;
+    /*padding: 40px 15px;*/
 }
 
 
@@ -22,13 +22,20 @@ body {
 	left:50%;
 }
 
+.error{
+    color:#ff0000;
+    text-align:center;
+}
+
 
 #list-games{
 }
 
-#new-game{
-
+.main-scroll{
+    overflow-y: auto;
+    height: calc(100% - 5rem);
 }
+
 
 #rules{
 
