@@ -43,59 +43,59 @@
     </header>
 <form id="new-game-form" class="main-scroll">
   <p>
-    <input type="text" placeholder="Nom de la partie" required="" id="gameName">
+    <input type="text" placeholder="Game name" required="" id="gameName">
     <button type="reset">Clear</button>
   </p>
   <p>
-    <label>Vent joueur 1 :</label>
+    <label>Wind player 1</label>
             <select name="windPlayer1" class="form-control" id="windPlayer1">
-                <option value="Est" selected>Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
-                <option value="Nord">Nord</option>
+                <option value="East" selected>East</option>
+                <option value="South">South</option>
+                <option value="West">West</option>
+                <option value="North">North</option>
             </select>
   </p>
    <p>
-     <input type="text" placeholder="Nom du joueur 1" required="" id="player1">
+     <input type="text" placeholder="Name player 1" required="" id="player1">
     <button type="reset">Clear</button>
   </p>
   <p>
-    <label>Vent joueur 2 :</label>
+    <label>Wind player 2</label>
             <select name="windPlayer2"  class="form-control" id="windPlayer2">
-                <option value="Sud" selected>Sud</option>
-                <option value="Ouest">Ouest</option>
-                <option value="Nord">Nord</option>
-                <option value="Est">Est</option>
+                <option value="South" selected>South</option>
+                <option value="West">West</option>
+                <option value="North">North</option>
+                <option value="East">East</option>
             </select>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 2" required="" id="player2">
+     <input type="text" placeholder="Name player 2" required="" id="player2">
     <button type="reset">Clear</button>
   </p>
   <p>
-    <label>Vent joueur 3 :</label>
+    <label>Wind player 3</label>
             <select name="windPlayer3"  class="form-control" id="windPlayer3">
-                <option value="Ouest" selected>Ouest</option>
-                <option value="Nord">Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
+                <option value="West" selected>West</option>
+                <option value="North">North</option>
+                <option value="East">East</option>
+                <option value="South">South</option>
             </select>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 3" required="" id="player3">
+     <input type="text" placeholder="Name player 3" required="" id="player3">
     <button type="reset">Clear</button>
   </p>
   <p>
-    <label>Vent joueur 4 :</label>
+    <label>Wind player 4</label>
             <select name="windPlayer4"  class="form-control" id="windPlayer4">
-                <option value="Nord" selected>Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
+                <option value="North" selected>North</option>
+                <option value="East">East</option>
+                <option value="South">South</option>
+                <option value="West">West</option>
             </select>
   </p>
   <p>
-     <input type="text" placeholder="Nom du joueur 4" required="" id="player4">
+     <input type="text" placeholder="Name player 4" required="" id="player4">
     <button type="reset">Clear</button>
   </p>
   <p id="new-game-error" class="error"></p>
@@ -117,26 +117,26 @@
 
         <p>
             <label id="player1_value"></label>
-            <input type="text" name="player1" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
-            <label id="player1-score">Points total : 0 points</label>
+            <input type="text" name="player1" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+            <label id="player1-score">Score : 0 points</label>
         </p>
 
         <p>
             <label id="player2_value"></label>
-            <input type="text" name="player2" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
-            <label id="player2-score">Points total : 0 points</label>
+            <input type="text" name="player2" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+            <label id="player2-score">Score : 0 points</label>
         </p>
 
         <p>
             <label id="player3_value"></label>
-            <input type="text" name="player3" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
-            <label id="player3-score">Points total : 0 points</label>
+            <input type="text" name="player3" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+            <label id="player3-score">Score : 0 points</label>
         </p>
 
         <p>
             <label id="player4_value"></label>
-            <input type="text" name="player4" placeholder="Points de la manche" onclick="shCalculationGame(this)"/>
-            <label id="player4-score">Points total : 0 points</label>
+            <input type="text" name="player4" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+            <label id="player4-score">Score : 0 points</label>
         </p>
     </form>
 </section>
@@ -153,38 +153,38 @@
     </header>
     <form class="main-scroll">
         <p>
-            <label>Mahjong :</label>
+            <label>Mahjong</label>
             <select name="Mahjong" id="Mahjong">
-            <option value="0" selected>non</option>
-            <option value="20">oui</option>
+            <option value="0" selected>no</option>
+            <option value="20">yes</option>
             </select>
         </p>
 
 
         <p>
-             <label>Mahjong particulier :</label>
+             <label>Particular Mahjong</label>
             <select name="Mahjong Part" id="mahjong part" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="10">9eme porte</option>
-            <option value="10">7 nain</option>
-            <option value="10">4 chow et une pair</option>
-            <option value="5">Tuile provenant du mur</option>
-            <option value="15">9eme porte + Tuile provenant du mur</option>
-            <option value="15">7 nain + Tuile provenant du mur</option>
-            <option value="15">4chow et une pair + Tuile provenant du mur</option>
+            <option value="0" selected>no</option>
+            <option value="10">9th door</option>
+            <option value="10">7th dwarf</option>
+            <option value="10">4 chow and a pair</option>
+            <option value="5">Tile from the wall</option>
+            <option value="15">9th door + tile from the wall</option>
+            <option value="15">7th dwarf + tile from the wall</option>
+            <option value="15">4 chow and a pair + tile from the wall</option>
         </select>
         </p>
 
        <p>
-           <label>Suite de Combinaison Particulier :</label>
+           <label>A series of particular combination</label>
             <p>
-                <label><input type="checkbox" id="pasdeChow" value="1"/>Pas de chow</label>
+                <label><input type="checkbox" id="pasdeChow" value="1"/>No chow</label>
             </p>
             <p>
-                <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong avec la dernier tuile du mur</label>
+                <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong with last tile on the wall</label>
             </p>
             <p>
-                <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong en volant un Kong exposé</label>
+                <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong with stolen exposed Kong</label>
             </p>
             <p>
             <label><input type="checkbox" id="hulk" value="1"/>Hulk</label>
@@ -199,10 +199,10 @@
             <label><input type="checkbox" id="yinyang" value="1"/>Yin-Yang</label>
             </p>
             <p>
-                <label><input type="checkbox" id="porteExt" value="2"/>9Porte extérieur</label>
+                <label><input type="checkbox" id="porteExt" value="2"/>9th outside door</label>
             </p>
             <p>
-                <label><input type="checkbox" id="mainPure" value="3"/>Main Pure </label>
+                <label><input type="checkbox" id="mainPure" value="3"/>Pure hand </label>
             </p>
             <p>
             <label><input type="checkbox" id="drago" value="4"/>Dragonnade</label>
@@ -210,158 +210,158 @@
 
 
         <p>
-            <label>Combinaison 1° :</label>
+            <label>1st combination</label>
         <select name="Combinaison 1" id="combinaison 1" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
+            <option value="0" selected>no</option>
+            <option value="2">Pair of wind player exposed</option>
+            <option value="2">Pair of dominant wind player exposed</option>
+            <option value="0">Pair of wind hand exposed</option>
+            <option value="0">Pair of dragons exposed</option>
+            <option value="0">Chow exposed</option>
+            <option value="2">Ordinary and minor pung exposed</option>
+            <option value="4">Ordinary and major pung exposed</option>
+            <option value="4">Wind or dragons pung  exposed</option>
+            <option value="8">Ordinary and minor Kong exposed</option>
+            <option value="16">Ordinary and major Kong exposed</option>
+            <option value="16">Wind or dragons Kong exposed</option>
+            <option value="2">Pair of player wind hidden</option>
+            <option value="2">Pair of dominant wind hidden</option>
+            <option value="2">Pair of hand wind hidden</option>
+            <option value="2">Pair of hidden dragons</option>
+            <option value="0">Chow hidden</option>
+            <option value="4">Ordinary and minor pung hidden</option>
+            <option value="8">Ordinary and major pung hidden</option>
+            <option value="8">Wind or dragons pung hidden</option>
+            <option value="16">Ordinary and minor Kong hidden</option>
+            <option value="32">Ordinary and major Kong hidden</option>
+            <option value="32">Wind or dragons Kong hidden</option>
         </select>
         </p>
 
 
         <p>
-            <label>Combinaison 2° :</label>
+            <label>2th combination</label>
             <select name="Combinaison 2" id="combinaison 2" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
+            <option value="0" selected>no</option>
+            <option value="2">Pair of wind player exposed</option>
+            <option value="2">Pair of dominant wind player exposed</option>
+            <option value="0">Pair of wind hand exposed</option>
+            <option value="0">Pair of dragons exposed</option>
+            <option value="0">Chow exposed</option>
+            <option value="2">Ordinary and minor pung exposed</option>
+            <option value="4">Ordinary and major pung exposed</option>
+            <option value="4">Wind or dragons pung  exposed</option>
+            <option value="8">Ordinary and minor Kong exposed</option>
+            <option value="16">Ordinary and major Kong exposed</option>
+            <option value="16">Wind or dragons Kong exposed</option>
+            <option value="2">Pair of player wind hidden</option>
+            <option value="2">Pair of dominant wind hidden</option>
+            <option value="2">Pair of hand wind hidden</option>
+            <option value="2">Pair of hidden dragons</option>
+            <option value="0">Chow hidden</option>
+            <option value="4">Ordinary and minor pung hidden</option>
+            <option value="8">Ordinary and major pung hidden</option>
+            <option value="8">Wind or dragons pung hidden</option>
+            <option value="16">Ordinary and minor Kong hidden</option>
+            <option value="32">Ordinary and major Kong hidden</option>
+            <option value="32">Wind or dragons Kong hidden</option>
             </select>
         </p>
 
 
         <p>
-            <label>Combinaison 3° :</label>
+            <label>3th Combination</label>
         <select name="Combinaison 3" id="combinaison 3" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
+            <<option value="0" selected>no</option>
+            <option value="2">Pair of wind player exposed</option>
+            <option value="2">Pair of dominant wind player exposed</option>
+            <option value="0">Pair of wind hand exposed</option>
+            <option value="0">Pair of dragons exposed</option>
+            <option value="0">Chow exposed</option>
+            <option value="2">Ordinary and minor pung exposed</option>
+            <option value="4">Ordinary and major pung exposed</option>
+            <option value="4">Wind or dragons pung  exposed</option>
+            <option value="8">Ordinary and minor Kong exposed</option>
+            <option value="16">Ordinary and major Kong exposed</option>
+            <option value="16">Wind or dragons Kong exposed</option>
+            <option value="2">Pair of player wind hidden</option>
+            <option value="2">Pair of dominant wind hidden</option>
+            <option value="2">Pair of hand wind hidden</option>
+            <option value="2">Pair of hidden dragons</option>
+            <option value="0">Chow hidden</option>
+            <option value="4">Ordinary and minor pung hidden</option>
+            <option value="8">Ordinary and major pung hidden</option>
+            <option value="8">Wind or dragons pung hidden</option>
+            <option value="16">Ordinary and minor Kong hidden</option>
+            <option value="32">Ordinary and major Kong hidden</option>
+            <option value="32">Wind or dragons Kong hidden</option>
         </select>
         </p>
 
 
         <p>
-            <label>Combinaison 4° :</label>
+            <label>4th combination</label>
         <select name="Combinaison 4" id="combinaison 4" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
+            <option value="0" selected>no</option>
+            <option value="2">Pair of wind player exposed</option>
+            <option value="2">Pair of dominant wind player exposed</option>
+            <option value="0">Pair of wind hand exposed</option>
+            <option value="0">Pair of dragons exposed</option>
+            <option value="0">Chow exposed</option>
+            <option value="2">Ordinary and minor pung exposed</option>
+            <option value="4">Ordinary and major pung exposed</option>
+            <option value="4">Wind or dragons pung  exposed</option>
+            <option value="8">Ordinary and minor Kong exposed</option>
+            <option value="16">Ordinary and major Kong exposed</option>
+            <option value="16">Wind or dragons Kong exposed</option>
+            <option value="2">Pair of player wind hidden</option>
+            <option value="2">Pair of dominant wind hidden</option>
+            <option value="2">Pair of hand wind hidden</option>
+            <option value="2">Pair of hidden dragons</option>
+            <option value="0">Chow hidden</option>
+            <option value="4">Ordinary and minor pung hidden</option>
+            <option value="8">Ordinary and major pung hidden</option>
+            <option value="8">Wind or dragons pung hidden</option>
+            <option value="16">Ordinary and minor Kong hidden</option>
+            <option value="32">Ordinary and major Kong hidden</option>
+            <option value="32">Wind or dragons Kong hidden</option>
         </select>
         </p>
 
 
 
         <p>
-           <label>Combinaison 5° :</label>
+           <label>5th combination</label>
         <select name="Combinaison 5" id="combinaison 5" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
+            <option value="0" selected>no</option>
+            <option value="2">Pair of wind player exposed</option>
+            <option value="2">Pair of dominant wind player exposed</option>
+            <option value="0">Pair of wind hand exposed</option>
+            <option value="0">Pair of dragons exposed</option>
+            <option value="0">Chow exposed</option>
+            <option value="2">Ordinary and minor pung exposed</option>
+            <option value="4">Ordinary and major pung exposed</option>
+            <option value="4">Wind or dragons pung  exposed</option>
+            <option value="8">Ordinary and minor Kong exposed</option>
+            <option value="16">Ordinary and major Kong exposed</option>
+            <option value="16">Wind or dragons Kong exposed</option>
+            <option value="2">Pair of player wind hidden</option>
+            <option value="2">Pair of dominant wind hidden</option>
+            <option value="2">Pair of hand wind hidden</option>
+            <option value="2">Pair of hidden dragons</option>
+            <option value="0">Chow hidden</option>
+            <option value="4">Ordinary and minor pung hidden</option>
+            <option value="8">Ordinary and major pung hidden</option>
+            <option value="8">Wind or dragons pung hidden</option>
+            <option value="16">Ordinary and minor Kong hidden</option>
+            <option value="32">Ordinary and major Kong hidden</option>
+            <option value="32">Wind or dragons Kong hidden</option>
         </select>
         </p>
 
 
         <p>
-            <label>Nombre de brelan/carre de dragon :</label>
+            <label>Number of brelan/carre of dragons</label>
             <select name="Dragon" id="dragon" class="form-control">
             <option value="0" selected>non</option>
             <option value="1">1</option>
@@ -372,21 +372,21 @@
 
 
         <p>
-            <label>Vent :</label>
+            <label>Wind</label>
             <br>
             <select name="Vent" id="vent" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="1">Brelan/Carré du Vent du joueur</option>
-            <option value="1">Brelan/Carré du Vent dominant</option>
-            <option value="2">Combinaison 1 et 2</option>
+            <option value="0" selected>no</option>
+            <option value="1">Brelan/Carré of player wind</option>
+            <option value="1">Brelan/Carré du dominant wind</option>
+            <option value="2">Combination 1 and 2</option>
         </select>
         </p>
 
 
         <p>
-            <label>Nombre Fleur/Saison :</label>
+            <label>Number of flower/season</label>
             <select name="nb fleur" id="nb fleur" class="form-control">
-            <option value="0" selected>non</option>
+            <option value="0" selected>no</option>
             <option value="4">1</option>
             <option value="8">2</option>
             <option value="12">3</option>
@@ -400,454 +400,19 @@
 
 
         <p>
-           <label>Fleur/Saison :</label>
+           <label>Flower/Season</label>
             <select name="fleur" id="fleur" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="1">La Fleur ou la Saison du joueur</option>
-            <option value="2">La Fleur et la Saison du joueur</option>
-            <option value="4">Les 4 Fleurs et/ou les 4 Saisons</option>
+            <option value="0" selected>no</option>
+            <option value="1">The player flower or season</option>
+            <option value="2">The player flower and season</option>
+            <option value="4">The 4 flowers and/or 4 seasons</option>
         </select>
         </p>
 
     </form>
 </section>
 
-
-<!--<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" onclick="list_games()">Mahjong</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#list-games" onclick="list_games()">Parties existantes</a></li>
-                <li><a href="#new-game" onclick="new_game()">Nouvelle partie</a></li>
-                <li><a href="#rules" onclick="show_rules()">Règles</a></li>
-                <li><a href="#about" onclick="show_about()">À propos</a></li>
-            </ul>
-        </div>
-    </div>
-</div>-->
-
-
 <!--
-<div class="container">
-
-<div id="home">
-    <div class="page-header">
-        <h3>Bienvenue dans l'application Mahjong </h3>
-        <small>
-            Cliquez sur le menu en haut à droite pour commencer.
-        </small>
-    </div>
-
-</div>
-
-
-<div id="list-games">
-    <h3>Parties existantes</h3>
-    <ul id="g-list">
-
-    </ul>
-</div>
-
-
-<div id="new-game">
-    <h3>Nouvelle partie</h3>
-
-
-    <div class="form-group">
-
-        <div class="form-group">
-            <label>Nom de la partie :</label>
-            <input class="form-control" id="gameName">
-        </div>
-
-        <div class="form-group">
-            <label>Joueur 1 :</label>
-            <input class="form-control" id="player1">
-            <label>Vent joueur 1 :</label>
-            <select name="windPlayer1" id="windPlayer1" class="form-control">
-                <option value="Nord" selected>Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
-            <label>Joueur 2 :</label>
-            <input class="form-control" id="player2">
-            <label>Vent joueur 2 :</label>
-            <select name="windPlayer2" id="windPlayer2" class="form-control">
-                <option value="Nord" selected>Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
-            <label>Joueur 3 :</label>
-            <input class="form-control" id="player3">
-            <label>Vent joueur 3 :</label>
-            <select name="windPlayer3" id="windPlayer3" class="form-control">
-                <option value="Nord" selected>Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
-            <label>Joueur 4 :</label>
-            <input class="form-control" id="player4">
-            <label>Vent joueur 4 :</label>
-            <select name="windPlayer4" id="windPlayer4" class="form-control">
-                <option value="Nord" selected>Nord</option>
-                <option value="Est">Est</option>
-                <option value="Sud">Sud</option>
-                <option value="Ouest">Ouest</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <input type="button" value="Commencer la partie" onclick="launch_game()" class="form-control"/>
-        </div>
-    </div>
-
-</div>
-<div id="current-game">
-    &lt;!&ndash;<div class="table-responsive">
-        <table class="table table-striped">
-            <tr>
-                <td>V. tour</td>
-                <td>V. dom</td>
-                <td>Est</td>
-                <td>Sud</td>
-                <td>Ouest</td>
-                <td>Nord</td>
-            </tr>
-
-            <tr>
-                <td>E</td>
-                <td><input size="3px"/></td>
-                <td><input size="7px" id="1_1"/></td>
-                <td><input size="7px" id="1_2"/></td>
-                <td><input size="7px" id="1_3"/></td>
-                <td><input size="7px" id="1_4"/></td>
-            </tr>
-        </table>
-    </div>&ndash;&gt;
-    <label id="hand"></label>
-    <div class="form-group">
-        <label id="player1_value"></label>
-        <button onclick="calculation_game()">Calculer le score</button>
-        <label> 0 points</label>
-    </div>
-    <div class="form-group">
-        <label id="player2_value"></label>
-        <button onclick="calculation_game()">Calculer le score</button>
-        <label> 0 points</label>
-    </div>
-    <div class="form-group">
-        <label id="player3_value"></label>
-        <button onclick="calculation_game()">Calculer le score</button>
-        <label> 0 points</label>
-    </div>
-    <div class="form-group">
-        <label id="player4_value"></label>
-        <button onclick="calculation_game()">Calculer le score</button>
-        <label> 0 points</label>
-    </div>
-    &lt;!&ndash;<input type="button" value="Calculer points" onclick="calculation_game()" class="form-control"/>&ndash;&gt;
-</div>
-
-<div id="calculation-game">
-    <div class="form-group">
-        <label>Mahjong :</label>
-        <select name="Mahjong" id="Mahjong">
-            <option value="0" selected>non</option>
-            <option value="20">oui</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Mahjong particulier :</label>
-        <select name="Mahjong Part" id="mahjong part" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="10">9eme porte</option>
-            <option value="10">7 nain</option>
-            <option value="10">4 chow et une pair</option>
-            <option value="5">Tuile provenant du mur</option>
-            <option value="15">9eme porte + Tuile provenant du mur</option>
-            <option value="15">7 nain + Tuile provenant du mur</option>
-            <option value="15">4chow et une pair + Tuile provenant du mur</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Suite de Combinaison Particulier :</label>
-
-        <div class="checkbox">
-            <label><input type="checkbox" id="pasdeChow" value="1"/>Pas de chow</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong avec la dernier tuile du mur</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong en volant un Kong exposé</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="hulk" value="1"/>Hulk</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="kingkong" value="1"/>King-Kong</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="wok" value="1"/>Wok</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="yinyang" value="1"/>Yin-Yang</label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="porteExt" value="2"/>9Porte extérieur</label>
-
-        </div>
-
-        <div class="checkbox">
-            <label><input type="checkbox" id="mainPure" value="3"/>Main Pure </label>
-
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" id="drago" value="4"/>Dragonnade</label>
-
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <label>Combinaison 1° :</label>
-        <select name="Combinaison 1" id="combinaison 1" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Combinaison 2° :</label>
-        <select name="Combinaison 2" id="combinaison 2" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Combinaison 3° :</label>
-        <select name="Combinaison 3" id="combinaison 3" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Combinaison 4° :</label>
-        <select name="Combinaison 4" id="combinaison 4" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Combinaison 5° :</label>
-        <select name="Combinaison 5" id="combinaison 5" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="2">Paire du Vent du joueur exposées</option>
-            <option value="2">Paire du Vent dominant exposées</option>
-            <option value="0">Paire du Vent du Tour exposées</option>
-            <option value="0">Paire de Dragons exposées</option>
-            <option value="0">chow exposées</option>
-            <option value="2">Pung ordinaires mineures exposées</option>
-            <option value="4">Pung ordinaires majeures exposées</option>
-            <option value="4">Pung de Vents ou de Dragons exposées</option>
-            <option value="8">Kong ordinaires mineures exposées</option>
-            <option value="16">Kong ordinaires majeures exposées</option>
-            <option value="16">Kong de vent ou de Dragons exposées</option>
-            <option value="2">Paire du Vent du joueur cachées</option>
-            <option value="2">Paire du Vent dominant cachées</option>
-            <option value="2">Paire du Vent du Tour cachées</option>
-            <option value="2">Paire de Dragons cachées</option>
-            <option value="0">Chow cachées</option>
-            <option value="4">Pung ordinaires mineures cachées</option>
-            <option value="8">Pung ordinaires majeures cachées</option>
-            <option value="8">Pung de Vents ou de Dragons cachées</option>
-            <option value="16">Kong ordinaires mineures cachées</option>
-            <option value="32">Kong ordinaires majeures cachées</option>
-            <option value="32">Kong de Vents ou de Dragons cachées</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Nombre de brelan/carre de dragon :</label>
-        <select name="Dragon" id="dragon" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Vent :</label>
-        <select name="Vent" id="vent" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="1">Brelan ou Carré du Vent du joueur</option>
-            <option value="1">Brelan ou Carré du Vent dominant</option>
-            <option value="2">Brelan ou Carré du Vent du joueur + Brelan ou Carré du Vent dominant</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Nombre Fleur/Saison :</label>
-        <select name="nb fleur" id="nb fleur" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="4">1</option>
-            <option value="8">2</option>
-            <option value="12">3</option>
-            <option value="16">4</option>
-            <option value="20">5</option>
-            <option value="24">6</option>
-            <option value="28">7</option>
-            <option value="32">8</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Fleur/Saison :</label>
-        <select name="fleur" id="fleur" class="form-control">
-            <option value="0" selected>non</option>
-            <option value="1">La Fleur ou la Saison du joueur</option>
-            <option value="2">La Fleur et la Saison du joueur</option>
-            <option value="4">Les 4 Fleurs et/ou les 4 Saisons</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <input type="button" value="Calculer le score" onclick="calcul()" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <input type="button" value="reset" onclick="resetall()" class="form-control"/>
-
-    </div>
-
-
-</div>
-
-
 <div id="rules">
     <h3>Règles</h3>
 
@@ -893,7 +458,7 @@
         <strong>Tristan Laret</strong>,
         <strong>Quentin Defossés</strong>,
         <strong>Jonathan Verdy</strong>,
-        <strong>Morgane Estiévenart</strong> et
+        <strong>Morgane Eastiévenart</strong> et
         <strong>Florie Depuiset</strong>
     </p>
 
