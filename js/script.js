@@ -334,6 +334,10 @@ function calcul() {
             // Do something with the request.result!
             data = request.result;
             current_game = data;
+            console.log("Hand player 1 : " + data.player1.hand);
+            console.log("Hand player 2 : " + data.player2.hand);
+            console.log("Hand player 3 : " + data.player3.hand);
+            console.log("Hand player 4 : " + data.player4.hand);
 
             switch(input_player) {
                 case("player1"):
@@ -341,31 +345,78 @@ function calcul() {
                     data.player1.score += resultat;
                     data.player1.hand += 1;
 
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player1-hand-input").disabled = true;
                     document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
                     break;
                 case("player2"):
                     // update the values in the object
                     data.player2.score += resultat;
                      data.player2.hand += 1;
 
-
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player2-hand-input").disabled = true;
                     document.getElementById("player2-score").innerHTML =  "Points total : " + current_game.player2.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
                     break;
                 case("player3"):
                     // update the values in the object
                     data.player3.score += resultat;
-
-
+                    data.player3.hand += 1;
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player3-hand-input").disabled = true;
                     document.getElementById("player3-score").innerHTML =  "Points total : " + current_game.player3.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
                     break;
                 case("player4"):
                     // update the values in the object
                     data.player4.score += resultat;
-
-
+                    data.player4.hand += 1;
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player4-hand-input").disabled = true;
                     document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
                     break;
             }
+
+
 
             // Push the object in the database
             var requestUpdate = objectStore.put(data);
@@ -378,6 +429,7 @@ function calcul() {
             };
 
         };
+
 
         backToCurrentGame();
 }
