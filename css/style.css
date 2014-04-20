@@ -36,6 +36,18 @@ body {
     height: calc(100% - 5rem);
 }
 
+form ol{
+    margin: 1rem 1rem 1rem;
+}
+
+form ol li{
+    margin:5px 0;
+}
+
+input{
+    border:0px none;
+}
+
 
 #rules{
 

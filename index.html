@@ -33,73 +33,79 @@
 </section>
 
 
-
 <!-- New Game -->
 <section id="new-game" role="region">
     <header>
         <button onclick="shHome()"><span class="icon icon-close">close</span></button>
-        <menu type="toolbar"><button onclick="checkNewGameForm()">done</button></menu>
+        <menu type="toolbar">
+            <button onclick="checkNewGameForm()">done</button>
+        </menu>
         <h1>New Game</h1>
     </header>
-<form id="new-game-form" class="main-scroll">
-  <p>
-    <input type="text" placeholder="Game name" required="" id="gameName">
-    <button type="reset">Clear</button>
-  </p>
-  <p>
-    <label>Wind player 1</label>
-            <select name="windPlayer1" class="form-control" id="windPlayer1">
-                <option value="East" selected>East</option>
-                <option value="South">South</option>
-                <option value="West">West</option>
-                <option value="North">North</option>
-            </select>
-  </p>
-   <p>
-     <input type="text" placeholder="Name player 1" required="" id="player1">
-    <button type="reset">Clear</button>
-  </p>
-  <p>
-    <label>Wind player 2</label>
-            <select name="windPlayer2"  class="form-control" id="windPlayer2">
-                <option value="South" selected>South</option>
-                <option value="West">West</option>
-                <option value="North">North</option>
-                <option value="East">East</option>
-            </select>
-  </p>
-  <p>
-     <input type="text" placeholder="Name player 2" required="" id="player2">
-    <button type="reset">Clear</button>
-  </p>
-  <p>
-    <label>Wind player 3</label>
-            <select name="windPlayer3"  class="form-control" id="windPlayer3">
-                <option value="West" selected>West</option>
-                <option value="North">North</option>
-                <option value="East">East</option>
-                <option value="South">South</option>
-            </select>
-  </p>
-  <p>
-     <input type="text" placeholder="Name player 3" required="" id="player3">
-    <button type="reset">Clear</button>
-  </p>
-  <p>
-    <label>Wind player 4</label>
-            <select name="windPlayer4"  class="form-control" id="windPlayer4">
-                <option value="North" selected>North</option>
-                <option value="East">East</option>
-                <option value="South">South</option>
-                <option value="West">West</option>
-            </select>
-  </p>
-  <p>
-     <input type="text" placeholder="Name player 4" required="" id="player4">
-    <button type="reset">Clear</button>
-  </p>
-  <p id="new-game-error" class="error"></p>
-</form>
+    <form id="new-game-form" class="main-scroll">
+        <ol>
+            <li>
+                <input type="text" placeholder="Game name" required="" id="gameName">
+            </li>
+            <li>
+                <label>Wind player 1</label>
+            </li>
+            <li>
+                <select name="windPlayer1" class="form-control" id="windPlayer1">
+                    <option value="East" selected>East</option>
+                    <option value="South">South</option>
+                    <option value="West">West</option>
+                    <option value="North">North</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" placeholder="Name player 1" required="" id="player1">
+            </li>
+            <li>
+                <label>Wind player 2</label>
+            </li>
+            <li>
+                <select name="windPlayer2" class="form-control" id="windPlayer2">
+                    <option value="South" selected>South</option>
+                    <option value="West">West</option>
+                    <option value="North">North</option>
+                    <option value="East">East</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" placeholder="Name player 2" required="" id="player2">
+            </li>
+            <li>
+                <label>Wind player 3</label>
+            </li>
+            <li>
+                <select name="windPlayer3" class="form-control" id="windPlayer3">
+                    <option value="West" selected>West</option>
+                    <option value="North">North</option>
+                    <option value="East">East</option>
+                    <option value="South">South</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" placeholder="Name player 3" required="" id="player3">
+            </li>
+            <li>
+                <label>Wind player 4</label>
+            </li>
+            <li>
+                <select name="windPlayer4" class="form-control" id="windPlayer4">
+                    <option value="North" selected>North</option>
+                    <option value="East">East</option>
+                    <option value="South">South</option>
+                    <option value="West">West</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" placeholder="Name player 4" required="" id="player4">
+            </li>
+            <li id="new-game-error" class="error"></li>
+        </ol>
+    </form>
 </section>
 
 
@@ -113,32 +119,48 @@
         <h1>Current Game</h1>
     </header>
     <form id="current-game-form" class="main-scroll">
-        <p>
+    <ol>
+        <li>
             <label id="hand">Hand</label>
-        </p>
-        <p>
-            <label id="player1_value"></label>
-            <input id="player1-hand-input" type="text" name="player1" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+        </li>
+
+            <li><label id="player1_value"></label></li>
+            <li><input id="player1-hand-input" type="text" name="player1" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/></li>
+
+        <li>
             <label id="player1-score">Score : 0 points</label>
-        </p>
+        </li>
 
-        <p>
+        <li>
             <label id="player2_value"></label>
+        </li>
+        <li>
             <input id="player2-hand-input" type="text" name="player2" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+        </li>
+        <li>
             <label id="player2-score">Score : 0 points</label>
-        </p>
+        </li>
 
-        <p>
+        <li>
             <label id="player3_value"></label>
+        </li>
+        <li>
             <input id="player3-hand-input" type="text" name="player3" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+        </li>
+        <li>
             <label id="player3-score">Score : 0 points</label>
-        </p>
+        </li>
 
-        <p>
+        <li>
             <label id="player4_value"></label>
+        </li>
+        <li>
             <input id="player4-hand-input" type="text" name="player4" placeholder="Calculate hand points" onclick="shCalculationGame(this)"/>
+        </li>
+        <li>
             <label id="player4-score">Score : 0 points</label>
-        </p>
+        </li>
+    </ol>
     </form>
 </section>
 
@@ -153,17 +175,22 @@
         <h1>Calcul points</h1>
     </header>
     <form class="main-scroll">
-        <p>
+    <ol>
+        <li>
             <label>Mahjong</label>
+        </li>
+        <li>
             <select name="Mahjong" id="Mahjong">
             <option value="0" selected>no</option>
             <option value="20">yes</option>
             </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
              <label>Particular Mahjong</label>
+        </li>
+        <li>
             <select name="Mahjong Part" id="mahjong part" class="form-control">
             <option value="0" selected>no</option>
             <option value="10">9th door</option>
@@ -174,44 +201,46 @@
             <option value="15">7th dwarf + tile from the wall</option>
             <option value="15">4 chow and a pair + tile from the wall</option>
         </select>
-        </p>
+        </li>
 
-       <p>
+       <li>
            <label>A series of particular combination</label>
-            <p>
+            <li>
                 <label><input type="checkbox" id="pasdeChow" value="1"/>No chow</label>
-            </p>
-            <p>
+            </li>
+            <li>
                 <label><input type="checkbox" id="mahDerniertuile" value="1"/>MahJong with last tile on the wall</label>
-            </p>
-            <p>
+            </li>
+            <li>
                 <label><input type="checkbox" id="mahVolantKong" value="1"/>Mahjong with stolen exposed Kong</label>
-            </p>
-            <p>
+            </li>
+            <li>
             <label><input type="checkbox" id="hulk" value="1"/>Hulk</label>
-            </p>
-            <p>
+            </li>
+            <li>
             <label><input type="checkbox" id="kingkong" value="1"/>King-Kong</label>
-            </p>
-            <p>
+            </li>
+            <li>
             <label><input type="checkbox" id="wok" value="1"/>Wok</label>
-            </p>
-            <p>
+            </li>
+            <li>
             <label><input type="checkbox" id="yinyang" value="1"/>Yin-Yang</label>
-            </p>
-            <p>
+            </li>
+            <li>
                 <label><input type="checkbox" id="porteExt" value="2"/>9th outside door</label>
-            </p>
-            <p>
+            </li>
+            <li>
                 <label><input type="checkbox" id="mainPure" value="3"/>Pure hand </label>
-            </p>
-            <p>
+            </li>
+            <li>
             <label><input type="checkbox" id="drago" value="4"/>Dragonnade</label>
-            </p>
+            </li>
 
 
-        <p>
+        <li>
             <label>1st combination</label>
+        </li>
+        <li>
         <select name="Combinaison 1" id="combination1" class="form-control">
             <option value="0" selected>no</option>
             <option value="2">Pair of wind player exposed</option>
@@ -237,11 +266,13 @@
             <option value="32">Ordinary and major Kong hidden</option>
             <option value="32">Wind or dragons Kong hidden</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>2th combination</label>
+        </li>
+        <li>
             <select name="Combinaison 2" id="combination2" class="form-control">
             <option value="0" selected>no</option>
             <option value="2">Pair of wind player exposed</option>
@@ -267,11 +298,13 @@
             <option value="32">Ordinary and major Kong hidden</option>
             <option value="32">Wind or dragons Kong hidden</option>
             </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>3th Combination</label>
+        </li>
+        <li>
         <select name="Combinaison 3" id="combination3" class="form-control">
             <<option value="0" selected>no</option>
             <option value="2">Pair of wind player exposed</option>
@@ -297,11 +330,13 @@
             <option value="32">Ordinary and major Kong hidden</option>
             <option value="32">Wind or dragons Kong hidden</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>4th combination</label>
+        </li>
+        <li>
         <select name="Combinaison 4" id="combination4" class="form-control">
             <option value="0" selected>no</option>
             <option value="2">Pair of wind player exposed</option>
@@ -327,12 +362,14 @@
             <option value="32">Ordinary and major Kong hidden</option>
             <option value="32">Wind or dragons Kong hidden</option>
         </select>
-        </p>
+        </li>
 
 
 
-        <p>
+        <li>
            <label>5th combination</label>
+        </li>
+        <li>
         <select name="Combinaison 5" id="combination5" class="form-control">
             <option value="0" selected>no</option>
             <option value="2">Pair of wind player exposed</option>
@@ -358,34 +395,39 @@
             <option value="32">Ordinary and major Kong hidden</option>
             <option value="32">Wind or dragons Kong hidden</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>Number of brelan/carre of dragons</label>
+        </li>
+        <li>
             <select name="Dragon" id="dragon" class="form-control">
             <option value="0" selected>non</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>Wind</label>
-            <br>
+        </li>
+        <li>
             <select name="Vent" id="vent" class="form-control">
             <option value="0" selected>no</option>
             <option value="1">Brelan/Carré of player wind</option>
             <option value="1">Brelan/Carré du dominant wind</option>
             <option value="2">Combination 1 and 2</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
             <label>Number of flower/season</label>
+        </li>
+        <li>
             <select name="nb fleur" id="nb fleur" class="form-control">
             <option value="0" selected>no</option>
             <option value="4">1</option>
@@ -397,19 +439,21 @@
             <option value="28">7</option>
             <option value="32">8</option>
         </select>
-        </p>
+        </li>
 
 
-        <p>
+        <li>
            <label>Flower/Season</label>
+        </li>
+        <li>
             <select name="fleur" id="fleur" class="form-control">
             <option value="0" selected>no</option>
             <option value="1">The player flower or season</option>
             <option value="2">The player flower and season</option>
             <option value="4">The 4 flowers and/or 4 seasons</option>
         </select>
-        </p>
-
+        </li>
+    </ol>
     </form>
 </section>
 
