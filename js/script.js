@@ -58,7 +58,7 @@ function shHome() {
         if (cursor) {
             var value = cursor.value;
             var game_name = value.game_name;
-            var gameElement = "<li><a name="+value.id+" onclick='shCurrentGame(this)'>"+game_name+"</a></li>";
+            var gameElement = "<li><a name=" + value.id + " onclick='shCurrentGame(this)'><p>" + game_name+"</p></a></li>";
             $("#g-list").append(gameElement);
 
             // move to the next item in the cursor
