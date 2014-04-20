@@ -157,10 +157,10 @@ function createGame() {
     document.getElementById("player4_value").innerHTML = "Player 4: " +value.player4.name;
 
     // reset scores
-    document.getElementById("player1-score").innerHTML = "Points total : " + value.player1.score + " points";
-    document.getElementById("player2-score").innerHTML = "Points total : " + value.player2.score + " points";
-    document.getElementById("player3-score").innerHTML = "Points total : " + value.player3.score + " points";
-    document.getElementById("player4-score").innerHTML = "Points total : " + value.player4.score + " points";
+    document.getElementById("player1-score").innerHTML = "Score : " + value.player1.score + " points";
+    document.getElementById("player2-score").innerHTML = "Score : " + value.player2.score + " points";
+    document.getElementById("player3-score").innerHTML = "Score : " + value.player3.score + " points";
+    document.getElementById("player4-score").innerHTML = "Score : " + value.player4.score + " points";
 
     // reset player hand point
     document.getElementById("current-game-form").reset();
@@ -192,10 +192,10 @@ function shCurrentGame(game_name) {
         document.getElementById("player2_value").innerHTML = "Player 2: " + current_game.player2.name;
         document.getElementById("player3_value").innerHTML = "Player 3: " + current_game.player3.name;
         document.getElementById("player4_value").innerHTML = "Player 4: " + current_game.player4.name;
-        document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
-        document.getElementById("player2-score").innerHTML = "Points total : " + current_game.player2.score + " points";
-        document.getElementById("player3-score").innerHTML = "Points total : " + current_game.player3.score + " points";
-        document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
+        document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
+        document.getElementById("player2-score").innerHTML = "Score : " + current_game.player2.score + " points";
+        document.getElementById("player3-score").innerHTML = "Score : " + current_game.player3.score + " points";
+        document.getElementById("player4-score").innerHTML = "Score : " + current_game.player4.score + " points";
 
     };
 
@@ -347,7 +347,7 @@ function calcul() {
 
                     // desactivate input field to prevent cheat
                     document.getElementById("player1-hand-input").disabled = true;
-                    document.getElementById("player1-score").innerHTML = "Points total : " + current_game.player1.score + " points";
+                    document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
                     if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
                         console.log("The hand number will be updated");
                         data.hand +=1;
@@ -366,7 +366,7 @@ function calcul() {
 
                     // desactivate input field to prevent cheat
                     document.getElementById("player2-hand-input").disabled = true;
-                    document.getElementById("player2-score").innerHTML =  "Points total : " + current_game.player2.score + " points";
+                    document.getElementById("player2-score").innerHTML =  "Score : " + current_game.player2.score + " points";
                     if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
                         console.log("The hand number will be updated");
                         data.hand +=1;
@@ -384,7 +384,7 @@ function calcul() {
                     data.player3.hand += 1;
                     // desactivate input field to prevent cheat
                     document.getElementById("player3-hand-input").disabled = true;
-                    document.getElementById("player3-score").innerHTML =  "Points total : " + current_game.player3.score + " points";
+                    document.getElementById("player3-score").innerHTML =  "Score : " + current_game.player3.score + " points";
                     if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
                         console.log("The hand number will be updated");
                         data.hand +=1;
@@ -402,7 +402,7 @@ function calcul() {
                     data.player4.hand += 1;
                     // desactivate input field to prevent cheat
                     document.getElementById("player4-hand-input").disabled = true;
-                    document.getElementById("player4-score").innerHTML = "Points total : " + current_game.player4.score + " points";
+                    document.getElementById("player4-score").innerHTML = "Score : " + current_game.player4.score + " points";
                     if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
                         console.log("The hand number will be updated");
                         data.hand +=1;
