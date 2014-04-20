@@ -72,7 +72,7 @@ function shHome() {
 
 function checkNewGameForm() {
     if(!document.getElementById("gameName").value) {
-        document.getElementById("new-game-error").innerHTML = "Fields are required";
+        //document.getElementById("new-game-error").innerHTML = "Fields are required";
         console.log("Specify a game name ");
     }
     else{
