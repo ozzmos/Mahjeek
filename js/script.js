@@ -151,10 +151,10 @@ function createGame() {
     };
 
     document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
-    document.getElementById("player1_value").innerHTML = value.player1.name;
-    document.getElementById("player2_value").innerHTML = value.player2.name;
-    document.getElementById("player3_value").innerHTML = value.player3.name;
-    document.getElementById("player4_value").innerHTML = value.player4.name;
+    document.getElementById("player1_value").innerHTML = "Player 1: " + value.player1.name;
+    document.getElementById("player2_value").innerHTML = "Player 2: " +value.player2.name;
+    document.getElementById("player3_value").innerHTML = "Player 3: " +value.player3.name;
+    document.getElementById("player4_value").innerHTML = "Player 4: " +value.player4.name;
 
     // reset scores
     document.getElementById("player1-score").innerHTML = "Points total : " + value.player1.score + " points";
