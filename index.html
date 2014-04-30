@@ -4,16 +4,12 @@
     <title>À propos</title>
     <meta charset="utf-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">-->
-    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/input_areas.css">
     <link rel="stylesheet" type="text/css" href="css/lists.css">
     <link rel="stylesheet"  type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
-    <script src="js/jquery.js"></script>
-    <!--<script src="js/bootstrap.min.js"></script>-->
-    <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 
@@ -22,7 +18,7 @@
     <header>
         <button><span class="icon icon-menu">menu</span></button>
         <menu type="toolbar">
-            <button id="btn-add" onclick="shNewGame()"><span class="icon icon-add">add</span></button>
+            <button id="btn-home-add"><span class="icon icon-add">add</span></button>
         </menu>
         <h1>Mahjong</h1>
     </header>
@@ -36,9 +32,9 @@
 <!-- New Game -->
 <section id="new-game" role="region">
     <header>
-        <button onclick="shHome()"><span class="icon icon-close">close</span></button>
+        <button id="btn-new-game-cancel"><span class="icon icon-close">close</span></button>
         <menu type="toolbar">
-            <button onclick="checkNewGameForm()">done</button>
+            <button id="btn-new-game-done">done</button>
         </menu>
         <h1>New Game</h1>
     </header>
@@ -112,7 +108,7 @@
 <!-- current-game -->
 <section id="current-game" role="region">
     <header>
-        <a href="#" onclick="shHome()">
+        <a id="btn-current-game-cancel" href="#">
             <span class="icon icon-back"></span>
         </a>
 
@@ -125,7 +121,7 @@
         </li>
 
             <li><label id="player1_value"></label></li>
-            <li><input id="player1-hand-input" type="text" name="player1" placeholder="Calculate hand score" onclick="shCalculationGame(this)"/></li>
+            <li><input id="player1-hand-input" type="text" name="player1" placeholder="Calculate hand score"></li>
 
         <li>
             <label id="player1-score">Score : 0 points</label>
@@ -135,7 +131,7 @@
             <label id="player2_value"></label>
         </li>
         <li>
-            <input id="player2-hand-input" type="text" name="player2" placeholder="Calculate hand score" onclick="shCalculationGame(this)"/>
+            <input id="player2-hand-input" type="text" name="player2" placeholder="Calculate hand score"/>
         </li>
         <li>
             <label id="player2-score">Score : 0 points</label>
@@ -145,7 +141,7 @@
             <label id="player3_value"></label>
         </li>
         <li>
-            <input id="player3-hand-input" type="text" name="player3" placeholder="Calculate hand score" onclick="shCalculationGame(this)"/>
+            <input id="player3-hand-input" type="text" name="player3" placeholder="Calculate hand score"/>
         </li>
         <li>
             <label id="player3-score">Score : 0 points</label>
@@ -155,7 +151,7 @@
             <label id="player4_value"></label>
         </li>
         <li>
-            <input id="player4-hand-input" type="text" name="player4" placeholder="Calculate hand score" onclick="shCalculationGame(this)"/>
+            <input id="player4-hand-input" type="text" name="player4" placeholder="Calculate hand score">
         </li>
         <li>
             <label id="player4-score">Score : 0 points</label>
@@ -168,10 +164,10 @@
 <!-- calcul points -->
 <section id="calculation-game" role="region">
     <header>
-        <a href="#" onclick="backToCurrentGame()">
+        <a href="#" id="btn-calculation-game-cancel">
             <span class="icon icon-back"></span>
         </a>
-        <menu type="toolbar"><button onclick="calcul()">done</button></menu>
+        <menu type="toolbar"><button id="btn-calculation-game-done">done</button></menu>
         <h1>Calcul points</h1>
     </header>
     <form class="main-scroll">
@@ -510,6 +506,6 @@
 </div>
 </div>
 -->
-
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
