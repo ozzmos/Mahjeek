@@ -96,7 +96,8 @@
                 var value = cursor.value;
                 var game_name = value.game_name;
                 var gameElement = document.createElement("li");
-                gameElement.innerHTML = "<a name =" + value.id + " onclick='shCurrentGame(this)'><p>" + game_name +"</p></a>";
+                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name +"</p></a>";
+                gameElement.addEventListener("click", function () {shCurrentGame(value.id)});
                 document.getElementById("g-list").appendChild(gameElement);
 
                 // move to the next item in the cursor
@@ -209,18 +210,18 @@
 
 
 
-    function shCurrentGame(game_name) {
+    function shCurrentGame(game_id) {
 
-        console.log("id de la partie:" + game_name.name);
+        console.log("id de la partie:" + game_id);
         document.getElementById ("home").style.display = 'none';
         document.getElementById ("new-game").style.display = 'none';
         document.getElementById ("calculation-game").style.display = 'none';
         var transaction = db.transaction(["game"]);
         var objectStore = transaction.objectStore("game");
-        game_id = parseInt(game_name.name);
-        var request = objectStore.get(game_id);
+        id = parseInt(game_id);
+        var request = objectStore.get(id);
         request.onerror = function (event) {
-            console.log("There is no game with id " + game_name.name);
+            console.log("There is no game with id " + game_id);
         };
         request.onsuccess = function (event) {
         // Do something with the request.result!
