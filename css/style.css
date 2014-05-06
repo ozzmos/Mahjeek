@@ -12,6 +12,10 @@ body {
     /*padding: 40px 15px;*/
 }
 
+a{
+    text-decoration: none;
+}
+
 
 
 #Tableau
@@ -58,3 +62,29 @@ input{
 }
 
 
+#settings{
+    background-color: #2C353B;
+    color: #FFF;
+}
+
+#settings ul{
+    padding: 0px 3rem;
+}
+
+#settings li{
+    width: 100%;
+}
+
+#settings ul li a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+#settings ul li a:hover{
+    cursor: default;;
+}
+
+#settings ul li a:visited{
+    color: #FFF;
+    text-decoration: none;
+}

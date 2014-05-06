@@ -11,6 +11,7 @@
 
     function addEventListeners () {
         var btn_home_add = document.getElementById("btn-home-add");
+        var btn_home_sidebar = document.getElementById("btn-home-sidebar");
         var btn_new_game_cancel = document.getElementById("btn-new-game-cancel");
         var btn_new_game_done = document.getElementById("btn-new-game-done");
         var btn_current_game_cancel = document.getElementById("btn-current-game-cancel");
@@ -20,9 +21,14 @@
         var player4_hand_input = document.getElementById("player4-hand-input");
         var btn_calculation_game_cancel = document.getElementById("btn-calculation-game-cancel");
         var btn_calculation_game_done = document.getElementById("btn-calculation-game-done");
-
+        var btn_settings_hide = document.getElementById("btn-settings-hide");
+        var btn_show_rules = document.getElementById("btn-show-rules");
+        var btn_show_about = document.getElementById("btn-show-about");
+        var btn_hide_rules = document.getElementById("btn-rules-hide");
+        var btn_hide_about = document.getElementById("btn-about-hide");
 
         btn_home_add.addEventListener("click", shNewGame, false);
+        btn_home_sidebar.addEventListener("click", shSettings, false);
         btn_new_game_cancel.addEventListener("click",shHome, false);
         btn_new_game_done.addEventListener("click", checkNewGameForm, false);
         btn_current_game_cancel.addEventListener("click", shHome, false);
@@ -32,6 +38,11 @@
         player4_hand_input.addEventListener("click", function () { shCalculationGame(player4_hand_input)}, false);
         btn_calculation_game_cancel.addEventListener("click", backToCurrentGame, false);
         btn_calculation_game_done.addEventListener("click", calcul, false);
+        btn_settings_hide.addEventListener("click", shHome, false);
+        btn_show_rules.addEventListener("click",shRules, false);
+        btn_show_about.addEventListener("click", shAbout, false);
+        btn_hide_rules.addEventListener("click", shSettings, false);
+        btn_hide_about.addEventListener("click", shSettings, false);
     }
 
     function initializeDB() {
@@ -477,6 +488,35 @@
 
 
             backToCurrentGame();
+    }
+
+    function shSettings () {
+        document.getElementById ("home").style.display = 'none';
+        document.getElementById ("new-game").style.display = 'none';
+        document.getElementById ("current-game").style.display = 'none';
+        document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById("rules").style.display = "none";
+        document.getElementById("about").style.display = "none";
+        document.getElementById("settings").style.display = "block";
+    }
+
+    function shRules () {
+        document.getElementById ("home").style.display = 'none';
+        document.getElementById ("new-game").style.display = 'none';
+        document.getElementById ("current-game").style.display = 'none';
+        document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById("settings").style.display = "none";
+        document.getElementById("rules").style.display = "block";
+
+    }
+
+    function shAbout () {
+        document.getElementById ("home").style.display = 'none';
+        document.getElementById ("new-game").style.display = 'none';
+        document.getElementById ("current-game").style.display = 'none';
+        document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById("settings").style.display = "none";
+        document.getElementById("about").style.display = "block";
     }
 
 document.getElementById ("new-game").style.display = 'none';
