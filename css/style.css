@@ -71,14 +71,15 @@ input{
     padding: 0px 3rem;
 }
 
-#settings li{
+#settings ul li{
     width: 100%;
     border: medium none;
 }
 
-#settings ul li a{
+#settings ul li a p{
     color: #FFF;
     text-decoration: none;
+
 }
 
 #settings ul li a:hover{
