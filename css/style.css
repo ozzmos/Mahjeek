@@ -73,6 +73,7 @@ input{
 
 #settings li{
     width: 100%;
+    border: medium none;
 }
 
 #settings ul li a{
@@ -81,10 +82,19 @@ input{
 }
 
 #settings ul li a:hover{
-    cursor: default;;
+    cursor: default;
 }
 
 #settings ul li a:visited{
     color: #FFF;
     text-decoration: none;
+}
+
+
+#rules div{
+    margin:1rem;
+}
+
+#about div{
+    margin: 1rem;
 }
