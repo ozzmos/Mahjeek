@@ -92,6 +92,9 @@
         while (glist.firstChild) {
             glist.removeChild(glist.firstChild);
         }
+        document.getElementById ("settings").style.display = 'none';
+        document.getElementById ("rules").style.display = 'none';
+        document.getElementById ("about").style.display = 'none';
         document.getElementById ("new-game").style.display = 'none';
         document.getElementById ("current-game").style.display = 'none';
         document.getElementById ("calculation-game").style.display = 'none';

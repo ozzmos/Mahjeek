@@ -16,6 +16,18 @@ a{
     text-decoration: none;
 }
 
+#home, #new-game, #current-game, #calculation-game, #about, #rules{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+#settings{
+    background-color: #2C353B;
+    color: #FFF;
+}
+
+
+
 #home ul li a p{
     font-size: 1.6rem;
 }
@@ -68,10 +80,7 @@ input{
 }
 
 
-#settings{
-    background-color: #2C353B;
-    color: #FFF;
-}
+
 
 #settings ul{
 }
