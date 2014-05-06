@@ -16,7 +16,9 @@ a{
     text-decoration: none;
 }
 
-
+#home ul li a p{
+    font-size: 1.6rem;
+}
 
 #Tableau
 {
@@ -48,6 +50,10 @@ form ol li{
     margin:5px 0;
 }
 
+form label{
+    font-size: 1.6rem;
+}
+
 input{
     border:0px none;
 }
@@ -68,17 +74,22 @@ input{
 }
 
 #settings ul{
-    padding: 0px 3rem;
 }
 
 #settings ul li{
     width: 100%;
-    border: medium none;
+    border-bottom: 0.1rem solid #596068;
+    margin:0px;
+}
+
+#settings ul li:last-child{
+    border-bottom: none;
 }
 
 #settings ul li a p{
     color: #FFF;
     text-decoration: none;
+    font-size:1.6rem;
 
 }
 
