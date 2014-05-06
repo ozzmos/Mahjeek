@@ -110,3 +110,16 @@ input{
 #about div{
     margin: 1rem;
 }
+
+#rules p{
+    font-size: 1.6rem;
+}
+
+#about p{
+    font-size:1.6rem;
+}
+
+h3{
+    font-size: 1.8rem;
+    color: #000000;
+}
