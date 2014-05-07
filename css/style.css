@@ -29,7 +29,7 @@ a{
 
 
 #home ul li a p{
-    font-size: 1.6rem;
+    /*font-size: 1.6rem;*/
 }
 
 #Tableau
@@ -49,6 +49,12 @@ a{
 #list-games{
 }
 
+.game-date{
+    font-size: 1.3rem;
+    /*display: block;*/
+    color: #777777;
+}
+
 .main-scroll{
     overflow-y: auto;
     height: calc(100% - 5rem);
@@ -62,9 +68,6 @@ form ol li{
     margin:5px 0;
 }
 
-form label{
-    font-size: 1.6rem;
-}
 
 input{
     border:0px none;

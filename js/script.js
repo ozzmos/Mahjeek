@@ -110,7 +110,7 @@
                 var value = cursor.value;
                 var game_name = value.game_name;
                 var gameElement = document.createElement("li");
-                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + formatDate(value.game_date) +"</p></a>";
+                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
                 gameElement.addEventListener("click", function () {shCurrentGame(value.id)});
                 document.getElementById("g-list").appendChild(gameElement);
 
