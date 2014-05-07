@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "name": "Mahjong",
-  "description": "An application to to calculate Mahjong games",
+  "description": "An application to calculate Mahjong games",
   "launch_path": "/index.html",
   "fullscreen": "true",
   "icons": {
