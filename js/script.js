@@ -110,7 +110,7 @@
                 var value = cursor.value;
                 var game_name = value.game_name;
                 var gameElement = document.createElement("li");
-                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name +"</p></a>";
+                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + formatDate(value.game_date) +"</p></a>";
                 gameElement.addEventListener("click", function () {shCurrentGame(value.id)});
                 document.getElementById("g-list").appendChild(gameElement);
 
@@ -133,6 +133,26 @@
         }
     }
 
+    function formatDate(d) {
+        var day;
+        var month;
+
+        if(d.getDate() < 10){
+            day = "0" + d.getDate();
+        }
+        else{
+            day = d.getDate();
+        }
+        if(d.getMonth() < 10){
+            month = "0" + d.getMonth();
+        }
+        else{
+            month = d.getMonth();
+        }
+
+        return day + "/" + month + "/" + d.getFullYear();
+    }
+
 
     function createGame() {
         document.getElementById ("home").style.display = 'none';
@@ -153,6 +173,8 @@
         // Create the object game
         var transaction = db.transaction(['game'], 'readwrite');
 
+        var date_now = new Date ();
+        var game_date = new Date(date_now.getFullYear(), date_now.getMonth(), date_now.getDate());
 
         var value = {};
         var player1 = {};
@@ -163,6 +185,7 @@
 
         value.game_name = game_name;
         value.hand = 1;
+        value.game_date = game_date;
 
         player1.name = player1_name;
         player1.wind = wind_player1;
