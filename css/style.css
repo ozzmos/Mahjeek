@@ -60,7 +60,7 @@ a{
     height: calc(100% - 5rem);
 }
 
-form ol{
+form {
     margin: 1rem 1rem 1rem;
 }
 
@@ -135,3 +135,4 @@ h3{
     font-size: 1.8rem;
     color: #000000;
 }
+
