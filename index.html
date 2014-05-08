@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/drawer.css">
     <link rel="stylesheet" type="text/css" href="css/input_areas.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/confirm.css">
     <link rel="stylesheet" type="text/css" href="css/lists.css">
     <link rel="stylesheet"  type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -106,6 +108,25 @@
 </section>
 
 
+<!-- Edit Game -->
+<section id="edit-game" role="region">
+    <header>
+        <button id="btn-edit-game-cancel"><span class="icon icon-close">close</span></button>
+        <menu type="toolbar">
+            <button id="btn-edit-game-done">done</button>
+        </menu>
+        <h1>Edit Game</h1>
+    </header>
+    <form>
+        <button id="btn-edit-game-delete" class="danger">Delete</button>
+    </form>
+</section>
+
+
+
+
+
+
 <!-- current-game -->
 <section id="current-game" role="region">
     <header>
@@ -113,7 +134,7 @@
             <span class="icon icon-back"></span>
         </a>
         <menu type="toolbar">
-            <button id=""><span>Edit</span></button>
+            <button id="btn-current-game-edit"><span>Edit</span></button>
         </menu>
         <h1>Current Game</h1>
     </header>
