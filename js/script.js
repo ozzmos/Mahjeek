@@ -15,6 +15,9 @@
         var btn_new_game_cancel = document.getElementById("btn-new-game-cancel");
         var btn_new_game_done = document.getElementById("btn-new-game-done");
         var btn_current_game_cancel = document.getElementById("btn-current-game-cancel");
+        var btn_current_game_edit = document.getElementById("btn-current-game-edit");
+        var btn_edit_game_cancel = document.getElementById("btn-edit-game-cancel");
+        var btn_edit_game_delete = document.getElementById("btn-edit-game-delete");
         var player1_hand_input = document.getElementById("player1-hand-input");
         var player2_hand_input = document.getElementById("player2-hand-input");
         var player3_hand_input = document.getElementById("player3-hand-input");
@@ -32,6 +35,9 @@
         btn_new_game_cancel.addEventListener("click",shHome, false);
         btn_new_game_done.addEventListener("click", checkNewGameForm, false);
         btn_current_game_cancel.addEventListener("click", shHome, false);
+        btn_current_game_edit.addEventListener("click", shEditGame, false);
+        btn_edit_game_cancel.addEventListener("click", backToCurrentGame, false);
+        btn_edit_game_delete.addEventListener("click", deleteGame, false);
         player1_hand_input.addEventListener("click", function () { shCalculationGame(player1_hand_input)}, false);
         player2_hand_input.addEventListener("click", function () { shCalculationGame(player2_hand_input)}, false);
         player3_hand_input.addEventListener("click", function () { shCalculationGame(player3_hand_input)}, false);
@@ -82,6 +88,8 @@
         document.getElementById ("new-game").style.display = 'none';
         document.getElementById ("current-game").style.display = 'none';
         document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById ("edit-game").style.display = 'none';
+
         document.getElementById("new-game-form").reset();
         document.getElementById("new-game").style.display = 'block';
     }
@@ -158,6 +166,8 @@
         document.getElementById ("home").style.display = 'none';
         document.getElementById ("new-game").style.display = 'none';
         document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById ("edit-game").style.display = 'none';
+
 
         var game_name = document.getElementById("gameName").value;
         var player1_name = document.getElementById("player1").value;
@@ -241,8 +251,20 @@
 
         // reset player hand point
         document.getElementById("current-game-form").reset();
+
+
         document.getElementById("current-game").style.display = 'block';
 
+    }
+
+    function deleteGame() {
+
+
+        document.getElementById("new-game").style.display = 'none';
+        document.getElementById("current-game").style.display = 'none';
+        document.getElementById("calculation-game").style.display = 'none';
+        document.getElementById("edit-game").style.display = 'none';
+        document.getElementById("home").style.display = 'block';
     }
 
 
@@ -253,6 +275,7 @@
         document.getElementById ("home").style.display = 'none';
         document.getElementById ("new-game").style.display = 'none';
         document.getElementById ("calculation-game").style.display = 'none';
+        document.getElementById ("edit-game").style.display = 'none';
         var transaction = db.transaction(["game"]);
         var objectStore = transaction.objectStore("game");
         id = parseInt(game_id);
@@ -285,11 +308,23 @@
 
     }
 
+    function shEditGame() {
+        document.getElementById("home").style.display = 'none';
+        document.getElementById("new-game").style.display = 'none';
+        document.getElementById("current-game").style.display = 'none';
+        document.getElementById("calculation-game").style.display = 'none';
+
+        document.getElementById("edit-game").style.display = 'block';
+    }
+
+
+
 
     function shCalculationGame(input) {
         document.getElementById("home").style.display = 'none';
         document.getElementById("new-game").style.display = 'none';
         document.getElementById("current-game").style.display = 'none';
+        document.getElementById ("edit-game").style.display = 'none';
         resetPage();
         document.getElementById("calculation-game").style.display = 'block';
 
@@ -338,6 +373,7 @@
         document.getElementById("home").style.display = 'none';
         document.getElementById("new-game").style.display = 'none';
         document.getElementById("calculation-game").style.display = 'none';
+        document.getElementById ("edit-game").style.display = 'none';
         document.getElementById("current-game").style.display = 'block';
     }
 
@@ -548,6 +584,8 @@
 document.getElementById ("new-game").style.display = 'none';
 document.getElementById ("current-game").style.display = 'none';
 document.getElementById ("calculation-game").style.display = 'none';
+document.getElementById ("edit-game").style.display = 'none';
+
 initializeDB();
 addEventListeners();
 document.getElementById ("home").style.display = 'block';
