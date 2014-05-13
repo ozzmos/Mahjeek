@@ -155,3 +155,31 @@ h3{
 .it{
     font-style: italic;
 }
+
+
+/* cancel section[role="region"] default properties */
+section[role="region"]:not(#drawer) {
+    transition: none 0s ease 0s;
+    left: 0;
+    z-index: 0;
+    padding-left: 0;
+}
+
+
+section[role="region"][data-position="right"] {
+    position: absolute;
+}
+
+section[role="region"][data-position="left"] {
+    position: absolute;
+}
+
+[data-position="right"]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    /*z-index: 100;*/
+    transform: translateX(100%);
+}

@@ -4,7 +4,7 @@
     <title>À propos</title>
     <meta charset="utf-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/drawer.css">
     <link rel="stylesheet" type="text/css" href="css/input_areas.css">
@@ -13,11 +13,13 @@
     <link rel="stylesheet" type="text/css" href="css/lists.css">
     <link rel="stylesheet"  type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet"  type="text/css" href="css/animation.css">
 </head>
 <body>
 
 <!-- Home Page -->
-<section id="home" role="region">
+<section id="home" role="region" data-position="current" class="current">
     <header>
         <button id="btn-home-sidebar"><span class="icon icon-menu">menu</span></button>
         <menu type="toolbar">
@@ -33,7 +35,7 @@
 
 
 <!-- New Game -->
-<section id="new-game" role="region">
+<section id="new-game" role="region" data-position="right">
     <header>
         <button id="btn-new-game-cancel"><span class="icon icon-close">close</span></button>
         <menu type="toolbar">
@@ -111,7 +113,7 @@
 
 
 <!-- Edit Game -->
-<section id="edit-game" role="region">
+<section id="edit-game" role="region" data-position="right">
     <header>
         <button id="btn-edit-game-cancel"><span class="icon icon-close">close</span></button>
         <menu type="toolbar">
@@ -127,7 +129,7 @@
 </section>
 
 <!-- current-game -->
-<section id="current-game" role="region">
+<section id="current-game" role="region" data-position="right">
     <header>
         <a id="btn-current-game-cancel" href="#">
             <span class="icon icon-back"></span>
@@ -187,7 +189,7 @@
 
 
 <!-- calcul points -->
-<section id="calculation-game" role="region">
+<section id="calculation-game" role="region" data-position="right">
 <header>
     <a href="#" id="btn-calculation-game-cancel">
         <span class="icon icon-back"></span>
@@ -482,7 +484,7 @@
 </section>
 </section>
 
-<section id="settings" role="region" class="skin-dark">
+<section id="settings" role="region" class="skin-dark" data-position="left">
     <header>
     <menu type="toolbar">
       <a id="btn-settings-hide"><span class="icon icon-menu">hide settings</span></a>
@@ -491,13 +493,13 @@
   </header>
     <section data-type="list">
         <ul>
-            <li><a id="btn-show-rules"><p>Rules</p></a></li>
-            <li><a id="btn-show-about"><p>About</p></a></li>
+            <li><a id="btn-rules-show"><p>Rules</p></a></li>
+            <li><a id="btn-about-show"><p>About</p></a></li>
         </ul>
     </section>
 </section>
 
-<section id="rules" role="region" class="skin-dark">
+<section id="rules" role="region" class="skin-dark" data-position="left">
     <header>
         <menu type="toolbar">
             <a id="btn-rules-hide"><span class="icon icon-menu">hide rules</span></a>
@@ -536,7 +538,7 @@
 
 </section>
 
-<section id="about" role="region" class="skin-dark">
+<section id="about" role="region" class="skin-dark" data-position="left">
     <header>
         <menu type="toolbar">
             <a id="btn-about-hide"><span class="icon icon-menu">hide about</span></a>

@@ -10,45 +10,123 @@
 
 
     function addEventListeners () {
-        var btn_home_add = document.getElementById("btn-home-add");
-        var btn_home_sidebar = document.getElementById("btn-home-sidebar");
-        var btn_new_game_cancel = document.getElementById("btn-new-game-cancel");
-        var btn_new_game_done = document.getElementById("btn-new-game-done");
-        var btn_current_game_cancel = document.getElementById("btn-current-game-cancel");
-        var btn_current_game_edit = document.getElementById("btn-current-game-edit");
-        var btn_edit_game_cancel = document.getElementById("btn-edit-game-cancel");
-        var btn_edit_game_delete = document.getElementById("btn-edit-game-delete");
-        var player1_hand_input = document.getElementById("player1-hand-input");
-        var player2_hand_input = document.getElementById("player2-hand-input");
-        var player3_hand_input = document.getElementById("player3-hand-input");
-        var player4_hand_input = document.getElementById("player4-hand-input");
-        var btn_calculation_game_cancel = document.getElementById("btn-calculation-game-cancel");
-        var btn_calculation_game_done = document.getElementById("btn-calculation-game-done");
-        var btn_settings_hide = document.getElementById("btn-settings-hide");
-        var btn_show_rules = document.getElementById("btn-show-rules");
-        var btn_show_about = document.getElementById("btn-show-about");
-        var btn_hide_rules = document.getElementById("btn-rules-hide");
-        var btn_hide_about = document.getElementById("btn-about-hide");
+        document.querySelector("#btn-home-add").addEventListener("click", function () {
+            document.querySelector("#home").className = 'left';
+            document.querySelector("#new-game").className = 'current';
+        });
 
-        btn_home_add.addEventListener("click", shNewGame, false);
-        btn_home_sidebar.addEventListener("click", shSettings, false);
-        btn_new_game_cancel.addEventListener("click",shHome, false);
-        btn_new_game_done.addEventListener("click", checkNewGameForm, false);
-        btn_current_game_cancel.addEventListener("click", shHome, false);
-        btn_current_game_edit.addEventListener("click", shEditGame, false);
-        btn_edit_game_cancel.addEventListener("click", backToCurrentGame, false);
-        btn_edit_game_delete.addEventListener("click", deleteGame, false);
-        player1_hand_input.addEventListener("click", function () { shCalculationGame(player1_hand_input)}, false);
-        player2_hand_input.addEventListener("click", function () { shCalculationGame(player2_hand_input)}, false);
-        player3_hand_input.addEventListener("click", function () { shCalculationGame(player3_hand_input)}, false);
-        player4_hand_input.addEventListener("click", function () { shCalculationGame(player4_hand_input)}, false);
-        btn_calculation_game_cancel.addEventListener("click", backToCurrentGame, false);
-        btn_calculation_game_done.addEventListener("click", calcul, false);
-        btn_settings_hide.addEventListener("click", shHome, false);
-        btn_show_rules.addEventListener("click",shRules, false);
-        btn_show_about.addEventListener("click", shAbout, false);
-        btn_hide_rules.addEventListener("click", shSettings, false);
-        btn_hide_about.addEventListener("click", shSettings, false);
+        document.querySelector("#btn-new-game-cancel").addEventListener("click", function () {
+            document.querySelector("#new-game").className = 'right';
+            document.querySelector("#home").className = 'home';
+        });
+
+        document.querySelector("#btn-new-game-done").addEventListener("click", function () {
+            if(!document.getElementById("gameName").value) {
+                console.log("Specify a game name ");
+            }
+            else{
+                createGame();
+                document.querySelector("#new-game").className = 'left';
+                document.querySelector("#current-game").className = 'current';
+            }
+        });
+
+        document.querySelector("#btn-current-game-cancel").addEventListener("click", function () {
+            shHome();
+            document.querySelector("#current-game").className = 'right';
+            document.querySelector("#home").className = 'current';
+        });
+
+        document.querySelector("#btn-current-game-edit").addEventListener("click", function () {
+            document.querySelector("#current-game").className = 'left';
+            document.querySelector("#edit-game").className = 'current';
+        });
+
+        document.querySelector("#btn-edit-game-cancel").addEventListener("click", function () {
+            document.querySelector("#edit-game").className = 'right';
+            document.querySelector("#current-game").className = 'current';
+        });
+
+        document.querySelector("#btn-edit-game-done").addEventListener("click", function () {
+            // TODO: handle and save edited data
+            document.querySelector("#edit-game").className = 'left';
+            document.querySelector("#current-game").className = 'current';
+        });
+
+        document.querySelector("#player1-hand-input").addEventListener("click", function () {
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'left';
+            document.querySelector("#calculation-game").className = 'current';
+        });
+
+        document.querySelector("#player2-hand-input").addEventListener("click", function () {
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'left';
+            document.querySelector("#calculation-game").className = 'current';
+        });
+
+        document.querySelector("#player3-hand-input").addEventListener("click", function () {
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'left';
+            document.querySelector("#calculation-game").className = 'current';
+        });
+
+        document.querySelector("#player4-hand-input").addEventListener("click", function () {
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'left';
+            document.querySelector("#calculation-game").className = 'current';
+        });
+
+        document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
+            calcul();
+            document.querySelector("#calculation-game").className = 'left';
+            document.querySelector("#current-game").className = 'current';
+        });
+
+        document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
+            document.querySelector("#calculation-game").className = 'right';
+            document.querySelector("#current-game").className = 'current';
+        });
+
+        document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
+            document.querySelector("#calculation-game").className = 'right';
+            document.querySelector("#current-game").className = 'current';
+        });
+
+         document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
+            document.querySelector("#home").className = 'right';
+            document.querySelector("#settings").className = 'current';
+        });
+
+        document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
+            document.querySelector("#home").className = 'right';
+            document.querySelector("#settings").className = 'current';
+        });
+
+        document.querySelector("#btn-settings-hide").addEventListener("click", function () {
+            document.querySelector("#settings").className = 'left';
+            document.querySelector("#home").className = 'current';
+        });
+
+        document.querySelector("#btn-about-show").addEventListener("click", function () {
+            document.querySelector("#settings").className = 'right';
+            document.querySelector("#about").className = 'current';
+        });
+
+        document.querySelector("#btn-about-hide").addEventListener("click", function () {
+            document.querySelector("#about").className = 'right';
+            document.querySelector("#settings").className = 'current';
+        });
+
+        document.querySelector("#btn-rules-show").addEventListener("click", function () {
+            document.querySelector("#settings").className = 'right';
+            document.querySelector("#rules").className = 'current';
+        });
+
+        document.querySelector("#btn-rules-hide").addEventListener("click", function () {
+            document.querySelector("#rules").className = 'right';
+            document.querySelector("#settings").className = 'current';
+        });
     }
 
     function initializeDB() {
@@ -84,14 +162,7 @@
 
 
     function shNewGame() {
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("current-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById ("edit-game").style.display = 'none';
-
         document.getElementById("new-game-form").reset();
-        document.getElementById("new-game").style.display = 'block';
     }
 
     /* the home page lists existing games */
@@ -100,12 +171,6 @@
         while (glist.firstChild) {
             glist.removeChild(glist.firstChild);
         }
-        document.getElementById ("settings").style.display = 'none';
-        document.getElementById ("rules").style.display = 'none';
-        document.getElementById ("about").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("current-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
 
         //List the games
         var transaction = db.transaction(['game']);
@@ -116,18 +181,23 @@
             var cursor = e.target.result;
             if (cursor) {
                 var value = cursor.value;
-                var game_name = value.game_name;
-                var gameElement = document.createElement("li");
-                gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
-                gameElement.addEventListener("click", function () {shCurrentGame(value.id)});
-                document.getElementById("g-list").appendChild(gameElement);
+                if (value){
+                    var game_name = value.game_name;
+                    var gameElement = document.createElement("li");
+                    gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
+                    gameElement.addEventListener("click", function () {
+                        shCurrentGame(value.id);
+                        document.querySelector("#home").className = 'left';
+                        document.querySelector("#current-game").className = 'current';
+                    });
+                    document.getElementById("g-list").appendChild(gameElement);
+                }
+
 
                 // move to the next item in the cursor
                 cursor.continue();
             }
         };
-
-        document.getElementById("home").style.display = 'block';
     }
 
 
@@ -163,11 +233,6 @@
 
 
     function createGame() {
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById ("edit-game").style.display = 'none';
-
 
         var game_name = document.getElementById("gameName").value;
         var player1_name = document.getElementById("player1").value;
@@ -252,30 +317,11 @@
         // reset player hand point
         document.getElementById("current-game-form").reset();
 
-
-        document.getElementById("current-game").style.display = 'block';
-
     }
-
-    function deleteGame() {
-
-
-        document.getElementById("new-game").style.display = 'none';
-        document.getElementById("current-game").style.display = 'none';
-        document.getElementById("calculation-game").style.display = 'none';
-        document.getElementById("edit-game").style.display = 'none';
-        document.getElementById("home").style.display = 'block';
-    }
-
-
 
     function shCurrentGame(game_id) {
 
         console.log("id de la partie:" + game_id);
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById ("edit-game").style.display = 'none';
         var transaction = db.transaction(["game"]);
         var objectStore = transaction.objectStore("game");
         id = parseInt(game_id);
@@ -304,45 +350,14 @@
         // reset player hand point
         document.getElementById("current-game-form").reset();
         // change score of the game
-        document.getElementById("current-game").style.display = 'block';
 
     }
-
-    function shEditGame() {
-        document.getElementById("home").style.display = 'none';
-        document.getElementById("new-game").style.display = 'none';
-        document.getElementById("current-game").style.display = 'none';
-        document.getElementById("calculation-game").style.display = 'none';
-
-        document.getElementById("edit-game").style.display = 'block';
-    }
-
-
-
 
     function shCalculationGame(input) {
-        document.getElementById("home").style.display = 'none';
-        document.getElementById("new-game").style.display = 'none';
-        document.getElementById("current-game").style.display = 'none';
-        document.getElementById ("edit-game").style.display = 'none';
-        resetPage();
-        document.getElementById("calculation-game").style.display = 'block';
-
         input_score = input;
         input_player =  input_score.name;
         console.log(input_player);
 
-    }
-
-    function show_rules() {
-        //$("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-        //$("#rules").show();
-
-    }
-
-    function show_about() {
-        //$("#home, #new-game, #current-game, #list-games,  #calculation-game,#rules, #about").hide();
-        //$("#about").show();
     }
 
     function resetPage() {
@@ -369,13 +384,7 @@
             document.getElementById("fleur").selectedIndex = 0;
         }
 
-    function backToCurrentGame() {
-        document.getElementById("home").style.display = 'none';
-        document.getElementById("new-game").style.display = 'none';
-        document.getElementById("calculation-game").style.display = 'none';
-        document.getElementById ("edit-game").style.display = 'none';
-        document.getElementById("current-game").style.display = 'block';
-    }
+
 
 
     function calcul() {
@@ -547,48 +556,10 @@
                 };
 
             };
-
-
-            backToCurrentGame();
     }
-
-    function shSettings () {
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("current-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById("rules").style.display = "none";
-        document.getElementById("about").style.display = "none";
-        document.getElementById("settings").style.display = "block";
-    }
-
-    function shRules () {
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("current-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById("settings").style.display = "none";
-        document.getElementById("rules").style.display = "block";
-
-    }
-
-    function shAbout () {
-        document.getElementById ("home").style.display = 'none';
-        document.getElementById ("new-game").style.display = 'none';
-        document.getElementById ("current-game").style.display = 'none';
-        document.getElementById ("calculation-game").style.display = 'none';
-        document.getElementById("settings").style.display = "none";
-        document.getElementById("about").style.display = "block";
-    }
-
-document.getElementById ("new-game").style.display = 'none';
-document.getElementById ("current-game").style.display = 'none';
-document.getElementById ("calculation-game").style.display = 'none';
-document.getElementById ("edit-game").style.display = 'none';
 
 initializeDB();
 addEventListeners();
-document.getElementById ("home").style.display = 'block';
 /* end of IIFE */
 }) ();
 
