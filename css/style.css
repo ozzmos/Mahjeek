@@ -165,6 +165,17 @@ section[role="region"]:not(#drawer) {
     padding-left: 0;
 }
 
+#settings > header:first-child{
+    background-color: #2C353B;
+}
+
+#about > header:first-child{
+    background-color: #2C353B;
+}
+
+#rules > header:first-child{
+    background-color: #2C353B;
+}
 
 section[role="region"][data-position="right"] {
     position: absolute;
