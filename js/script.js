@@ -47,6 +47,13 @@
             document.querySelector("#current-game").className = 'current';
         });
 
+        document.querySelector("#btn-edit-game-delete").addEventListener("click", function () {
+            deleteGame(current_game_id);
+            shHome();
+            document.querySelector("#edit-game").className = 'right';
+            document.querySelector("#home").className = 'current';
+        });
+
         document.querySelector("#btn-edit-game-done").addEventListener("click", function () {
             // TODO: handle and save edited data
             document.querySelector("#edit-game").className = 'left';
@@ -92,17 +99,7 @@
             document.querySelector("#current-game").className = 'current';
         });
 
-        document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
-            document.querySelector("#calculation-game").className = 'right';
-            document.querySelector("#current-game").className = 'current';
-        });
-
          document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
-            document.querySelector("#home").className = 'right';
-            document.querySelector("#settings").className = 'current';
-        });
-
-        document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
             document.querySelector("#home").className = 'right';
             document.querySelector("#settings").className = 'current';
         });
@@ -151,6 +148,7 @@
             console.log(e);
         };
 
+        /* if database doesn't exist or schema has changed */
         request.onupgradeneeded = function (e) {
             db = e.target.result;
 
@@ -338,6 +336,7 @@
             game_result = request.result;
             console.log(request.result.game_name);
             current_game = game_result;
+            current_game_id = game_id;
 
 
             document.getElementById("player1_value").innerHTML = "Player 1: " + current_game.player1.name;
@@ -355,6 +354,22 @@
         document.getElementById("current-game-form").reset();
         // change score of the game
 
+    }
+
+    function deleteGame(id) {
+        var trans = db.transaction(["game"], "readwrite");
+        var store = trans.objectStore("game");
+
+        var request = store.delete(id);
+
+        request.onsuccess = function(e) {
+            console.log("element has been deleted");
+        };
+
+        request.onerror = function(e) {
+            console.log("delete error…");
+            console.log(e);
+        }
     }
 
     function shCalculationGame(input) {
