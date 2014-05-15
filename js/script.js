@@ -54,24 +54,28 @@
         });
 
         document.querySelector("#player1-hand-input").addEventListener("click", function () {
+            resetPage();
             shCalculationGame(this);
             document.querySelector("#current-game").className = 'left';
             document.querySelector("#calculation-game").className = 'current';
         });
 
         document.querySelector("#player2-hand-input").addEventListener("click", function () {
+            resetPage();
             shCalculationGame(this);
             document.querySelector("#current-game").className = 'left';
             document.querySelector("#calculation-game").className = 'current';
         });
 
         document.querySelector("#player3-hand-input").addEventListener("click", function () {
+            resetPage();
             shCalculationGame(this);
             document.querySelector("#current-game").className = 'left';
             document.querySelector("#calculation-game").className = 'current';
         });
 
         document.querySelector("#player4-hand-input").addEventListener("click", function () {
+            resetPage();
             shCalculationGame(this);
             document.querySelector("#current-game").className = 'left';
             document.querySelector("#calculation-game").className = 'current';
