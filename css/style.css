@@ -75,6 +75,16 @@ form ol li{
     margin:5px 0;
 }
 
+li.allday > label {
+    height: 100%;
+    width: 100%;
+}
+
+li.allday > label > span:after {
+    right: 0;
+    left: auto;
+}
+
 
 input{
     border:0px none;
