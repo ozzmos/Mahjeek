@@ -23,8 +23,13 @@ a{
     text-decoration: none;
 }
 
-#home, #new-game, #current-game, #calculation-game, #about, #rules{
+#home,  #about, #rules{
     background-color: #FFFFFF;
+    color: #000000;
+}
+
+#new-game, #current-game, #calculation-game{
+    background-color: #F4F4F4;
     color: #000000;
 }
 
@@ -68,7 +73,7 @@ a{
 }
 
 form {
-    margin: 1rem 1rem 1rem;
+    margin: 1rem 1.5rem;
 }
 
 form ol li{
