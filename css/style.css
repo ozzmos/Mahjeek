@@ -7,6 +7,13 @@ body {
   margin: 0;
 }
 
+select{
+    width: 100%;
+    border: medium none;
+    font-size: 1.7rem;
+    background: none repeat 0 0 transparent;
+}
+
 
 #page{
     /*padding: 40px 15px;*/
