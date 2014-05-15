@@ -10,11 +10,29 @@
 
 
     function addEventListeners () {
+
+        // HOME VIEW
         document.querySelector("#btn-home-add").addEventListener("click", function () {
+            // reset form fields
+            document.getElementById("gameName").value = "";
+            document.getElementById("windPlayer1").value = "";
+            document.getElementById("player1").value = "";
+            document.getElementById("windPlayer2").value = "";
+            document.getElementById("player2").value = "";
+            document.getElementById("windPlayer3").value = "";
+            document.getElementById("player3").value = "";
+            document.getElementById("windPlayer4").value = "";
+            document.getElementById("player4").value = "";
             document.querySelector("#home").className = 'left';
             document.querySelector("#new-game").className = 'current';
         });
 
+        document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
+            document.querySelector("#home").className = 'right';
+            document.querySelector("#settings").className = 'current';
+        });
+
+        // NEW GAME VIEW
         document.querySelector("#btn-new-game-cancel").addEventListener("click", function () {
             document.querySelector("#new-game").className = 'right';
             document.querySelector("#home").className = 'home';
@@ -31,6 +49,7 @@
             }
         });
 
+        // CURRENT GAME VIEW
         document.querySelector("#btn-current-game-cancel").addEventListener("click", function () {
             shHome();
             document.querySelector("#current-game").className = 'right';
@@ -38,10 +57,13 @@
         });
 
         document.querySelector("#btn-current-game-edit").addEventListener("click", function () {
+
             document.querySelector("#current-game").className = 'left';
             document.querySelector("#edit-game").className = 'current';
         });
 
+
+        // EDIT GAME VIEW
         document.querySelector("#btn-edit-game-cancel").addEventListener("click", function () {
             document.querySelector("#edit-game").className = 'right';
             document.querySelector("#current-game").className = 'current';
@@ -55,11 +77,13 @@
         });
 
         document.querySelector("#btn-edit-game-done").addEventListener("click", function () {
-            // TODO: handle and save edited data
+            editGame(current_game_id);
+            shCurrentGame(current_game_id);
             document.querySelector("#edit-game").className = 'left';
             document.querySelector("#current-game").className = 'current';
         });
 
+        // CURRENT GAME VIEW
         document.querySelector("#player1-hand-input").addEventListener("click", function () {
             resetPage();
             shCalculationGame(this);
@@ -88,6 +112,7 @@
             document.querySelector("#calculation-game").className = 'current';
         });
 
+        // CALCULATION GAME VIEW
         document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
             calcul();
             document.querySelector("#calculation-game").className = 'left';
@@ -99,11 +124,7 @@
             document.querySelector("#current-game").className = 'current';
         });
 
-         document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
-            document.querySelector("#home").className = 'right';
-            document.querySelector("#settings").className = 'current';
-        });
-
+        // SETTINGS VIEW
         document.querySelector("#btn-settings-hide").addEventListener("click", function () {
             document.querySelector("#settings").className = 'left';
             document.querySelector("#home").className = 'current';
@@ -114,11 +135,13 @@
             document.querySelector("#about").className = 'current';
         });
 
+        // ABOUT VIEW
         document.querySelector("#btn-about-hide").addEventListener("click", function () {
             document.querySelector("#about").className = 'right';
             document.querySelector("#settings").className = 'current';
         });
 
+        // RULES VIEW
         document.querySelector("#btn-rules-show").addEventListener("click", function () {
             document.querySelector("#settings").className = 'right';
             document.querySelector("#rules").className = 'current';
@@ -316,6 +339,13 @@
         document.getElementById("player3-score").innerHTML = "Score : " + value.player3.score + " points";
         document.getElementById("player4-score").innerHTML = "Score : " + value.player4.score + " points";
 
+        /* set values for edit-game page too */
+        document.getElementById("edit-game-gameName").value = value.game_name;
+        document.getElementById("edit-game-player1").value = value.player1.name;
+        document.getElementById("edit-game-player2").value = value.player2.name;
+        document.getElementById("edit-game-player3").value = value.player3.name;
+        document.getElementById("edit-game-player4").value = value.player4.name;
+
         // reset player hand point
         document.getElementById("current-game-form").reset();
 
@@ -348,12 +378,58 @@
             document.getElementById("player3-score").innerHTML = "Score : " + current_game.player3.score + " points";
             document.getElementById("player4-score").innerHTML = "Score : " + current_game.player4.score + " points";
 
+            /* set values for edit-game page too */
+            document.getElementById("edit-game-gameName").value = current_game.game_name;
+            document.getElementById("edit-game-player1").value = current_game.player1.name;
+            document.getElementById("edit-game-player2").value = current_game.player2.name;
+            document.getElementById("edit-game-player3").value = current_game.player3.name;
+            document.getElementById("edit-game-player4").value = current_game.player4.name;
+
         };
 
         // reset player hand point
         document.getElementById("current-game-form").reset();
         // change score of the game
 
+    }
+
+    function editGame(id) {
+        var game_name = document.getElementById("edit-game-gameName").value;
+        var player1_name = document.getElementById("edit-game-player1").value;
+        var player2_name = document.getElementById("edit-game-player2").value;
+        var player3_name = document.getElementById("edit-game-player3").value;
+        var player4_name = document.getElementById("edit-game-player4").value;
+
+        // Request the database object to update
+        var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
+        var request = objectStore.get(current_game_id);
+
+        request.onerror = function (event) {
+            console.log("There is no game with id " + current_game_id);
+        };
+
+        request.onsuccess = function (event) {
+            data = request.result;
+            current_game = data;
+
+            current_game.game_name = game_name;
+            current_game.player1.name = player1_name;
+            current_game.player2.name = player2_name;
+            current_game.player3.name = player3_name;
+            current_game.player4.name = player4_name;
+
+
+            // Push the object in the database
+            var requestUpdate = objectStore.put(data);
+            requestUpdate.onerror = function(event) {
+                console.log("Unable to update the database");
+            };
+
+            requestUpdate.onsuccess = function (event) {
+                console.log("The database has been updated");
+            };
+
+        }
     }
 
     function deleteGame(id) {
@@ -579,6 +655,7 @@
 
 initializeDB();
 addEventListeners();
+shHome();
 /* end of IIFE */
 }) ();
 
