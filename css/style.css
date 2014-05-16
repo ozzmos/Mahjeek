@@ -83,6 +83,7 @@ form ol li{
 li.allday > label {
     height: 100%;
     width: 100%;
+    font-size: 1.5rem;
 }
 
 li.allday > label > span:after {
