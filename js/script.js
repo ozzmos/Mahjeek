@@ -23,19 +23,20 @@
             document.getElementById("player3").value = "";
             document.getElementById("windPlayer4").value = "";
             document.getElementById("player4").value = "";
-            document.querySelector("#home").className = 'left';
-            document.querySelector("#new-game").className = 'current';
+            document.querySelector("#home").className = 'currentToLeft';
+            document.querySelector("#new-game").className = 'rightToCurrent';
         });
 
         document.querySelector("#btn-home-sidebar").addEventListener("click", function () {
-            document.querySelector("#home").className = 'right';
-            document.querySelector("#settings").className = 'current';
+            document.querySelector("#home").className = 'currentToRight';
+            document.querySelector("#settings").className = 'leftToCurrent';
         });
 
         // NEW GAME VIEW
         document.querySelector("#btn-new-game-cancel").addEventListener("click", function () {
-            document.querySelector("#new-game").className = 'right';
-            document.querySelector("#home").className = 'home';
+            document.querySelector("#home").className = 'leftToCurrent';
+            document.querySelector("#new-game").className = 'currentToRight';
+
         });
 
         document.querySelector("#btn-new-game-done").addEventListener("click", function () {
@@ -44,90 +45,90 @@
             }
             else{
                 createGame();
-                document.querySelector("#new-game").className = 'left';
-                document.querySelector("#current-game").className = 'current';
+                document.querySelector("#new-game").className = 'currentToLeft';
+                document.querySelector("#current-game").className = 'rightToCurrent';
             }
         });
 
         // CURRENT GAME VIEW
         document.querySelector("#btn-current-game-cancel").addEventListener("click", function () {
             shHome();
-            document.querySelector("#current-game").className = 'right';
-            document.querySelector("#home").className = 'current';
+            document.querySelector("#current-game").className = 'currentToRight';
+            document.querySelector("#home").className = 'leftToCurrent';
         });
 
         document.querySelector("#btn-current-game-edit").addEventListener("click", function () {
 
-            document.querySelector("#current-game").className = 'left';
-            document.querySelector("#edit-game").className = 'current';
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#edit-game").className = 'rightToCurrent';
         });
 
 
         // EDIT GAME VIEW
         document.querySelector("#btn-edit-game-cancel").addEventListener("click", function () {
-            document.querySelector("#edit-game").className = 'right';
-            document.querySelector("#current-game").className = 'current';
+            document.querySelector("#edit-game").className = 'currentToRight';
+            document.querySelector("#current-game").className = 'leftToCurrent';
         });
 
         document.querySelector("#btn-edit-game-delete").addEventListener("click", function () {
             deleteGame(current_game_id);
             shHome();
-            document.querySelector("#edit-game").className = 'right';
-            document.querySelector("#home").className = 'current';
+            document.querySelector("#edit-game").className = 'currentToRight';
+            document.querySelector("#home").className = 'leftToCurrent';
         });
 
         document.querySelector("#btn-edit-game-done").addEventListener("click", function () {
             editGame(current_game_id);
             shCurrentGame(current_game_id);
-            document.querySelector("#edit-game").className = 'left';
-            document.querySelector("#current-game").className = 'current';
+            document.querySelector("#edit-game").className = 'currentToLeft';
+            document.querySelector("#current-game").className = 'rightToCurrent';
         });
 
         // CURRENT GAME VIEW
         document.querySelector("#player1-hand-input").addEventListener("click", function () {
             resetPage();
             shCalculationGame(this);
-            document.querySelector("#current-game").className = 'left';
-            document.querySelector("#calculation-game").className = 'current';
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
         });
 
         document.querySelector("#player2-hand-input").addEventListener("click", function () {
             resetPage();
             shCalculationGame(this);
-            document.querySelector("#current-game").className = 'left';
-            document.querySelector("#calculation-game").className = 'current';
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
         });
 
         document.querySelector("#player3-hand-input").addEventListener("click", function () {
             resetPage();
             shCalculationGame(this);
-            document.querySelector("#current-game").className = 'left';
-            document.querySelector("#calculation-game").className = 'current';
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
         });
 
         document.querySelector("#player4-hand-input").addEventListener("click", function () {
             resetPage();
             shCalculationGame(this);
-            document.querySelector("#current-game").className = 'left';
-            document.querySelector("#calculation-game").className = 'current';
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
         });
 
         // CALCULATION GAME VIEW
         document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
             calcul();
-            document.querySelector("#calculation-game").className = 'left';
-            document.querySelector("#current-game").className = 'current';
+            document.querySelector("#calculation-game").className = 'currentToRight';
+            document.querySelector("#current-game").className = 'leftToCurrent';
         });
 
         document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
-            document.querySelector("#calculation-game").className = 'right';
-            document.querySelector("#current-game").className = 'current';
+            document.querySelector("#calculation-game").className = 'currentToRight';
+            document.querySelector("#current-game").className = 'leftToCurrent';
         });
 
         // SETTINGS VIEW
         document.querySelector("#btn-settings-hide").addEventListener("click", function () {
-            document.querySelector("#settings").className = 'left';
-            document.querySelector("#home").className = 'current';
+            document.querySelector("#settings").className = 'currentToLeft';
+            document.querySelector("#home").className = 'rightToCurrent';
         });
 
         document.querySelector("#btn-about-show").addEventListener("click", function () {
@@ -137,7 +138,7 @@
 
         // ABOUT VIEW
         document.querySelector("#btn-about-hide").addEventListener("click", function () {
-            document.querySelector("#about").className = 'right';
+            document.querySelector("#about").className = 'left';
             document.querySelector("#settings").className = 'current';
         });
 
@@ -148,7 +149,7 @@
         });
 
         document.querySelector("#btn-rules-hide").addEventListener("click", function () {
-            document.querySelector("#rules").className = 'right';
+            document.querySelector("#rules").className = 'left';
             document.querySelector("#settings").className = 'current';
         });
     }
@@ -215,8 +216,8 @@
                     gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
                     gameElement.addEventListener("click", function () {
                         shCurrentGame(value.id);
-                        document.querySelector("#home").className = 'left';
-                        document.querySelector("#current-game").className = 'current';
+                        document.querySelector("#home").className = 'currentToLeft';
+                        document.querySelector("#current-game").className = 'rightToCurrent';
                     });
                     document.getElementById("g-list").appendChild(gameElement);
                 }

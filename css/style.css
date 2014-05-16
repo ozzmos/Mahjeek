@@ -208,15 +208,15 @@ section[role="region"][data-position="left"] {
     position: absolute;
 }
 
-[data-position="right"]{
+/*[data-position="right"]{
     position: absolute;
     left: 0;
     top: 0;
     right:0;
     bottom:0;
-    /*z-index: 100;*/
+    *//*z-index: 100;*//*
     transform: translateX(100%);
-}
+}*/
 
 #edit-game footer {
     padding-top: 0.7rem;

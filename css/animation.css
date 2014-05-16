@@ -1,13 +1,8 @@
 .left{
-    opacity:0;
     transform: translateX(-100%);
-    /*animation-name: slide-left-out;
-    animation-duration: .6s;
-    transform: translateX(-100%);*/
 }
 
 .right{
-    opacity: 0;
     transform: translateX(100%);
 }
 
@@ -20,50 +15,71 @@
     z-index: 10;
     opacity: 1;
     transform: translateX(0%);
-    /*animation-name: slide-right-in;
-    animation-duration: .6s;
-    */
 }
 
 
-.slide-up-in {
-  animation-name: slide-up-in;
-  animation-duration: .6s;
-  transform: translateY(0%);
-  opacity: 1;
-}
-@keyframes slide-up-in {
-  0% { transform: translateY(30%); opacity: 0; }
-  100% { transform: translateY(0%); opacity: 1; }
-}
-
-.slide-down-out {
-  animation-name: slide-down-out;
-  animation-duration: .6s;
-  transform: translateY(30%);
-  opacity: 0;
-}
-@keyframes slide-down-out {
-  0% { transform: translateY(0%); opacity: 1; }
-  100% { transform: translateY(30%); opacity: 0; }
+.currentToLeft{
+    animation: currentToLeft 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
 }
 
-.slide-right-in {
-  animation-name: slide-right-in;
-  animation-duration: .6s;
-  transform: translateX(0%);
-}
-@keyframes slide-right-in {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0%); }
+.leftToCurrent{
+    animation: leftToCurrent 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
 }
 
-.slide-left-out {
-  animation-name: slide-left-out;
-  animation-duration: .6s;
-  transform: translateX(-100%);
+.currentToRight{
+    animation: currentToRight 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+
 }
-@keyframes slide-left-out {
-  0% { transform: translateX(0%); }
+
+.rightToCurrent{
+    animation: rightToCurrent 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+}
+
+
+@keyframes currentToLeft {
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+
+@keyframes rightToCurrent {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+/*------- Go Back -------*/
+@keyframes leftToCurrent {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes currentToRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
