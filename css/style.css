@@ -28,7 +28,7 @@ a{
     color: #000000;
 }
 
-#new-game, #current-game, #calculation-game{
+#new-game, #current-game, #edit-game, #calculation-game{
     background-color: #F4F4F4;
     color: #000000;
 }
