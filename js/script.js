@@ -165,6 +165,7 @@
 
         request.onsuccess = function (e) {
             db = e.target.result;
+            shHome();
         };
 
         request.onerror = function (e) {
@@ -192,6 +193,8 @@
 
     /* the home page lists existing games */
     function shHome() {
+
+        console.log("Listing game…");
         var glist = document.getElementById("g-list");
         while (glist.firstChild) {
             glist.removeChild(glist.firstChild);
@@ -223,6 +226,7 @@
                 cursor.continue();
             }
         };
+        console.log("games listed !");
     }
 
 
@@ -655,7 +659,6 @@
 
 initializeDB();
 addEventListeners();
-shHome();
 /* end of IIFE */
 }) ();
 
