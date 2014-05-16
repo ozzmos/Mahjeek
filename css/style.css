@@ -217,3 +217,9 @@ section[role="region"][data-position="left"] {
     /*z-index: 100;*/
     transform: translateX(100%);
 }
+
+#edit-game footer {
+    padding-top: 0.7rem;
+    margin: 1rem 1.5rem;
+    border-top: 0.1rem solid #DBDBDB;
+}
