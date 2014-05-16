@@ -332,10 +332,10 @@
         };
 
         document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
-        document.getElementById("player1_value").innerHTML = "Player 1: " + value.player1.name;
-        document.getElementById("player2_value").innerHTML = "Player 2: " +value.player2.name;
-        document.getElementById("player3_value").innerHTML = "Player 3: " +value.player3.name;
-        document.getElementById("player4_value").innerHTML = "Player 4: " +value.player4.name;
+        document.getElementById("player1_value").innerHTML = "Player 1 : " + value.player1.name;
+        document.getElementById("player2_value").innerHTML = "Player 2 : " +value.player2.name;
+        document.getElementById("player3_value").innerHTML = "Player 3 : " +value.player3.name;
+        document.getElementById("player4_value").innerHTML = "Player 4 : " +value.player4.name;
 
         // reset scores
         document.getElementById("player1-score").innerHTML = "Score : " + value.player1.score + " points";
@@ -373,10 +373,10 @@
             current_game_id = game_id;
 
 
-            document.getElementById("player1_value").innerHTML = "Player 1: " + current_game.player1.name;
-            document.getElementById("player2_value").innerHTML = "Player 2: " + current_game.player2.name;
-            document.getElementById("player3_value").innerHTML = "Player 3: " + current_game.player3.name;
-            document.getElementById("player4_value").innerHTML = "Player 4: " + current_game.player4.name;
+            document.getElementById("player1_value").innerHTML = "Player 1 : " + current_game.player1.name;
+            document.getElementById("player2_value").innerHTML = "Player 2 : " + current_game.player2.name;
+            document.getElementById("player3_value").innerHTML = "Player 3 : " + current_game.player3.name;
+            document.getElementById("player4_value").innerHTML = "Player 4 : " + current_game.player4.name;
             document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
             document.getElementById("player2-score").innerHTML = "Score : " + current_game.player2.score + " points";
             document.getElementById("player3-score").innerHTML = "Score : " + current_game.player3.score + " points";
