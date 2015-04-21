@@ -63,7 +63,7 @@
     opacity: 1;
 }
 
-
+/* /* Standard syntax */
 @keyframes currentToLeft {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -83,3 +83,73 @@
   100% { transform: translateX(100%); }
 }
 
+
+
+/* Chrome, Safari, Opera */
+.currentToLeft{
+    -webkit-animation: currentToLeft 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+}
+
+.leftToCurrent{
+    -webkit-animation: leftToCurrent 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+}
+
+.currentToRight{
+    -webkit-animation: currentToRight 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+
+}
+
+.rightToCurrent{
+    -webkit-animation: rightToCurrent 0.4s forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+}
+
+
+
+
+
+@-webkit-keyframes currentToLeft {
+  0%   { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+
+@-webkit-keyframes rightToCurrent {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(0); }
+}
+/*------- Go Back -------*/
+@-webkit-keyframes leftToCurrent {
+  0%   { -webkit-transform: translateX(-100%); }
+  100% { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes currentToRight {
+  0%   { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(100%); }
+}
