@@ -2,9 +2,14 @@
 /* CSS Document */
 
 
+html, body{
+    overflow-x: hidden;   /* fix android horizontal scroll */
+}
 
 body {
-  margin: 0;
+    margin: 0;
+    position: relative;  /* fix android horizontal scroll */
+
 }
 
 select{
