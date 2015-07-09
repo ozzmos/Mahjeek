@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "name": "Mahjong",
+  "name": "Mahjeek",
   "description": "An application to calculate Mahjong games",
   "launch_path": "/index.html",
   "fullscreen": "true",
@@ -10,7 +10,7 @@
   },
   "developer": {
     "name": "Christophe Bastin",
-    "url": "http://www.ozzmos.net"
+    "url": "ozzmos.github.io"
   },
   "default_locale": "en"
 }
