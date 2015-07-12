@@ -157,34 +157,34 @@
     function initializeDB() {
         if (window.indexedDB) {
             console.log("indexedDB support OK");
+            
+            var request = indexedDB.open('test', 1);
+
+            request.onsuccess = function (e) {
+                db = e.target.result;
+                shHome();
+            };
+
+            request.onerror = function (e) {
+                console.log(e);
+            };
+
+            /* if database doesn't exist or schema has changed */
+            request.onupgradeneeded = function (e) {
+                db = e.target.result;
+    
+                if (db.objectStoreNames.contains("game")) {
+                    db.deleteObjectStore("game");
+                }
+    
+                var objectStore = db.createObjectStore('game', { keyPath: 'id', autoIncrement:true});
+    
+                console.log("the game table has been created");
+            };
         }
         else {
             alert("Your browser doesn\'t support indexedDB");
         }
-
-        var request = indexedDB.open('test', 1);
-
-        request.onsuccess = function (e) {
-            db = e.target.result;
-            shHome();
-        };
-
-        request.onerror = function (e) {
-            console.log(e);
-        };
-
-        /* if database doesn't exist or schema has changed */
-        request.onupgradeneeded = function (e) {
-            db = e.target.result;
-
-            if (db.objectStoreNames.contains("game")) {
-                db.deleteObjectStore("game");
-            }
-
-            var objectStore = db.createObjectStore('game', { keyPath: 'id', autoIncrement:true});
-
-            console.log("the game table has been created");
-        };
     }
 
 
