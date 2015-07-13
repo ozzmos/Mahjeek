@@ -237,8 +237,8 @@
 
 
             db.transaction(function(sqltrans) {
-                sqltrans.executeSql('CREATE TABLE IF NOT EXISTS games (' +
-                    'id INTEGER NOT NULL PRIMARY KEY, game_name TEXT,' + 'game_date TEXT, hand INTEGER,' +
+                sqltrans.executeSql('CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+                    'game_name TEXT,' + 'game_date TEXT, hand INTEGER,' +
                 ' player1_name TEXT, player1_wind TEXT, player1_hand INTEGER, ' + 'player1_score INTEGER, ' +
                 'player2_name TEXT, player2_wind TEXT, player2_hand INTEGER,' + ' player2_score INTEGER, ' +
                 'player3_name TEXT, player3_wind TEXT, player3_hand INTEGER, ' + 'player3_score INTEGER, ' +
@@ -298,6 +298,26 @@
             };
         }
         else if(storage_type == 'webSQL') {
+
+            //db.transaction(function(sqltrans) {
+            //     sqltrans.executeSql('SELECT * FROM games;', [],function(sqltrans, result) {
+            //        var nb = result.rows.length;
+            //         var i;
+            //
+            //         for(i=0; i<nb; i++) {
+            //             var gameElement = document.createElement("li");
+            //             gameElement.innerHTML = "<a name =" + result.rows.item(i).id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
+            //             gameElement.addEventListener("click", function () {
+            //                 shCurrentGame(value.id);
+            //                 document.querySelector("#home").className = 'currentToLeft';
+            //                 document.querySelector("#current-game").className = 'rightToCurrent';
+            //             });
+            //             document.getElementById("g-list").appendChild(gameElement);
+            //
+            //         }
+            //        console.log("Number of rows " + nb);
+            //    });
+            //});
 
         }
         else {
@@ -452,19 +472,7 @@
                     'player4_name , player4_wind, player4_hand, player4_score)' +
                     ' VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', valuesToInsert,
                     nullDataHandler, errorHandler);
-
-                //db.transaction(function(sqltrans) {
-                //sqltrans.executeSql('INSERT INTO games (game_name) VALUES (?);', ['test'], nullDataHandler, errorHandler);
-
-                sqltrans.executeSql('SELECT * FROM games;', [],nullDataHandler, errorHandler, function(sqltrans, result) {
-                    var nb = result.rows.length;
-                    console.log("Number of rows " + nb);
-                });
             });
-
-
-
-
 
 
         }
