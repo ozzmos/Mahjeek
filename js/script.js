@@ -9,6 +9,30 @@
 /* IIFE Immediately invoked function */
 (function () {
 
+    function nullDataHandler(transaction, results) { }
+
+    function errorHandler(transaction, error)
+
+    {
+
+        // error.message is a human-readable string.
+
+        // error.code is a numeric error code
+
+        alert('Oops.  Error was '+error.message+' (Code '+error.code+')');
+
+
+
+        // Handle errors here
+
+        var we_think_this_error_is_fatal = true;
+
+        if (we_think_this_error_is_fatal) return true;
+
+        return false;
+
+    }
+
 
 
     function addEventListeners () {
@@ -190,15 +214,36 @@
             console.log("webSQL support OK");
             storage_type = 'webSQL';
 
-            db = openDatabase('mahjeek', '1.0', 'Mahjeek', 1024*1024);
+            var shortName = 'mahjeek';
+            var version = '1.0';
+            var displayName = 'Mahjeek database';
+            var maxSize = 65536; // in bytes
+
+            try {
+                db = openDatabase(shortName, version, displayName, maxSize);
+            }
+            catch(e) {
+                if (e == 2) {
+                    // Version number mismatch.
+                    alert("Invalid database version.");
+                } else {
+
+                    alert("Unknown error "+e+".");
+                }
+
+                return;
+            }
+
+
 
             db.transaction(function(sqltrans) {
-                sqltrans.executeSql('CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY, game_name TEXT,' +
-                'game_date TEXT, hand INTEGER, player1_name TEXT, player1_wind TEXT, player1_hand INTEGER, ' +
-                'player1_score INTEGER, player2_name TEXT, player2_wind TEXT, player2_hand INTEGER,' +
-                ' player2_score INTEGER, player3_name TEXT, player3_wind TEXT, player3_hand INTEGER, ' +
-                'player3_score INTEGER, player4_name TEXT, player4_wind TEXT, player4_hand INTEGER, ' +
-                'player4_score INTEGER)', []);
+                sqltrans.executeSql('CREATE TABLE IF NOT EXISTS games (' +
+                    'id INTEGER NOT NULL PRIMARY KEY, game_name TEXT,' + 'game_date TEXT, hand INTEGER,' +
+                ' player1_name TEXT, player1_wind TEXT, player1_hand INTEGER, ' + 'player1_score INTEGER, ' +
+                'player2_name TEXT, player2_wind TEXT, player2_hand INTEGER,' + ' player2_score INTEGER, ' +
+                'player3_name TEXT, player3_wind TEXT, player3_hand INTEGER, ' + 'player3_score INTEGER, ' +
+                'player4_name TEXT, player4_wind TEXT, player4_hand INTEGER, ' + 'player4_score INTEGER);',
+                    [], nullDataHandler, errorHandler);
             });
 
             console.log("the game table has been created");
@@ -296,6 +341,9 @@
 
     function createGame() {
 
+        var hand = 1;
+        var playerHand = 1;
+        var playerScore = 1;
         var game_name = document.getElementById("gameName").value;
         var player1_name = document.getElementById("player1").value;
         var wind_player1 = document.getElementById("windPlayer1").value;
@@ -323,28 +371,28 @@
 
 
             value.game_name = game_name;
-            value.hand = 1;
+            value.hand = hand;
             value.game_date = game_date;
 
             player1.name = player1_name;
             player1.wind = wind_player1;
-            player1.score = 0;
-            player1.hand = 1;
+            player1.score = playerScore;
+            player1.hand = playerHand;
 
             player2.name = player2_name;
             player2.wind = wind_player2;
-            player2.score = 0;
-            player2.hand = 1;
+            player2.score = playerScore;
+            player2.hand = playerHand;
 
             player3.name = player3_name;
             player3.wind = wind_player3;
-            player3.score = 0;
-            player3.hand = 1;
+            player3.score = playerScore;
+            player3.hand = playerScore;
 
             player4.name = player4_name;
             player4.wind = wind_player4;
-            player4.score = 0;
-            player4.hand = 1;
+            player4.score = playerScore;
+            player4.hand = playerHand;
 
             value.player1 = player1;
             value.player2 = player2;
@@ -386,30 +434,34 @@
             document.getElementById("edit-game-player4").value = value.player4.name;
         }
         else if(storage_type == 'webSQL') {
-            console.log("toto");
-            var valuesToInsert = [game_name, game_date, player1_name , wind_player1, 1, 0,
-                player2_name , wind_player2, 1, 0,
-                player3_name , wind_player3, 1, 0,
-                player4_name , wind_player4, 1, 0
 
+            var valuesToInsert = [
+                game_name, game_date, hand,
+                player1_name , wind_player1, playerHand, playerScore,
+                player2_name , wind_player2, playerHand, playerScore,
+                player3_name , wind_player3, playerHand, playerScore,
+                player4_name , wind_player4, playerHand, playerScore
             ];
 
-            try {
-                db.transaction(function(sqltrans) {
-                    sqltrans.executeSql('INSERT INTO game (game_name, game_date, hand, player1_name, player1_wind,' +
-                    ' player1_hand, player1_score, player2_name, player2_wind, player2_hand, player2_score, player3_name , ' +
-                    'player3_wind, player3_hand, player3_score,' + 'player4_name, player4_wind, player4_hand, ' +
-                    'player4_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', valuesToInsert);
 
-                    sqltrans.executeSql('SELECT * FROM game', [], function(sqltrans, result) {
-                        var nb = result.rows.length;
-                        console.log("Number of rows " + nb);
-                    })
+            db.transaction(function(sqltrans) {
+                sqltrans.executeSql('INSERT INTO games (game_name, game_date, hand,' +
+                    'player1_name , player1_wind, player1_hand, player1_score,' +
+                    'player2_name , player2_wind, player2_hand, player2_score,' +
+                    'player3_name , player3_wind, player3_hand, player3_score,' +
+                    'player4_name , player4_wind, player4_hand, player4_score)' +
+                    ' VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', valuesToInsert,
+                    nullDataHandler, errorHandler);
+
+                //db.transaction(function(sqltrans) {
+                //sqltrans.executeSql('INSERT INTO games (game_name) VALUES (?);', ['test'], nullDataHandler, errorHandler);
+
+                sqltrans.executeSql('SELECT * FROM games;', [],nullDataHandler, errorHandler, function(sqltrans, result) {
+                    var nb = result.rows.length;
+                    console.log("Number of rows " + nb);
                 });
-            }
-            catch(e) {
-                console.log(e);
-            }
+            });
+
 
 
 
