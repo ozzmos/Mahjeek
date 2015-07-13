@@ -299,25 +299,25 @@
         }
         else if(storage_type == 'webSQL') {
 
-            //db.transaction(function(sqltrans) {
-            //     sqltrans.executeSql('SELECT * FROM games;', [],function(sqltrans, result) {
-            //        var nb = result.rows.length;
-            //         var i;
-            //
-            //         for(i=0; i<nb; i++) {
-            //             var gameElement = document.createElement("li");
-            //             gameElement.innerHTML = "<a name =" + result.rows.item(i).id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
-            //             gameElement.addEventListener("click", function () {
-            //                 shCurrentGame(value.id);
-            //                 document.querySelector("#home").className = 'currentToLeft';
-            //                 document.querySelector("#current-game").className = 'rightToCurrent';
-            //             });
-            //             document.getElementById("g-list").appendChild(gameElement);
-            //
-            //         }
-            //        console.log("Number of rows " + nb);
-            //    });
-            //});
+            db.transaction(function(sqltrans) {
+                 sqltrans.executeSql('SELECT * FROM games;', [],function(sqltrans, result) {
+                    var nb = result.rows.length;
+                     var i;
+
+                     for(i=0; i<nb; i++) {
+                         var gameElement = document.createElement("li");
+                         gameElement.innerHTML = "<a name =" + result.rows.item(i).id + "><p>" + result.rows.item(i).game_name + " - " + "<span class='game-date'>" + result.rows.item(i).game_date +"</span></p></a>";
+                         gameElement.addEventListener("click", function () {
+                             shCurrentGame(result.rows.item(i).id);
+                             document.querySelector("#home").className = 'currentToLeft';
+                             document.querySelector("#current-game").className = 'rightToCurrent';
+                         });
+                         document.getElementById("g-list").appendChild(gameElement);
+
+                     }
+                    console.log("Number of rows " + nb);
+                });
+            });
 
         }
         else {
