@@ -1,12 +1,14 @@
 
+ var storage_type;
+ var db;
+ var input_score;
+ var input_player;
+ var current_game;
+ var current_game_id;
+
 /* IIFE Immediately invoked function */
 (function () {
 
-    var db;
-    var input_score;
-    var input_player;
-    var current_game;
-    var current_game_id;
 
 
     function addEventListeners () {
@@ -157,7 +159,8 @@
     function initializeDB() {
         if (window.indexedDB) {
             console.log("indexedDB support OK");
-            
+            storage_type = 'indexedDB';
+
             var request = indexedDB.open('test', 1);
 
             request.onsuccess = function (e) {
@@ -172,19 +175,39 @@
             /* if database doesn't exist or schema has changed */
             request.onupgradeneeded = function (e) {
                 db = e.target.result;
-    
+
                 if (db.objectStoreNames.contains("game")) {
                     db.deleteObjectStore("game");
                 }
-    
+
                 var objectStore = db.createObjectStore('game', { keyPath: 'id', autoIncrement:true});
-    
+
                 console.log("the game table has been created");
+
             };
         }
-        else {
-            alert("Your browser doesn\'t support indexedDB");
+        else if ('openDatabase' in window) {
+            console.log("webSQL support OK");
+            storage_type = 'webSQL';
+
+            db = openDatabase('mahjeek', '1.0', 'Mahjeek', 1024*1024);
+
+            db.transaction(function(sqltrans) {
+                sqltrans.executeSql('CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY, game_name TEXT,' +
+                'game_date TEXT, hand INTEGER, player1_name TEXT, player1_wind TEXT, player1_hand INTEGER, ' +
+                'player1_score INTEGER, player2_name TEXT, player2_wind TEXT, player2_hand INTEGER,' +
+                ' player2_score INTEGER, player3_name TEXT, player3_wind TEXT, player3_hand INTEGER, ' +
+                'player3_score INTEGER, player4_name TEXT, player4_wind TEXT, player4_hand INTEGER, ' +
+                'player4_score INTEGER)', []);
+            });
+
+            console.log("the game table has been created");
         }
+        else {
+            alert("Your browser doesn\'t support storage");
+        }
+
+
     }
 
 
@@ -202,31 +225,40 @@
         }
 
         //List the games
-        var transaction = db.transaction(['game']);
-        var store = transaction.objectStore('game');
+        if(storage_type == 'indexedDB') {
+            var transaction = db.transaction(['game']);
+            var store = transaction.objectStore('game');
 
-        // open a cursor to retrieve all items from the 'notes' store
-        store.openCursor().onsuccess = function (e) {
-            var cursor = e.target.result;
-            if (cursor) {
-                var value = cursor.value;
-                if (value){
-                    var game_name = value.game_name;
-                    var gameElement = document.createElement("li");
-                    gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
-                    gameElement.addEventListener("click", function () {
-                        shCurrentGame(value.id);
-                        document.querySelector("#home").className = 'currentToLeft';
-                        document.querySelector("#current-game").className = 'rightToCurrent';
-                    });
-                    document.getElementById("g-list").appendChild(gameElement);
+            // open a cursor to retrieve all items from the 'notes' store
+            store.openCursor().onsuccess = function (e) {
+                var cursor = e.target.result;
+                if (cursor) {
+                    var value = cursor.value;
+                    if (value) {
+                        var game_name = value.game_name;
+                        var gameElement = document.createElement("li");
+                        gameElement.innerHTML = "<a name =" + value.id + "><p>" + value.game_name + " - " + "<span class='game-date'>" + formatDate(value.game_date) +"</span></p></a>";
+                        gameElement.addEventListener("click", function () {
+                            shCurrentGame(value.id);
+                            document.querySelector("#home").className = 'currentToLeft';
+                            document.querySelector("#current-game").className = 'rightToCurrent';
+                        });
+                        document.getElementById("g-list").appendChild(gameElement);
+                    }
+
+
+                    // move to the next item in the cursor
+                    cursor.continue();
                 }
+            };
+        }
+        else if(storage_type == 'webSQL') {
 
+        }
+        else {
+            console.log("no database support");
+        }
 
-                // move to the next item in the cursor
-                cursor.continue();
-            }
-        };
         console.log("games listed !");
     }
 
@@ -274,82 +306,117 @@
         var player4_name = document.getElementById("player4").value;
         var wind_player4 = document.getElementById("windPlayer4").value;
 
-
-        // Create the object game
-        var transaction = db.transaction(['game'], 'readwrite');
-
         var date_now = new Date ();
         var game_date = new Date(date_now.getFullYear(), date_now.getMonth(), date_now.getDate());
 
-        var value = {};
-        var player1 = {};
-        var player2 = {};
-        var player3 = {};
-        var player4 = {};
-
-
-        value.game_name = game_name;
-        value.hand = 1;
-        value.game_date = game_date;
-
-        player1.name = player1_name;
-        player1.wind = wind_player1;
-        player1.score = 0;
-        player1.hand = 1;
-
-        player2.name = player2_name;
-        player2.wind = wind_player2;
-        player2.score = 0;
-        player2.hand = 1;
-
-        player3.name = player3_name;
-        player3.wind = wind_player3;
-        player3.score = 0;
-        player3.hand = 1;
-
-        player4.name = player4_name;
-        player4.wind = wind_player4;
-        player4.score = 0;
-        player4.hand = 1;
-
-        value.player1 = player1;
-        value.player2 = player2;
-        value.player3 = player3;
-        value.player4 = player4;
+        if(storage_type == 'indexedDB') {
+            // Create the object game
+            var transaction = db.transaction(['game'], 'readwrite');
 
 
 
-        var store = transaction.objectStore('game');
-        var request = store.add(value);
-        request.onsuccess = function (e) {
-            console.log ("A new game has been started");
-            current_game = value;
-            current_game_id = request.result;
-            console.log("Created object id: "+ request.result);
-        };
+            var value = {};
+            var player1 = {};
+            var player2 = {};
+            var player3 = {};
+            var player4 = {};
 
-        request.onerror = function (e) {
-            console.log("Your game can\'t be saved : "+ e.value);
-        };
 
-        document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
-        document.getElementById("player1_value").innerHTML = "Player 1 : " + value.player1.name;
-        document.getElementById("player2_value").innerHTML = "Player 2 : " +value.player2.name;
-        document.getElementById("player3_value").innerHTML = "Player 3 : " +value.player3.name;
-        document.getElementById("player4_value").innerHTML = "Player 4 : " +value.player4.name;
+            value.game_name = game_name;
+            value.hand = 1;
+            value.game_date = game_date;
 
-        // reset scores
-        document.getElementById("player1-score").innerHTML = "Score : " + value.player1.score + " points";
-        document.getElementById("player2-score").innerHTML = "Score : " + value.player2.score + " points";
-        document.getElementById("player3-score").innerHTML = "Score : " + value.player3.score + " points";
-        document.getElementById("player4-score").innerHTML = "Score : " + value.player4.score + " points";
+            player1.name = player1_name;
+            player1.wind = wind_player1;
+            player1.score = 0;
+            player1.hand = 1;
 
-        /* set values for edit-game page too */
-        document.getElementById("edit-game-gameName").value = value.game_name;
-        document.getElementById("edit-game-player1").value = value.player1.name;
-        document.getElementById("edit-game-player2").value = value.player2.name;
-        document.getElementById("edit-game-player3").value = value.player3.name;
-        document.getElementById("edit-game-player4").value = value.player4.name;
+            player2.name = player2_name;
+            player2.wind = wind_player2;
+            player2.score = 0;
+            player2.hand = 1;
+
+            player3.name = player3_name;
+            player3.wind = wind_player3;
+            player3.score = 0;
+            player3.hand = 1;
+
+            player4.name = player4_name;
+            player4.wind = wind_player4;
+            player4.score = 0;
+            player4.hand = 1;
+
+            value.player1 = player1;
+            value.player2 = player2;
+            value.player3 = player3;
+            value.player4 = player4;
+
+
+
+            var store = transaction.objectStore('game');
+            var request = store.add(value);
+            request.onsuccess = function (e) {
+                console.log ("A new game has been started");
+                current_game = value;
+                current_game_id = request.result;
+                console.log("Created object id: "+ request.result);
+            };
+
+            request.onerror = function (e) {
+                console.log("Your game can\'t be saved : "+ e.value);
+            };
+
+            document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
+            document.getElementById("player1_value").innerHTML = "Player 1 : " + value.player1.name;
+            document.getElementById("player2_value").innerHTML = "Player 2 : " +value.player2.name;
+            document.getElementById("player3_value").innerHTML = "Player 3 : " +value.player3.name;
+            document.getElementById("player4_value").innerHTML = "Player 4 : " +value.player4.name;
+
+            // reset scores
+            document.getElementById("player1-score").innerHTML = "Score : " + value.player1.score + " points";
+            document.getElementById("player2-score").innerHTML = "Score : " + value.player2.score + " points";
+            document.getElementById("player3-score").innerHTML = "Score : " + value.player3.score + " points";
+            document.getElementById("player4-score").innerHTML = "Score : " + value.player4.score + " points";
+
+            /* set values for edit-game page too */
+            document.getElementById("edit-game-gameName").value = value.game_name;
+            document.getElementById("edit-game-player1").value = value.player1.name;
+            document.getElementById("edit-game-player2").value = value.player2.name;
+            document.getElementById("edit-game-player3").value = value.player3.name;
+            document.getElementById("edit-game-player4").value = value.player4.name;
+        }
+        else if(storage_type == 'webSQL') {
+            console.log("toto");
+            var valuesToInsert = [game_name, game_date, player1_name , wind_player1, 1, 0,
+                player2_name , wind_player2, 1, 0,
+                player3_name , wind_player3, 1, 0,
+                player4_name , wind_player4, 1, 0
+
+            ];
+
+            try {
+                db.transaction(function(sqltrans) {
+                    sqltrans.executeSql('INSERT INTO game (game_name, game_date, hand, player1_name, player1_wind,' +
+                    ' player1_hand, player1_score, player2_name, player2_wind, player2_hand, player2_score, player3_name , ' +
+                    'player3_wind, player3_hand, player3_score,' + 'player4_name, player4_wind, player4_hand, ' +
+                    'player4_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', valuesToInsert);
+
+                    sqltrans.executeSql('SELECT * FROM game', [], function(sqltrans, result) {
+                        var nb = result.rows.length;
+                        console.log("Number of rows " + nb);
+                    })
+                });
+            }
+            catch(e) {
+                console.log(e);
+            }
+
+
+
+
+
+        }
+
 
         // reset player hand point
         document.getElementById("current-game-form").reset();
