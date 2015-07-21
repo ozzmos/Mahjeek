@@ -2,7 +2,7 @@
 /* CSS Document */
 
 
-html, body{
+html,body {
     overflow-x: hidden;   /* fix android horizontal scroll */
 }
 
@@ -12,7 +12,7 @@ body {
 
 }
 
-select{
+select {
     width: 100%;
     border: medium none;
     font-size: 1.7rem;
@@ -20,7 +20,7 @@ select{
 }
 
 
-#page{
+#page {
     /*padding: 40px 15px;*/
 }
 
@@ -28,51 +28,50 @@ a{
     text-decoration: none;
 }
 
-#home,  #about, #rules{
+#home,  #about, #rules {
     background-color: #FFFFFF;
     color: #000000;
 }
 
-#new-game, #current-game, #edit-game, #calculation-game{
+#new-game, #current-game, #edit-game, #calculation-game {
     background-color: #F4F4F4;
     color: #000000;
 }
 
-#settings{
+#settings {
     background-color: #2C353B;
     color: #FFF;
 }
 
 
 
-#home ul li a p{
+#home ul li a p {
     /*font-size: 1.6rem;*/
 }
 
-#Tableau
-{
+#Tableau {
 	background-color:#968552;
 	position:absolute;
-	top:0%;
+	top:0;
 	left:50%;
 }
 
-.error{
+.error {
     color:#ff0000;
     text-align:center;
 }
 
 
-#list-games{
+#list-games {
 }
 
-.game-date{
+.game-date {
     font-size: 1.3rem;
     /*display: block;*/
     color: #777777;
 }
 
-.main-scroll{
+.main-scroll {
     overflow-y: auto;
     height: calc(100% - 5rem);
 }
@@ -81,7 +80,7 @@ form {
     margin: 1rem 1.5rem;
 }
 
-form ol li{
+form ol li {
     margin:5px 0;
 }
 
@@ -97,93 +96,84 @@ li.allday > label > span:after {
 }
 
 
-input{
-    border:0px none;
+input {
+    border:0 none;
 }
 
-
-#rules{
-
+#settings ul {
 }
 
-
-
-
-#settings ul{
-}
-
-#settings ul li{
+#settings ul li {
     width: 100%;
     border-bottom: 0.1rem solid #596068;
-    margin:0px;
+    margin:0;
 }
 
-#settings ul li:last-child{
+#settings ul li:last-child {
     border-bottom: none;
 }
 
-#settings ul li a p{
+#settings ul li a p {
     color: #FFF;
     text-decoration: none;
     font-size:1.6rem;
 
 }
 
-#settings ul li a:hover{
+#settings ul li a:hover {
     cursor: default;
 }
 
-#settings ul li a:visited{
+#settings ul li a:visited {
     color: #FFF;
     text-decoration: none;
 }
 
 
-#rules div{
+#rules div {
     margin:1rem;
 }
 
 
 
-#rules p{
+#rules p {
     font-size: 1.6rem;
 }
 
-#about p{
+#about p {
     font-size:1.6rem;
 }
 
-h3{
+h3 {
     font-size: 1.8rem;
     color: #000000;
 }
 
-.credit-title{
+.credit-title {
     display: block;
     font-size: 2.2rem;
     margin-bottom: 1rem;
 }
 
-.credit-sub{
+.credit-sub {
     font-size:1.4rem;
     color:#000000;
     text-decoration: underline;
 }
 
-#about-rules{
+#about-rules {
     text-align: justify;
     margin: 1rem 1rem 1rem;
 }
 
-#about-credit{
+#about-credit {
     margin: 1rem 1rem 1rem;
     text-align: center;
 }
 
-.it{
+.it {
     font-style: italic;
 }
-
 
 /* cancel section[role="region"] default properties */
 section[role="region"]:not(#drawer) {
@@ -193,15 +183,15 @@ section[role="region"]:not(#drawer) {
     padding-left: 0;
 }
 
-#settings > header:first-child{
+#settings > header:first-child {
     background-color: #2C353B;
 }
 
-#about > header:first-child{
+#about > header:first-child {
     background-color: #2C353B;
 }
 
-#rules > header:first-child{
+#rules > header:first-child {
     background-color: #2C353B;
 }
 
@@ -227,4 +217,44 @@ section[role="region"][data-position="left"] {
     padding-top: 0.7rem;
     margin: 1rem 1.5rem;
     border-top: 0.1rem solid #DBDBDB;
+}
+
+/* Fieldset */
+fieldset {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0.3rem;/*changed from 0 to 0.3rem by Florie*/
+  border-radius: 0.3rem;
+  border: 0.1rem solid rgba(0,0,0,.2);
+  font-size: 1.8rem;
+  line-height: 1em;
+  background: #fff url(input_areas/images/ui/shadow.png) repeat-x left top;
+}
+
+.none {
+  display: none;
+}
+
+em {
+font-style: normal;
+/*text-decoration: underline;*/
+font-weight: 500;
+}
+
+fieldset + fieldset {
+  margin-top: 1.5rem;
+}
+
+fieldset legend {
+  -moz-box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 0.5rem 0 1.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #333;
+  line-height: 4rem;
 }

@@ -51,68 +51,25 @@
                     <input type="text" placeholder="Game name" required="" id="gameName">
                 </li>
                 <li>
-                    <label>Wind player 1</label>
-                </li>
-                <li>
-                    <span class="button icon-dialog">
-                        <select name="windPlayer1" class="form-control" id="windPlayer1">
-                        <option value="East" selected>East</option>
-                        <option value="South">South</option>
-                        <option value="West">West</option>
-                        <option value="North">North</option>
-                    </select>
-                    </span>
-
+                    <label>Wind East - player 1</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 1" id="player1">
                 </li>
                 <li>
-                    <label>Wind player 2</label>
-                </li>
-                <li>
-                    <span class="button icon-dialog">
-                        <select name="windPlayer2" class="form-control" id="windPlayer2">
-                        <option value="South" selected>South</option>
-                        <option value="West">West</option>
-                        <option value="North">North</option>
-                        <option value="East">East</option>
-                    </select>
-                    </span>
-
+                    <label>Wind South - player 2</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 2"  id="player2">
                 </li>
                 <li>
-                    <label>Wind player 3</label>
-                </li>
-                <li>
-                    <span class="button icon-dialog">
-                    <select name="windPlayer3" class="form-control" id="windPlayer3">
-                        <option value="West" selected>West</option>
-                        <option value="North">North</option>
-                        <option value="East">East</option>
-                        <option value="South">South</option>
-                    </select>
-                    </span>
+                    <label>Wind West - player 3</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 3"  id="player3">
                 </li>
                 <li>
-                    <label>Wind player 4</label>
-                </li>
-                <li>
-                    <span class="button icon-dialog">
-                       <select name="windPlayer4" class="form-control" id="windPlayer4">
-                        <option value="North" selected>North</option>
-                        <option value="East">East</option>
-                        <option value="South">South</option>
-                        <option value="West">West</option>
-                    </select>
-                    </span>
-
+                    <label>Wind North - player 4</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 4"  id="player4">
@@ -143,25 +100,25 @@
                     <input type="text" placeholder="Game name" required="" id="edit-game-gameName">
                 </li>
                 <li>
-                    <label>Name player 1</label>
+                    <label>Name East Wind</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 1" id="edit-game-player1">
                 </li>
                 <li>
-                    <label>Name player 2</label>
+                    <label>Name South Wind</label>
                 </li>
                 <li>
-                    <input type="text" placeholder="Name player 2"  id="edit-game-player2">
+                    <input type="text" placeholder="Name player 2" id="edit-game-player2">
                 </li>
                 <li>
-                    <label>Name player 3</label>
+                    <label>Name West Wind</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 3"  id="edit-game-player3">
                 </li>
                 <li>
-                    <label>Name player 4</label>
+                    <label>Name North wind</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 4"  id="edit-game-player4">
@@ -243,310 +200,382 @@
     <menu type="toolbar">
         <button id="btn-calculation-game-done">done</button>
     </menu>
-    <h1>Calculation of points</h1>
+    <h1>Score calculation</h1>
 </header>
 <section class="main-scroll">
 <form>
-<ol>
-<li>
-    <label>Mahjong</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Mahjong" id="Mahjong">
-        <option value="0" selected>no</option>
-        <option value="20">yes</option>
-    </select>
-    </span>
-</li>
+<fieldset name="flowersAndSeasons">
+    <legend>Flowers & Seasons</legend>
+    <ol>
+    <li>
+        <span class="button icon-dialog">
+        <select id="flowersSeasons">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+        </select>
+        </span>
+    </li>
+    <li class="none" name="flowerOrSeason">
+        <label class="pack-radio"><input type="radio" name="flowers" id="flowerOrSeason" value="1"/><span>Flower OR Season of the player</span></label>
+    </li>
+    <li class="none" name="flowerAndSeason">
+        <label class="pack-radio"><input type="radio" name="flowers" id="flowerAndSeason" value="2"/><span>Flower AND Season of the player</span></label>
+    </li>
+    <li class="none" name="fourFlowersAndOrFourSeasons">
+        <label class="pack-radio"><input type="radio" name="flowers" id="fourFlowersAndOrFourSeasons"value="4"><span>4 Flowers AND/OR 4 Seasons</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="checkFlowersSeasons"/><span>Checked ?</span></label>
+    </li>
+    </ol>
+</fieldset>
 
+<fieldset id="mahjongmahjong" class="none">
+    <legend>Mahjong</legend>
+    <ol>
+    <li>
+        <span class="button icon-dialog">
+        <select name="mahjong" id="mahjong" class="form-control">
+            <option value="0" selected>no</option>
+            <option value="20">yes</option>
+        </select>
+        </span>
+    </li>
+    <li class="none">
+        <label>How was Mahjong reached ?</label>
+        <span class="button icon-dialog">
+            <select name="reachMahjong" id="reachMahjong">
+                <option value="0" selected>to the Celestial Empire</option>
+                <option value="1">robbery of a Kong</option>
+                <option value="5">to the Wall</option>
+                <option value="1">with the last tile of the Wall</option>
+            </select>
+        </span>
+    </li>
+    <li class="none">
+        <label>Is this Mahjong special ?</label>
+        <span class="button icon-dialog">
+            <select name="typeMahjong" id="typeMahjong">
+                <option value="0" selected>No</option>
+                <option value="1">Yes, No Chow</option>
+                <option value="10">Yes, 4 Chows & 1 Pair</option>
+                <option value="10">Yes, 7 Dwarves</option>
+                <option value="10">Yes, 9 Doors</option>
+                <option value="10">Yes, 13 Orphans</option>
+                <option value="2">Yes, King Kong</option>
+            </select>
+        </span>
+    </li>
+    <li class="none">
+        <label>Bonus ?</label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="hiddenMahjong" value="1"/><span>Hidden Mahjong</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="wok" value="2"/><span>Wok</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="pureHand" value="3"/><span>Pure Hand</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="hulk" value="1"/><span>Hulk</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="yinYang" value="2"/><span>Yin Yang</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="nineArches" value="3"/><span>9 Arches</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="dragonnade" value="4"/><span>Dragonnade</span></label>
+    </li>
+    <li class="none">
+        <label class="pack-checkbox"><input type="checkbox" id="typhoon" value="4"/><span>Typhoon</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="checkMahjong"/><span>Checked ?</span></label>
+    </li>
+    </ol>
+</fieldset>
 
-<li>
-    <label>Particular Mahjong</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Mahjong Part" id="mahjong part" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="10">9th door</option>
-        <option value="10">7th dwarf</option>
-        <option value="10">4 chow and a pair</option>
-        <option value="5">Tile from the wall</option>
-        <option value="15">9th door + tile from the wall</option>
-        <option value="15">7th dwarf + tile from the wall</option>
-        <option value="15">4 chow and a pair + tile from the wall</option>
-    </select>
-    </span>
-</li>
-
-<li>
-    <label>A series of particular combination</label>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="pasdeChow" value="1"/><span>No chow</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="mahDerniertuile" value="1"/><span>MahJong with last tile on the wall</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="mahVolantKong" value="1"/><span>Mahjong with stolen exposed Kong</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="hulk" value="1"/><span>Hulk</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="kingkong" value="1"/><span>King-Kong</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="wok" value="1"/><span>Wok</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="yinyang" value="1"/><span>Yin-Yang</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="porteExt" value="2"/><span>9th outside door</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="mainPure" value="3"/><span>Pure hand</span></label>
-</li>
-<li class="allday">
-    <label class="pack-checkbox"><input type="checkbox" id="drago" value="4"/><span>Dragonnade</span></label>
-</li>
-
-
-<li>
-    <label>1st combination</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Combinaison 1" id="combination1" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="2">Pair of wind player exposed</option>
-        <option value="2">Pair of dominant wind player exposed</option>
-        <option value="0">Pair of wind hand exposed</option>
-        <option value="0">Pair of dragons exposed</option>
-        <option value="0">Chow exposed</option>
-        <option value="2">Ordinary and minor pung exposed</option>
-        <option value="4">Ordinary and major pung exposed</option>
-        <option value="4">Wind or dragons pung exposed</option>
-        <option value="8">Ordinary and minor Kong exposed</option>
-        <option value="16">Ordinary and major Kong exposed</option>
-        <option value="16">Wind or dragons Kong exposed</option>
-        <option value="2">Pair of player wind hidden</option>
-        <option value="2">Pair of dominant wind hidden</option>
-        <option value="2">Pair of hand wind hidden</option>
-        <option value="2">Pair of hidden dragons</option>
-        <option value="0">Chow hidden</option>
-        <option value="4">Ordinary and minor pung hidden</option>
-        <option value="8">Ordinary and major pung hidden</option>
-        <option value="8">Wind or dragons pung hidden</option>
-        <option value="16">Ordinary and minor Kong hidden</option>
-        <option value="32">Ordinary and major Kong hidden</option>
-        <option value="32">Wind or dragons Kong hidden</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>2th combination</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Combinaison 2" id="combination2" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="2">Pair of wind player exposed</option>
-        <option value="2">Pair of dominant wind player exposed</option>
-        <option value="0">Pair of wind hand exposed</option>
-        <option value="0">Pair of dragons exposed</option>
-        <option value="0">Chow exposed</option>
-        <option value="2">Ordinary and minor pung exposed</option>
-        <option value="4">Ordinary and major pung exposed</option>
-        <option value="4">Wind or dragons pung exposed</option>
-        <option value="8">Ordinary and minor Kong exposed</option>
-        <option value="16">Ordinary and major Kong exposed</option>
-        <option value="16">Wind or dragons Kong exposed</option>
-        <option value="2">Pair of player wind hidden</option>
-        <option value="2">Pair of dominant wind hidden</option>
-        <option value="2">Pair of hand wind hidden</option>
-        <option value="2">Pair of hidden dragons</option>
-        <option value="0">Chow hidden</option>
-        <option value="4">Ordinary and minor pung hidden</option>
-        <option value="8">Ordinary and major pung hidden</option>
-        <option value="8">Wind or dragons pung hidden</option>
-        <option value="16">Ordinary and minor Kong hidden</option>
-        <option value="32">Ordinary and major Kong hidden</option>
-        <option value="32">Wind or dragons Kong hidden</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>3th Combination</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Combinaison 3" id="combination3" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="2">Pair of wind player exposed</option>
-        <option value="2">Pair of dominant wind player exposed</option>
-        <option value="0">Pair of wind hand exposed</option>
-        <option value="0">Pair of dragons exposed</option>
-        <option value="0">Chow exposed</option>
-        <option value="2">Ordinary and minor pung exposed</option>
-        <option value="4">Ordinary and major pung exposed</option>
-        <option value="4">Wind or dragons pung exposed</option>
-        <option value="8">Ordinary and minor Kong exposed</option>
-        <option value="16">Ordinary and major Kong exposed</option>
-        <option value="16">Wind or dragons Kong exposed</option>
-        <option value="2">Pair of player wind hidden</option>
-        <option value="2">Pair of dominant wind hidden</option>
-        <option value="2">Pair of hand wind hidden</option>
-        <option value="2">Pair of hidden dragons</option>
-        <option value="0">Chow hidden</option>
-        <option value="4">Ordinary and minor pung hidden</option>
-        <option value="8">Ordinary and major pung hidden</option>
-        <option value="8">Wind or dragons pung hidden</option>
-        <option value="16">Ordinary and minor Kong hidden</option>
-        <option value="32">Ordinary and major Kong hidden</option>
-        <option value="32">Wind or dragons Kong hidden</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>4th combination</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Combinaison 4" id="combination4" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="2">Pair of wind player exposed</option>
-        <option value="2">Pair of dominant wind player exposed</option>
-        <option value="0">Pair of wind hand exposed</option>
-        <option value="0">Pair of dragons exposed</option>
-        <option value="0">Chow exposed</option>
-        <option value="2">Ordinary and minor pung exposed</option>
-        <option value="4">Ordinary and major pung exposed</option>
-        <option value="4">Wind or dragons pung exposed</option>
-        <option value="8">Ordinary and minor Kong exposed</option>
-        <option value="16">Ordinary and major Kong exposed</option>
-        <option value="16">Wind or dragons Kong exposed</option>
-        <option value="2">Pair of player wind hidden</option>
-        <option value="2">Pair of dominant wind hidden</option>
-        <option value="2">Pair of hand wind hidden</option>
-        <option value="2">Pair of hidden dragons</option>
-        <option value="0">Chow hidden</option>
-        <option value="4">Ordinary and minor pung hidden</option>
-        <option value="8">Ordinary and major pung hidden</option>
-        <option value="8">Wind or dragons pung hidden</option>
-        <option value="16">Ordinary and minor Kong hidden</option>
-        <option value="32">Ordinary and major Kong hidden</option>
-        <option value="32">Wind or dragons Kong hidden</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>5th combination</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Combinaison 5" id="combination5" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="2">Pair of wind player exposed</option>
-        <option value="2">Pair of dominant wind player exposed</option>
-        <option value="0">Pair of wind hand exposed</option>
-        <option value="0">Pair of dragons exposed</option>
-        <option value="0">Chow exposed</option>
-        <option value="2">Ordinary and minor pung exposed</option>
-        <option value="4">Ordinary and major pung exposed</option>
-        <option value="4">Wind or dragons pung exposed</option>
-        <option value="8">Ordinary and minor Kong exposed</option>
-        <option value="16">Ordinary and major Kong exposed</option>
-        <option value="16">Wind or dragons Kong exposed</option>
-        <option value="2">Pair of player wind hidden</option>
-        <option value="2">Pair of dominant wind hidden</option>
-        <option value="2">Pair of hand wind hidden</option>
-        <option value="2">Pair of hidden dragons</option>
-        <option value="0">Chow hidden</option>
-        <option value="4">Ordinary and minor pung hidden</option>
-        <option value="8">Ordinary and major pung hidden</option>
-        <option value="8">Wind or dragons pung hidden</option>
-        <option value="16">Ordinary and minor Kong hidden</option>
-        <option value="32">Ordinary and major Kong hidden</option>
-        <option value="32">Wind or dragons Kong hidden</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>Number of brelan/carre of dragons</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Dragon" id="dragon" class="form-control">
-        <option value="0" selected>non</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>Wind</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="Vent" id="vent" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="1">Brelan/Carré of player wind</option>
-        <option value="1">Brelan/Carré du dominant wind</option>
-        <option value="2">Combination 1 and 2</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>Number of flower/season</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="nb fleur" id="nb fleur" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="4">1</option>
-        <option value="8">2</option>
-        <option value="12">3</option>
-        <option value="16">4</option>
-        <option value="20">5</option>
-        <option value="24">6</option>
-        <option value="28">7</option>
-        <option value="32">8</option>
-    </select>
-    </span>
-</li>
-
-
-<li>
-    <label>Flower/Season</label>
-</li>
-<li>
-    <span class="button icon-dialog">
-    <select name="fleur" id="fleur" class="form-control">
-        <option value="0" selected>no</option>
-        <option value="1">The player flower or season</option>
-        <option value="2">The player flower and season</option>
-        <option value="4">The 4 flowers and/or 4 seasons</option>
-    </select>
-    </span>
-</li>
-</ol>
+<fieldset name="complementsForScore" class="none">
+    <legend>Complements for score</legend>
+    <ol>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="pairPlayerWind" value="2"/><span>Pair of Player Wind</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="pairDominantWind" value="2"/><span>Pair of Dominant Wind</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxPairDragon"/><span>Pair of Dragon</span></label>
+    </li>
+    <li class="none" name="pairDragon">
+        <span class="button icon-dialog">
+        <select id="pairDragon">
+            <option value="0" selected>0</option>
+            <option value="2">1</option>
+            <option value="4">2</option>
+            <option value="6">3</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="chow" value="1"/><span>1 Chow at least (not to check if Mahjong)</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMinor"/><span>Pung of revealed ordinary minor tiles</span></label>
+    </li>
+    <li class="none" name="revealedPungMinor">
+        <span class="button icon-dialog">
+        <select id="revealedPungMinor">
+            <option value="0" selected>0</option>
+            <option value="2">1</option>
+            <option value="4">2</option>
+            <option value="6">3</option>
+            <option value="8">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxPungMinor"/><span>Pung of <em>hidden ordinary minor</em> tiles</span></label>
+    </li>
+    <li class="none" name="pungMinor">
+        <span class="button icon-dialog">
+        <select id="pungMinor">
+            <option value="0" selected>0</option>
+            <option value="4">1</option>
+            <option value="8">2</option>
+            <option value="12">3</option>
+            <option value="16">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMajor"/><span>Pung of revealed ordinary major tiles</span></label>
+    </li>
+    <li class="none" name="revealedPungMajor">
+        <span class="button icon-dialog">
+        <select id="revealedPungMajor">
+            <option value="0" selected>0</option>
+            <option value="4">1</option>
+            <option value="8">2</option>
+            <option value="12">3</option>
+            <option value="16">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxPungMajor"/><span>Pung of <em>hidden ordinary major</em> tiles</span></label>
+    </li>
+    <li class="none" name="pungMajor">
+        <span class="button icon-dialog">
+        <select id="pungMajor">
+            <option value="0" selected>0</option>
+            <option value="8">1</option>
+            <option value="16">2</option>
+            <option value="24">3</option>
+            <option value="32">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungWind"/><span>Pung of revealed Wind</span></label>
+    </li>
+    <li class="none" name="revealedPungWind">
+        <span class="button icon-dialog">
+        <select id="revealedPungWind">
+            <option value="0" selected>0</option>
+            <option value="4">1</option>
+            <option value="8">2</option>
+            <option value="12">3</option>
+            <option value="16">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxPungWind"/><span>Pung of <em>hidden Wind</em></span></label>
+    </li>
+    <li class="none" name="pungWind">
+        <span class="button icon-dialog">
+        <select id="pungWind">
+            <option value="0" selected>0</option>
+            <option value="8">1</option>
+            <option value="16">2</option>
+            <option value="24">3</option>
+            <option value="32">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungDragon"/><span>Pung of revealed Dragon</span></label>
+    </li>
+    <li class="none" name="revealedPungDragon">
+        <span class="button icon-dialog">
+        <select id="revealedPungDragon">
+            <option value="0" selected>0</option>
+            <option value="4">1</option>
+            <option value="8">2</option>
+            <option value="12">3</option>
+            <option value="16">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxPungDragon"/><span>Pung of <em>hidden Dragon</em></span></label>
+    </li>
+    <li class="none" name="pungDragon">
+        <span class="button icon-dialog">
+        <select id="pungDragon">
+            <option value="0" selected>0</option>
+            <option value="8">1</option>
+            <option value="16">2</option>
+            <option value="24">3</option>
+            <option value="32">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMinor"><span>Kong of revealed ordinary minor tiles</span></label>
+    </li>
+    <li class="none" name="revealedKongMinor">
+        <span class="button icon-dialog">
+        <select id="revealedKongMinor">
+            <option value="0" selected>0</option>
+            <option value="8">1</option>
+            <option value="16">2</option>
+            <option value="24">3</option>
+            <option value="32">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxKongMinor"><span>Kong of <em>hidden ordinary minor</em> tiles</span></label>
+    </li>
+    <li class="none" name="kongMinor">
+        <span class="button icon-dialog">
+        <select id="kongMinor">
+            <option value="0" selected>0</option>
+            <option value="16">1</option>
+            <option value="32">2</option>
+            <option value="48">3</option>
+            <option value="64">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMajor"/><span>Kong of revealed ordinary major tiles</span></label>
+    </li>
+    <li class="none" name="revealedKongMajor">
+        <span class="button icon-dialog">
+        <select id="revealedKongMajor">
+            <option value="0" selected>0</option>
+            <option value="16">1</option>
+            <option value="32">2</option>
+            <option value="48">3</option>
+            <option value="64">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxKongMajor"/><span>Kong of <em>hidden ordinary major</em> tiles</span></label>
+    </li>
+    <li class="none" name="kongMajor">
+        <span class="button icon-dialog">
+        <select id="kongMajor">
+            <option value="0" selected>0</option>
+            <option value="32">1</option>
+            <option value="64">2</option>
+            <option value="96">3</option>
+            <option value="128">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongWind"/><span>Kong of revealed Wind</span></label>
+    </li>
+    <li class="none" name="revealedKongWind">
+        <span class="button icon-dialog">
+        <select id="revealedKongWind">
+            <option value="0" selected>0</option>
+            <option value="16">1</option>
+            <option value="32">2</option>
+            <option value="48">3</option>
+            <option value="64">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxKongWind"/><span>Kong of <em>hidden Wind</em></span></label>
+    </li>
+    <li class="none" name="kongWind">
+        <span class="button icon-dialog">
+        <select id="kongWind">
+            <option value="0" selected>0</option>
+            <option value="32">1</option>
+            <option value="64">2</option>
+            <option value="96">3</option>
+            <option value="128">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongDragon"/><span>Kong of revealed Dragon</span></label>
+    </li>
+    <li class="none" name="revealedKongDragon">
+        <span class="button icon-dialog">
+        <select id="revealedKongDragon">
+            <option value="0" selected>0</option>
+            <option value="16">1</option>
+            <option value="32">2</option>
+            <option value="48">3</option>
+            <option value="64">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxKongDragon"/><span>Kong of <em>hidden Dragon</em></span></label>
+    </li>
+    <li class="none" name="kongDragon">
+        <span class="button icon-dialog">
+        <select id="kongDragon">
+            <option value="0" selected>0</option>
+            <option value="32">1</option>
+            <option value="64">2</option>
+            <option value="96">3</option>
+            <option value="128">4</option>
+        </select>
+        </span>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungPlayerWind"/><span>Kong/Pung of Player Wind</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungDominantWind"/><span>Kong/Pung of Dominant Wind</span></label>
+    </li>
+    <li class="allday">
+        <label class="pack-checkbox"><input type="checkbox" id="boxKongPungDragon"/><span>Kong/Pung of Dragon</span></label>
+    </li>
+    <li class="none" name="kongPungDragon">
+        <span class="button icon-dialog">
+        <select id="kongPungDragon">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        </span>
+    </li>
+    </ol>
+</fieldset>
 </form>
 </section>
 </section>
@@ -615,37 +644,37 @@
     <section class="main-scroll">
         <div id="about-rules">
             <p>
-                No fixed rules  for score calculation belongs to Mahjong game, except for international tournaments.
+                No fixed rules for score calculation belongs to Mahjong game, except for international tournaments. And these rules are pretty difficult to understand for amateur players.
             </p>
             <p>
-                Each group of players can define his specific calculation grid within an agreement over the basic principles.
-            </p>
-
-            <p>
-                Our test team has played numerous games to get/reach these rules and calculation grid (see Rules).
+                Each group of amateur players can define his specific calculation grid within an agreement over the basic principles.
             </p>
 
             <p>
-                We hope that you'll enjoy to play with us
+                Our test team has played numerous games to get/reach these rules and calculation grid (see Rules) in a humoristic way.
+            </p>
+
+            <p>
+                We hope that you'll enjoy to play with us.
             </p>
         </div>
         <div id="about-credit">
             <span class="credit-title">Credits</span>
             <span class="credit-sub">Rules</span>
             <p>
-                <span class="it">Quentin Defossés, Florie Depuiset, Morgane Estiévenart, Tristan Laret,  Jonathan Verdy</span>
+                <span class="it"><em>Quentin Defossés, Florie Depuiset, Morgane Estiévenart, Tristan Laret, Jonathan Verdy</em></span>
             </p>
             <span class="credit-sub">Application development</span>
             <p>
-                <span class="it">Christophe Bastin</span>
+                <span class="it"><em>Christophe Bastin, Florie Depuiset</em> with greatest thanks to Jonathan Verdy for preliminary version</span>
              </p>
             <span class="credit-sub">Icon design</span>
             <p>
-                <span class="it">Oriana Depuiset</span>
+                <span class="it"><em>Oriana Depuiset</em></span>
             </p>
-            <span class="credit-sub">Initial concept</span>
+            <span class="credit-sub">Initial inspiration</span>
             <p>
-                <span class="it">Florie Depuiset</span>
+                <span class="it"><em>Florie Depuiset</em></span>
             </p>
         </div>
     </section>
