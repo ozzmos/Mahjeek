@@ -243,8 +243,8 @@
     <li>
         <span class="button icon-dialog">
         <select name="mahjong" id="mahjong" class="form-control">
-            <option value="0" selected>no</option>
-            <option value="20">yes</option>
+            <option>No</option>
+            <option>Yes</option>
         </select>
         </span>
     </li>
@@ -252,54 +252,62 @@
         <label>How was Mahjong reached ?</label>
         <span class="button icon-dialog">
             <select name="reachMahjong" id="reachMahjong">
-                <option value="0" selected>to the Celestial Empire</option>
-                <option value="1">robbery of a Kong</option>
-                <option value="5">to the Wall</option>
-                <option value="1">with the last tile of the Wall</option>
+                <option>To the Celestial Empire</option>
+                <option>Robbery of a Kong</option>
+                <option>To the Wall</option>
+                <option>With the last tile of the Wall</option>
             </select>
         </span>
     </li>
     <li class="none">
-        <label>Is this Mahjong special ?</label>
+        <label>What is this Mahjong ?</label>
         <span class="button icon-dialog">
             <select name="typeMahjong" id="typeMahjong">
-                <option value="0" selected>No</option>
-                <option value="1">Yes, No Chow</option>
-                <option value="10">Yes, 4 Chows & 1 Pair</option>
-                <option value="10">Yes, 7 Dwarves</option>
-                <option value="10">Yes, 9 Doors</option>
-                <option value="10">Yes, 13 Orphans</option>
-                <option value="2">Yes, King Kong</option>
+                <option>?</option>
+                <option>Basic</option>
+                <option>7 Dwarves</option>
+                <option>9 Doors</option>
+                <option>13 Orphans</option>
+                <option>Dragonnade</option>
+                <option>Typhoon</option>
             </select>
         </span>
     </li>
-    <li class="none">
-        <label>Bonus ?</label>
+        <fieldset name="bonusMahjong">
+    <li class="none" name="chows" id="noChow">
+        <label class="pack-radio"><input type="radio" name="chows"  value="1"/><span>No Chow</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="hiddenMahjong" value="1"/><span>Hidden Mahjong</span></label>
+    <li class="none" name="chows" id="fourChows">
+        <label class="pack-radio"><input type="radio" name="chows"  value="15"/><span>4 Chows & 1 Pair</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="wok" value="2"/><span>Wok</span></label>
+    <li class="none" name="pure" id="wok">
+        <label class="pack-radio"><input type="radio" name="pure"  value="2"/><span>Wok</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="pureHand" value="3"/><span>Pure Hand</span></label>
+    <li class="none" name="pure" id="pureHand">
+        <label class="pack-radio"><input type="radio" name="pure"  value="3"/><span>Pure Hand</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="hulk" value="1"/><span>Hulk</span></label>
+    <li class="none" name="yin" id="yinYang">
+        <label class="pack-radio"><input type="radio" name="yin"  value="3"/><span>Yin Yang</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="yinYang" value="2"/><span>Yin Yang</span></label>
+    <li class="none" name="yin" id="hulk">
+        <label class="pack-radio"><input type="radio" name="yin"  value="2"/><span>Hulk</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="nineArches" value="3"/><span>9 Arches</span></label>
+    <li class="none" id="hidden">
+        <label class="pack-checkbox"><input type="checkbox"  value="1"/><span>Hidden</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="dragonnade" value="4"/><span>Dragonnade</span></label>
+    <li class="none" id="honorable">
+        <label class="pack-checkbox"><input type="checkbox"  value="4"/><span>Honorable</span></label>
     </li>
-    <li class="none">
-        <label class="pack-checkbox"><input type="checkbox" id="typhoon" value="4"/><span>Typhoon</span></label>
+    <li class="none" id="kingKong">
+        <label class="pack-checkbox"><input type="checkbox"  value="4"/><span>King Kong</span></label>
     </li>
+    <li class="none" id="nineArks">
+        <label class="pack-checkbox"><input type="checkbox"  value="1"/><span>9 Arks</span></label>
+    </li>
+    <li class="none" id="worthy">
+        <label class="pack-checkbox"><input type="checkbox"  value="10"/><span>Worthy</span></label>
+    </li>
+            </fieldset>
     <li class="allday">
         <label class="pack-checkbox"><input type="checkbox" id="checkMahjong"/><span>Checked ?</span></label>
     </li>
@@ -651,7 +659,7 @@
             </p>
 
             <p>
-                Our test team has played numerous games to get/reach these rules and calculation grid (see Rules) in a humoristic way.
+                Our test team has played numerous games to get/reach the rules and calculation grid of Mahjeek (see Rules) in a humoristic way.
             </p>
 
             <p>
@@ -684,3 +692,4 @@
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

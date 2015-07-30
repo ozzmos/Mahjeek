@@ -119,6 +119,44 @@
         document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
             document.querySelector("#calculation-game").className = 'currentToRight';
             document.querySelector("#current-game").className = 'leftToCurrent';
+            document.getElementById("flowerOrSeason").checked = false;
+            document.getElementById("flowerAndSeason").checked = false;
+            document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
+            document.getElementById("checkFlowersSeasons").checked = false;
+            document.getElementById("mahjong").selectedIndex = 0;
+            document.getElementById("reachMahjong").selectedIndex = 0;
+            document.getElementById("typeMahjong").selectedIndex = 0;
+            document.getElementById("bonusTypeMahjong").selectedIndex = 0;
+            document.getElementById("noChow").checked = false;
+            document.getElementById("fourChows").checked = false;
+            document.getElementById("wok").checked = false;
+            document.getElementById("pureHand").checked = false;
+            document.getElementById("yinYang").checked = false;
+            document.getElementById("hulk").checked = false;
+            document.getElementById("hidden").checked = false;
+            document.getElementById("honorable").checked = false;
+            document.getElementById("kingKong").checked = false;
+            document.getElementById("nineArks").checked = false;
+            document.getElementById("worthy").checked = false;
+            document.getElementById("checkMahjong").checked = false;
+            document.getElementById("pairDragon").selectedIndex = 0;
+            document.getElementById("revealedPungMinor").selectedIndex = 0;
+            document.getElementById("pungMinor").selectedIndex = 0;
+            document.getElementById("revealedPungMajor").selectedIndex = 0;
+            document.getElementById("pungMajor").selectedIndex = 0;
+            document.getElementById("revealedPungWind").selectedIndex = 0;
+            document.getElementById("pungWind").selectedIndex = 0;
+            document.getElementById("revealedPungDragon").selectedIndex = 0;
+            document.getElementById("pungDragon").selectedIndex = 0;
+            document.getElementById("revealedKongMinor").selectedIndex = 0;
+            document.getElementById("kongMinor").selectedIndex = 0;
+            document.getElementById("revealedKongMajor").selectedIndex = 0;
+            document.getElementById("kongMajor").selectedIndex = 0;
+            document.getElementById("revealedKongWind").selectedIndex = 0;
+            document.getElementById("kongWind").selectedIndex = 0;
+            document.getElementById("revealedKongDragon").selectedIndex = 0;
+            document.getElementById("kongDragon").selectedIndex = 0;
+            document.getElementById("kongPungDragon").selectedIndex = 0;
         });
 
         /*Additions by Florie in CALCULATION GAME VIEW*/
@@ -127,227 +165,302 @@
             document.getElementById("flowerAndSeason").checked = false;
             document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
             if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 1) {
-                document.querySelector("li[name=\"flowerOrSeason\"]").className = 'allday';
-                document.querySelector("li[name=\"flowerAndSeason\"]").className = 'none';
-                document.querySelector("li[name=\"fourFlowersAndOrFourSeasons\"]").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").className = 'allday';
+                document.querySelector("li[name='flowerAndSeason']").className = 'none';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 2 ||
                 parseInt(document.getElementById("flowersSeasons").selectedIndex) == 3){
-                document.querySelector("li[name=\"flowerOrSeason\"]").className = 'allday';
-                document.querySelector("li[name=\"flowerAndSeason\"]").className = 'allday';
-                document.querySelector("li[name=\"fourFlowersAndOrFourSeasons\"]").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").className = 'allday';
+                document.querySelector("li[name='flowerAndSeason']").className = 'allday';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) >= 4) {
-                document.querySelector("li[name=\"flowerOrSeason\"]").className = 'allday';
-                document.querySelector("li[name=\"flowerAndSeason\"]").className = 'allday';
-                document.querySelector("li[name=\"fourFlowersAndOrFourSeasons\"]").className = 'allday';
+                document.querySelector("li[name='flowerOrSeason']").className = 'allday';
+                document.querySelector("li[name='flowerAndSeason']").className = 'allday';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'allday';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 0) {
-                document.querySelector("li[name=\"flowerOrSeason\"]").className = 'none';
-                document.querySelector("li[name=\"flowerAndSeason\"]").className = 'none';
-                document.querySelector("li[name=\"fourFlowersAndOrFourSeasons\"]").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").className = 'none';
+                document.querySelector("li[name='flowerAndSeason']").className = 'none';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
             }
         });
 
         document.querySelector("#checkFlowersSeasons").addEventListener("change", function() {
             if (document.querySelector("#checkFlowersSeasons").checked == true) {
-                document.querySelector("fieldset[id=\"mahjongmahjong\"]").className = 'allday';
+                document.querySelector("fieldset[id='mahjongmahjong']").className = 'allday';
             } else if (document.querySelector("#checkFlowersSeasons").checked == false) {
                 document.getElementById("flowersSeasons").selectedIndex = 0;
                 document.getElementById("flowerOrSeason").checked = false;
                 document.getElementById("flowerAndSeason").checked = false;
                 document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
-                document.querySelector("fieldset[id=\"mahjongmahjong\"]").className = 'none';
+                document.querySelector("fieldset[id='mahjongmahjong']").className = 'none';
             }
         });
 
+        /* What is this Mahjong */
         document.querySelector("#mahjong").addEventListener("change", function() {
             if (parseInt(document.querySelector("#mahjong").selectedIndex) == 1) {
                 var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".none");
                 for (var x=0; x<elmts.length; x++) {
                     elmts[x].className = "allday";
                 }
+                var elements = document.querySelectorAll("fieldset[name='bonusMahjong'] > li");
+                if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
+                    for (var i = 0; i <elements.length; ++i) {
+                        elements[i].classList.remove("allday");
+                        elements[i].classList.add("none");
+                    }
+                }
+                document.getElementById("reachMahjong").selectedIndex = 0;
+                document.getElementById("typeMahjong").selectedIndex = 0;
+                document.getElementById("noChow").checked = false;
+                document.getElementById("fourChows").checked = false;
+                document.getElementById("wok").checked = false;
+                document.getElementById("pureHand").checked = false;
+                document.getElementById("yinYang").checked = false;
+                document.getElementById("hulk").checked = false;
+                document.getElementById("hidden").checked = false;
+                document.getElementById("honorable").checked = false;
+                document.getElementById("kingKong").checked = false;
+                document.getElementById("nineArks").checked = false;
+                document.getElementById("worthy").checked = false;
             } else if (parseInt(document.querySelector("#mahjong").selectedIndex) == 0) {
                 var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".allday");
                 for (var x=0; x<(elmts.length-1); x++) {
                     elmts[x].className = "none";
                 }
+                document.getElementById("reachMahjong").selectedIndex = 0;
+                document.getElementById("typeMahjong").selectedIndex = 0;
+                document.getElementById("noChow").checked = false;
+                document.getElementById("fourChows").checked = false;
+                document.getElementById("wok").checked = false;
+                document.getElementById("pureHand").checked = false;
+                document.getElementById("yinYang").checked = false;
+                document.getElementById("hulk").checked = false;
+                document.getElementById("hidden").checked = false;
+                document.getElementById("honorable").checked = false;
+                document.getElementById("kingKong").checked = false;
+                document.getElementById("nineArks").checked = false;
+                document.getElementById("worthy").checked = false;
+            }
+        });
+
+
+
+        document.querySelector("#typeMahjong").addEventListener("change", function () {
+            var elements = document.querySelectorAll("fieldset[name='bonusMahjong'] > li");
+            if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
+               for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.remove("allday");
+                    elements[i].classList.add("none");
+                }
+            }
+            else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 1) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.remove("none");
+                    elements[i].classList.add("allday");
+                }
+
+            }
+            else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 2) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.add("none");
+                }
+                document.querySelector("#pureHand").classList.remove("none");
+                document.querySelector("#pureHand").classList.add("allday");
+                document.querySelector("#wok").classList.remove("none");
+                document.querySelector("#wok").classList.add("allday");
+                document.querySelector("#hulk").classList.remove("none");
+                document.querySelector("#hulk").classList.add("allday");
+                document.querySelector("#yinYang").classList.remove("none");
+                document.querySelector("#yinYang").classList.add("allday");
+                document.querySelector("#honorable").classList.remove("none");
+                document.querySelector("#honorable").classList.add("allday");
             }
         });
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
             if (document.querySelector("#checkMahjong").checked == true) {
-                document.querySelector("fieldset[name=\"complementsForScore\"]").className = 'allday';
+                document.querySelector("fieldset[name='complementsForScore']").className = 'allday';
             } else if (document.querySelector("#checkMahjong").checked == false) {
-                document.querySelector("fieldset[name=\"complementsForScore\"]").className = 'none';
+                var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".allday");
+                for (var x=0; x<(elmts.length-1); x++) {
+                    elmts[x].className = "none";
+                }
+                document.querySelector("fieldset[name='complementsForScore']").className = 'none';
                 document.getElementById("mahjong").selectedIndex = 0;
                 document.getElementById("reachMahjong").selectedIndex = 0;
                 document.getElementById("typeMahjong").selectedIndex = 0;
-                document.getElementById("hiddenMahjong").checked = false;
+                document.getElementById("noChow").checked = false;
+                document.getElementById("fourChows").checked = false;
                 document.getElementById("wok").checked = false;
                 document.getElementById("pureHand").checked = false;
-                document.getElementById("hulk").checked = false;
                 document.getElementById("yinYang").checked = false;
-                document.getElementById("nineArches").checked = false;
-                document.getElementById("dragonnade").checked = false;
-                document.getElementById("typhoon").checked = false;
+                document.getElementById("hulk").checked = false;
+                document.getElementById("hidden").checked = false;
+                document.getElementById("honorable").checked = false;
+                document.getElementById("kingKong").checked = false;
+                document.getElementById("nineArks").checked = false;
+                document.getElementById("worthy").checked = false;
                 document.getElementById("checkMahjong").checked = false;
             }
         });
 
         document.querySelector("#boxPairDragon").addEventListener("change", function () {
             if (document.querySelector("#boxPairDragon").checked == true) {
-                document.querySelector("li[name=\"pairDragon\"]").className = 'allday';
+                document.querySelector("li[name='pairDragon']").className = 'allday';
             } else if (document.querySelector("#boxPairDragon").checked == false) {
-                document.querySelector("li[name=\"pairDragon\"]").className = 'none';
+                document.querySelector("li[name='pairDragon']").className = 'none';
                 document.getElementById("pairDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungMinor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungMinor").checked == true) {
-                document.querySelector("li[name=\"revealedPungMinor\"]").className = 'allday';
+                document.querySelector("li[name='revealedPungMinor']").className = 'allday';
             } else if (document.querySelector("#boxRevealedPungMinor").checked == false) {
-                document.querySelector("li[name=\"revealedPungMinor\"]").className = 'none';
+                document.querySelector("li[name='revealedPungMinor']").className = 'none';
                 document.getElementById("revealedPungMinor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungMinor").addEventListener("change", function () {
             if (document.querySelector("#boxPungMinor").checked == true) {
-                document.querySelector("li[name=\"pungMinor\"]").className = 'allday';
+                document.querySelector("li[name='pungMinor']").className = 'allday';
             } else if (document.querySelector("#boxPungMinor").checked == false) {
-                document.querySelector("li[name=\"pungMinor\"]").className = 'none';
+                document.querySelector("li[name='pungMinor']").className = 'none';
                 document.getElementById("pungMinor").selectedIndex = 0;
             }
         });
         document.querySelector("#boxRevealedPungMajor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungMajor").checked == true) {
-                document.querySelector("li[name=\"revealedPungMajor\"]").className = 'allday';
+                document.querySelector("li[name='revealedPungMajor']").className = 'allday';
             } else if (document.querySelector("#boxRevealedPungMajor").checked == false) {
-                document.querySelector("li[name=\"revealedPungMajor\"]").className = 'none';
+                document.querySelector("li[name='revealedPungMajor']").className = 'none';
                 document.getElementById("revealedPungMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungMajor").addEventListener("change", function () {
             if (document.querySelector("#boxPungMajor").checked == true) {
-                document.querySelector("li[name=\"pungMajor\"]").className = 'allday';
+                document.querySelector("li[name='pungMajor']").className = 'allday';
             } else if (document.querySelector("#boxPungMajor").checked == false) {
-                document.querySelector("li[name=\"pungMajor\"]").className = 'none';
+                document.querySelector("li[name='pungMajor']").className = 'none';
                 document.getElementById("pungMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungWind").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungWind").checked == true) {
-                document.querySelector("li[name=\"revealedPungWind\"]").className = 'allday';
+                document.querySelector("li[name='revealedPungWind']").className = 'allday';
             } else if (document.querySelector("#boxRevealedPungWind").checked == false) {
-                document.querySelector("li[name=\"revealedPungWind\"]").className = 'none';
+                document.querySelector("li[name='revealedPungWind']").className = 'none';
                 document.getElementById("revealedPungWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungWind").addEventListener("change", function () {
             if (document.querySelector("#boxPungWind").checked == true) {
-                document.querySelector("li[name=\"pungWind\"]").className = 'allday';
+                document.querySelector("li[name='pungWind']").className = 'allday';
             } else if (document.querySelector("#boxPungWind").checked == false) {
-                document.querySelector("li[name=\"pungWind\"]").className = 'none';
+                document.querySelector("li[name='pungWind']").className = 'none';
                 document.getElementById("pungWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungDragon").checked == true) {
-                document.querySelector("li[name=\"revealedPungDragon\"]").className = 'allday';
+                document.querySelector("li[name='revealedPungDragon']").className = 'allday';
             } else if (document.querySelector("#boxRevealedPungDragon").checked == false) {
-                document.querySelector("li[name=\"revealedPungDragon\"]").className = 'none';
+                document.querySelector("li[name='revealedPungDragon']").className = 'none';
                 document.getElementById("revealedPungDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxPungDragon").checked == true) {
-                document.querySelector("li[name=\"pungDragon\"]").className = 'allday';
+                document.querySelector("li[name='pungDragon']").className = 'allday';
             } else if (document.querySelector("#boxPungDragon").checked == false) {
-                document.querySelector("li[name=\"pungDragon\"]").className = 'none';
+                document.querySelector("li[name='pungDragon']").className = 'none';
                 document.getElementById("pungDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongMinor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongMinor").checked == true) {
-                document.querySelector("li[name=\"revealedKongMinor\"]").className = 'allday';
+                document.querySelector("li[name='revealedKongMinor']").className = 'allday';
             } else if (document.querySelector("#boxRevealedKongMinor").checked == false) {
-                document.querySelector("li[name=\"revealedKongMinor\"]").className = 'none';
+                document.querySelector("li[name='revealedKongMinor']").className = 'none';
                 document.getElementById("revealedKongMinor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongMinor").addEventListener("change", function () {
             if (document.querySelector("#boxKongMinor").checked == true) {
-                document.querySelector("li[name=\"kongMinor\"]").className = 'allday';
+                document.querySelector("li[name='kongMinor']").className = 'allday';
             } else if (document.querySelector("#boxKongMinor").checked == false) {
-                document.querySelector("li[name=\"kongMinor\"]").className = 'none';
+                document.querySelector("li[name='kongMinor']").className = 'none';
                 document.getElementById("kongMinor").selectedIndex = 0;
             }
         });
         document.querySelector("#boxRevealedKongMajor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongMajor").checked == true) {
-                document.querySelector("li[name=\"revealedKongMajor\"]").className = 'allday';
+                document.querySelector("li[name='revealedKongMajor']").className = 'allday';
             } else if (document.querySelector("#boxRevealedKongMajor").checked == false) {
-                document.querySelector("li[name=\"revealedKongMajor\"]").className = 'none';
+                document.querySelector("li[name='revealedKongMajor']").className = 'none';
                 document.getElementById("revealedKongMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongMajor").addEventListener("change", function () {
             if (document.querySelector("#boxKongMajor").checked == true) {
-                document.querySelector("li[name=\"kongMajor\"]").className = 'allday';
+                document.querySelector("li[name='kongMajor']").className = 'allday';
             } else if (document.querySelector("#boxKongMajor").checked == false) {
-                document.querySelector("li[name=\"kongMajor\"]").className = 'none';
+                document.querySelector("li[name='kongMajor']").className = 'none';
                 document.getElementById("kongMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongWind").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongWind").checked == true) {
-                document.querySelector("li[name=\"revealedKongWind\"]").className = 'allday';
+                document.querySelector("li[name='revealedKongWind']").className = 'allday';
             } else if (document.querySelector("#boxRevealedKongWind").checked == false) {
-                document.querySelector("li[name=\"revealedKongWind\"]").className = 'none';
+                document.querySelector("li[name='revealedKongWind']").className = 'none';
                 document.getElementById("revealedKongWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongWind").addEventListener("change", function () {
             if (document.querySelector("#boxKongWind").checked == true) {
-                document.querySelector("li[name=\"kongWind\"]").className = 'allday';
+                document.querySelector("li[name='kongWind']").className = 'allday';
             } else if (document.querySelector("#boxKongWind").checked == false) {
-                document.querySelector("li[name=\"kongWind\"]").className = 'none';
+                document.querySelector("li[name='kongWind']").className = 'none';
                 document.getElementById("kongWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongDragon").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongDragon").checked == true) {
-                document.querySelector("li[name=\"revealedKongDragon\"]").className = 'allday';
+                document.querySelector("li[name='revealedKongDragon']").className = 'allday';
             } else if (document.querySelector("#boxRevealedKongDragon").checked == false) {
-                document.querySelector("li[name=\"revealedKongDragon\"]").className = 'none';
+                document.querySelector("li[name='revealedKongDragon']").className = 'none';
                 document.getElementById("revealedKongDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongDragon").addEventListener("change", function () {
             if (document.querySelector("#boxKongDragon").checked == true) {
-                document.querySelector("li[name=\"kongDragon\"]").className = 'allday';
+                document.querySelector("li[name='kongDragon']").className = 'allday';
             } else if (document.querySelector("#boxKongDragon").checked == false) {
-                document.querySelector("li[name=\"kongDragon\"]").className = 'none';
+                document.querySelector("li[name='kongDragon']").className = 'none';
                 document.getElementById("kongDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxKongPungDragon").checked == true) {
-                document.querySelector("li[name=\"kongPungDragon\"]").className = 'allday';
+                document.querySelector("li[name='kongPungDragon']").className = 'allday';
             } else if (document.querySelector("#boxKongPungDragon").checked == false) {
-                document.querySelector("li[name=\"kongPungDragon\"]").className = 'none';
+                document.querySelector("li[name='kongPungDragon']").className = 'none';
                 document.getElementById("kongPungDragon").selectedIndex = 0;
             }
         });
@@ -693,14 +806,6 @@
             document.getElementById("mahjong").selectedIndex = 0;
             document.getElementById("reachMahjong").selectedIndex = 0;
             document.getElementById("typeMahjong").selectedIndex = 0;
-            document.getElementById("hiddenMahjong").checked = false;
-            document.getElementById("wok").checked = false;
-            document.getElementById("pureHand").checked = false;
-            document.getElementById("hulk").checked = false;
-            document.getElementById("yinYang").checked = false;
-            document.getElementById("nineArches").checked = false;
-            document.getElementById("dragonnade").checked = false;
-            document.getElementById("typhoon").checked = false;
             document.getElementById("checkMahjong").checked = false;
             document.getElementById("pairPlayerWind").checked = false;
             document.getElementById("pairDominantWind").checked = false;
