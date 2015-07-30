@@ -276,6 +276,48 @@
                 document.querySelector("#honorable").classList.remove("none");
                 document.querySelector("#honorable").classList.add("allday");
             }
+            else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 3) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.add("none");
+                }
+                document.querySelector("#nineArks").classList.remove("none");
+                document.querySelector("#nineArks").classList.add("allday");
+            }
+             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 4) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.add("none");
+                }
+                document.querySelector("#worthy").classList.remove("none");
+                document.querySelector("#worthy").classList.add("allday");
+            }
+            else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 5) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.add("none");
+                }
+                document.querySelector("#noChow").classList.remove("none");
+                document.querySelector("#noChow").classList.add("allday");
+                document.querySelector("#pureHand").classList.remove("none");
+                document.querySelector("#pureHand").classList.add("allday");
+                document.querySelector("#hidden").classList.remove("none");
+                document.querySelector("#hidden").classList.add("allday");
+                document.querySelector("#kingKong").classList.remove("none");
+                document.querySelector("#kingKong").classList.add("allday");
+                document.querySelector("#honorable").classList.remove("none");
+                document.querySelector("#honorable").classList.add("allday");
+            }
+            else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 6) {
+                for (var i = 0; i <elements.length; ++i) {
+                    elements[i].classList.add("none");
+                }
+                document.querySelector("#pureHand").classList.remove("none");
+                document.querySelector("#pureHand").classList.add("allday");
+                document.querySelector("#hidden").classList.remove("none");
+                document.querySelector("#hidden").classList.add("allday");
+                document.querySelector("#kingKong").classList.remove("none");
+                document.querySelector("#kingKong").classList.add("allday");
+                document.querySelector("#honorable").classList.remove("none");
+                document.querySelector("#honorable").classList.add("allday");
+            }
         });
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
