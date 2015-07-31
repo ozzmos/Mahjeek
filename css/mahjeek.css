@@ -229,7 +229,6 @@ fieldset {
   border: 0.1rem solid rgba(0,0,0,.2);
   font-size: 1.8rem;
   line-height: 1em;
-  background: #fff url(input_areas/images/ui/shadow.png) repeat-x left top;
 }
 
 .none {
