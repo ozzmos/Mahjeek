@@ -873,20 +873,118 @@
             var multiplicateur = 0;
 
             //Flowers&Seasons
-            var a = document.getElementById("flowersSeasons").selectedIndex * 4;
-            points = points + a;
+            var inputNbFlowers = document.getElementById("flowersSeasons").selectedIndex * 4;
+            points = points + inputNbFlowers;
             if (document.getElementById("flowerOrSeason").checked == true) {
-                var b = document.getElementById("flowerOrSeason").value;
+                multiplicateur = multiplicateur + document.getElementById("flowerOrSeason").value;
             } else if (document.getElementById("flowerAndSeason").checked == true) {
-                var b = document.getElementById("flowerAndSeason").value;
+               multiplicateur = multiplicateur + document.getElementById("flowerAndSeason").value;
             } else if (document.getElementById("fourFlowersAndOrFourSeasons").checked == true) {
-                var b = document.getElementById("fourFlowersAndOrFourSeasons").value;
-            } else if (document.getElementById("flowerOrSeason").checked == false && document.getElementById("flowerAndSeason").checked == false && document.getElementById("fourFlowersAndOrFourSeasons").checked == false) {
-                var b = 0;
+                multiplicateur = multiplicateur + document.getElementById("fourFlowersAndOrFourSeasons").value;
             }
-            multiplicateur = multiplicateur + b;
 
             //Mahjong
+            var a = parseInt(document.getElementById("mahjong").selectedIndex);
+            if (a != 0) {
+                points = points + 20;
+            }
+            var b = parseInt(document.getElementById("reachMahjong").selectedIndex);
+            if (b == 1) {
+                multiplicateur = multiplicateur + b;
+            } else if (b == 2) {
+                points = points + 5;
+            } else if (b == 3) {
+                points = points + 5;
+                multiplicateur = multiplicateur + 1;
+            }
+            var c = parseInt(document.getElementById("typeMahjong").selectedIndex);
+            if (c == 1) {
+                if (document.getElementById("#noChow").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#noChow").value;
+                }
+                if (document.getElementById("#fourChows").checked == true) {
+                    points = points + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#wok").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#pureHand").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#yinYang").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#yinYang").value;
+                }
+                if (document.getElementById("#hulk").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#hulk").value;
+                }
+                if (document.getElementById("#hidden").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#hidden").value;
+                }
+                if (document.getElementById("#honorable").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#honorable").value;
+                }
+                if (document.getElementById("#kingKong").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#kingKong").value;
+                }
+            } else if (c == 2) {
+                multiplicateur = multiplicateur + 3;
+                if (document.getElementById("#wok").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#pureHand").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#yinYang").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#yinYang").value;
+                }
+                if (document.getElementById("#hulk").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#hulk").value;
+                }
+                if (document.getElementById("#honorable").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#honorable").value;
+                }
+            } else if (c == 3) {
+                multiplicateur = multiplicateur + 5;
+                if (document.getElementById("#nineArks").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#nineArks").value;
+                }
+            } else if (c == 4) {
+                multiplicateur = multiplicateur + 4;
+                if (document.getElementById("#worthy").checked == true) {
+                    points = points + document.getElementById("#worthy").value;
+                }
+            } else if (c == 5) {
+                multiplicateur = multiplicateur + 1;
+                if (document.getElementById("#noChow").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#noChow").value;
+                }
+                if (document.getElementById("#pureHand").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#hidden").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#hidden").value;
+                }
+                if (document.getElementById("#honorable").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#honorable").value;
+                }
+                if (document.getElementById("#kingKong").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#kingKong").value;
+                }
+            } else if (c == 6) {
+                multiplicateur = multiplicateur + 2;
+                if (document.getElementById("#pureHand").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#fourChows").value;
+                }
+                if (document.getElementById("#hidden").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#hidden").value;
+                }
+                if (document.getElementById("#honorable").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#honorable").value;
+                }
+                if (document.getElementById("#kingKong").checked == true) {
+                    multiplicateur = multiplicateur + document.getElementById("#kingKong").value;
+                }
+            }
 
             //Complements
 
