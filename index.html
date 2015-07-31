@@ -204,23 +204,24 @@
     </header>
     <section class="main-scroll">
         <form>
-            <fieldset name="flowersAndSeasons">
-                <legend>Flowers & Seasons</legend>
+            <div>
+                <h3>Flowers & Seasons</h3>
                 <ol>
                     <li>
-        <span class="button icon-dialog">
-        <select id="flowersSeasons">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-        </select>
-        </span>
+                        <span class="button icon icon-dialog">
+                            <label for="flowersSeasons"></label>
+                            <select id="flowersSeasons">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </span>
                     </li>
                     <li class="none" name="flowerOrSeason">
                         <label class="pack-radio"><input type="radio" name="flowers" id="flowerOrSeason" value="1"/><span>Flower OR Season of the player</span></label>
@@ -235,45 +236,50 @@
                         <label class="pack-checkbox"><input type="checkbox" id="checkFlowersSeasons"/><span>Checked ?</span></label>
                     </li>
                 </ol>
-            </fieldset>
+            </div>
 
-            <fieldset id="mahjongmahjong" class="none">
-                <legend>Mahjong</legend>
+            <div id="mahjongmahjong" class="none">
+                <h3>Mahjong</h3>
                 <ol>
                     <li>
-        <span class="button icon-dialog">
-        <select name="mahjong" id="mahjong" class="form-control">
-            <option>No</option>
-            <option>Yes</option>
-        </select>
-        </span>
+                        <span class="button icon icon-dialog">
+                            <label for="mahjong"></label>
+                            <select name="mahjong" id="mahjong" class="form-control">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </span>
                     </li>
                     <li class="none">
                         <label>How was Mahjong reached ?</label>
-        <span class="button icon-dialog">
-            <select name="reachMahjong" id="reachMahjong">
-                <option>To the Celestial Empire</option>
-                <option>Robbery of a Kong</option>
-                <option>To the Wall</option>
-                <option>With the last tile of the Wall</option>
-            </select>
-        </span>
+                        <span class="button icon icon-dialog">
+                            <label for="reachMahjong"></label>
+                            <select name="reachMahjong" id="reachMahjong">
+                                <option>To the Celestial Empire</option>
+                                <option>Robbery of a Kong</option>
+                                <option>To the Wall</option>
+                                <option>With the last tile of the Wall</option>
+                            </select>
+                        </span>
                     </li>
                     <li class="none">
                         <label>What is this Mahjong ?</label>
-        <span class="button icon-dialog">
-            <select name="typeMahjong" id="typeMahjong">
-                <option>?</option>
-                <option>Basic</option>
-                <option>7 Dwarves</option>
-                <option>9 Doors</option>
-                <option>13 Orphans</option>
-                <option>Dragonnade</option>
-                <option>Typhoon</option>
-            </select>
-        </span>
+                        <span class="button icon icon-dialog">
+                            <label for="typeMahjong"></label>
+                            <select name="typeMahjong" id="typeMahjong">
+                                <option>?</option>
+                                <option>Basic</option>
+                                <option>7 Dwarves</option>
+                                <option>9 Doors</option>
+                                <option>13 Orphans</option>
+                                <option>Dragonnade</option>
+                                <option>Typhoon</option>
+                            </select>
+                        </span>
                     </li>
-                    <fieldset name="bonusMahjong">
+                </ol>
+                <div name="bonusMahjong">
+                    <ol>
                         <li class="none" name="chows">
                             <label class="pack-radio"><input type="radio" name="chows" id="noChow" value="1"/><span>No Chow</span></label>
                         </li>
@@ -307,15 +313,17 @@
                         <li class="none">
                             <label class="pack-checkbox"><input type="checkbox" id="worthy" value="10"/><span>Worthy</span></label>
                         </li>
-                    </fieldset>
+                    </ol>
+                </div>
+                <ol>
                     <li class="allday">
                         <label class="pack-checkbox"><input type="checkbox" id="checkMahjong"/><span>Checked ?</span></label>
                     </li>
                 </ol>
-            </fieldset>
+            </div>
 
-            <fieldset name="complementsForScore" class="none">
-                <legend>Complements for score</legend>
+            <div name="complementsForScore" class="none">
+                <h3>Complements for score</h3>
                 <ol>
                     <li class="allday">
                         <label class="pack-checkbox"><input type="checkbox" id="pairPlayerWind" value="2"/><span>Pair of Player Wind</span></label>
@@ -327,7 +335,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxPairDragon"/><span>Pair of Dragon</span></label>
                     </li>
                     <li class="none" name="pairDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+        <label for="pairDragon"></label>
         <select id="pairDragon">
             <option value="0" selected>0</option>
             <option value="2">1</option>
@@ -343,7 +352,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMinor"/><span>Pung of revealed ordinary minor tiles</span></label>
                     </li>
                     <li class="none" name="revealedPungMinor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+         <label for="revealedPungMinor"></label>
         <select id="revealedPungMinor">
             <option value="0" selected>0</option>
             <option value="2">1</option>
@@ -357,7 +367,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxPungMinor"/><span>Pung of <em>hidden ordinary minor</em> tiles</span></label>
                     </li>
                     <li class="none" name="pungMinor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+        <label for="pungMinor"></label>
         <select id="pungMinor">
             <option value="0" selected>0</option>
             <option value="4">1</option>
@@ -371,7 +382,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMajor"/><span>Pung of revealed ordinary major tiles</span></label>
                     </li>
                     <li class="none" name="revealedPungMajor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+        <label for="revealedPungMajor"></label>
         <select id="revealedPungMajor">
             <option value="0" selected>0</option>
             <option value="4">1</option>
@@ -385,7 +397,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxPungMajor"/><span>Pung of <em>hidden ordinary major</em> tiles</span></label>
                     </li>
                     <li class="none" name="pungMajor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="pungMajor"></label>
         <select id="pungMajor">
             <option value="0" selected>0</option>
             <option value="8">1</option>
@@ -399,7 +412,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungWind"/><span>Pung of revealed Wind</span></label>
                     </li>
                     <li class="none" name="revealedPungWind">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedPungWind"></label>
         <select id="revealedPungWind">
             <option value="0" selected>0</option>
             <option value="4">1</option>
@@ -413,7 +427,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxPungWind"/><span>Pung of <em>hidden Wind</em></span></label>
                     </li>
                     <li class="none" name="pungWind">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="pungWind"></label>
         <select id="pungWind">
             <option value="0" selected>0</option>
             <option value="8">1</option>
@@ -427,7 +442,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungDragon"/><span>Pung of revealed Dragon</span></label>
                     </li>
                     <li class="none" name="revealedPungDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedPungDragon"></label>
         <select id="revealedPungDragon">
             <option value="0" selected>0</option>
             <option value="4">1</option>
@@ -441,7 +457,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxPungDragon"/><span>Pung of <em>hidden Dragon</em></span></label>
                     </li>
                     <li class="none" name="pungDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="pungDragon"></label>
         <select id="pungDragon">
             <option value="0" selected>0</option>
             <option value="8">1</option>
@@ -455,7 +472,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMinor"><span>Kong of revealed ordinary minor tiles</span></label>
                     </li>
                     <li class="none" name="revealedKongMinor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedKongMinor"></label>
         <select id="revealedKongMinor">
             <option value="0" selected>0</option>
             <option value="8">1</option>
@@ -469,7 +487,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxKongMinor"><span>Kong of <em>hidden ordinary minor</em> tiles</span></label>
                     </li>
                     <li class="none" name="kongMinor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="kongMinor"></label>
         <select id="kongMinor">
             <option value="0" selected>0</option>
             <option value="16">1</option>
@@ -483,7 +502,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMajor"/><span>Kong of revealed ordinary major tiles</span></label>
                     </li>
                     <li class="none" name="revealedKongMajor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedKongMajor"></label>
         <select id="revealedKongMajor">
             <option value="0" selected>0</option>
             <option value="16">1</option>
@@ -497,7 +517,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxKongMajor"/><span>Kong of <em>hidden ordinary major</em> tiles</span></label>
                     </li>
                     <li class="none" name="kongMajor">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="kongMajor"></label>
         <select id="kongMajor">
             <option value="0" selected>0</option>
             <option value="32">1</option>
@@ -511,7 +532,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongWind"/><span>Kong of revealed Wind</span></label>
                     </li>
                     <li class="none" name="revealedKongWind">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedKongWind"></label>
         <select id="revealedKongWind">
             <option value="0" selected>0</option>
             <option value="16">1</option>
@@ -525,7 +547,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxKongWind"/><span>Kong of <em>hidden Wind</em></span></label>
                     </li>
                     <li class="none" name="kongWind">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="kongWind"></label>
         <select id="kongWind">
             <option value="0" selected>0</option>
             <option value="32">1</option>
@@ -539,7 +562,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongDragon"/><span>Kong of revealed Dragon</span></label>
                     </li>
                     <li class="none" name="revealedKongDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="revealedKongDragon"></label>
         <select id="revealedKongDragon">
             <option value="0" selected>0</option>
             <option value="16">1</option>
@@ -553,7 +577,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxKongDragon"/><span>Kong of <em>hidden Dragon</em></span></label>
                     </li>
                     <li class="none" name="kongDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="kongDragon"></label>
         <select id="kongDragon">
             <option value="0" selected>0</option>
             <option value="32">1</option>
@@ -573,7 +598,8 @@
                         <label class="pack-checkbox"><input type="checkbox" id="boxKongPungDragon"/><span>Kong/Pung of Dragon</span></label>
                     </li>
                     <li class="none" name="kongPungDragon">
-        <span class="button icon-dialog">
+        <span class="button icon icon-dialog">
+            <label for="kongPungDragon"></label>
         <select id="kongPungDragon">
             <option value="0" selected>0</option>
             <option value="1">1</option>
@@ -583,7 +609,7 @@
         </span>
                     </li>
                 </ol>
-            </fieldset>
+            </div>
         </form>
     </section>
 </section>
