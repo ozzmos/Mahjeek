@@ -30,7 +30,7 @@
     </header>
     <section data-type="list" class="main-scroll">
         <ul id="g-list">
-    </ul>
+        </ul>
     </section>
 </section>
 
@@ -193,21 +193,21 @@
 
 <!-- calcul points -->
 <section id="calculation-game" role="region" data-position="right" class="right">
-<header>
-    <a href="#" id="btn-calculation-game-cancel">
-        <span class="icon icon-back"></span>
-    </a>
-    <menu type="toolbar">
-        <button id="btn-calculation-game-done">done</button>
-    </menu>
-    <h1>Score calculation</h1>
-</header>
-<section class="main-scroll">
-<form>
-<fieldset name="flowersAndSeasons">
-    <legend>Flowers & Seasons</legend>
-    <ol>
-    <li>
+    <header>
+        <a href="#" id="btn-calculation-game-cancel">
+            <span class="icon icon-back"></span>
+        </a>
+        <menu type="toolbar">
+            <button id="btn-calculation-game-done">done</button>
+        </menu>
+        <h1>Score calculation</h1>
+    </header>
+    <section class="main-scroll">
+        <form>
+            <fieldset name="flowersAndSeasons">
+                <legend>Flowers & Seasons</legend>
+                <ol>
+                    <li>
         <span class="button icon-dialog">
         <select id="flowersSeasons">
             <option>0</option>
@@ -221,35 +221,35 @@
             <option>8</option>
         </select>
         </span>
-    </li>
-    <li class="none" name="flowerOrSeason">
-        <label class="pack-radio"><input type="radio" name="flowers" id="flowerOrSeason" value="1"/><span>Flower OR Season of the player</span></label>
-    </li>
-    <li class="none" name="flowerAndSeason">
-        <label class="pack-radio"><input type="radio" name="flowers" id="flowerAndSeason" value="2"/><span>Flower AND Season of the player</span></label>
-    </li>
-    <li class="none" name="fourFlowersAndOrFourSeasons">
-        <label class="pack-radio"><input type="radio" name="flowers" id="fourFlowersAndOrFourSeasons"value="4"><span>4 Flowers AND/OR 4 Seasons</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="checkFlowersSeasons"/><span>Checked ?</span></label>
-    </li>
-    </ol>
-</fieldset>
+                    </li>
+                    <li class="none" name="flowerOrSeason">
+                        <label class="pack-radio"><input type="radio" name="flowers" id="flowerOrSeason" value="1"/><span>Flower OR Season of the player</span></label>
+                    </li>
+                    <li class="none" name="flowerAndSeason">
+                        <label class="pack-radio"><input type="radio" name="flowers" id="flowerAndSeason" value="2"/><span>Flower AND Season of the player</span></label>
+                    </li>
+                    <li class="none" name="fourFlowersAndOrFourSeasons">
+                        <label class="pack-radio"><input type="radio" name="flowers" id="fourFlowersAndOrFourSeasons"value="4"><span>4 Flowers AND/OR 4 Seasons</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="checkFlowersSeasons"/><span>Checked ?</span></label>
+                    </li>
+                </ol>
+            </fieldset>
 
-<fieldset id="mahjongmahjong" class="none">
-    <legend>Mahjong</legend>
-    <ol>
-    <li>
+            <fieldset id="mahjongmahjong" class="none">
+                <legend>Mahjong</legend>
+                <ol>
+                    <li>
         <span class="button icon-dialog">
         <select name="mahjong" id="mahjong" class="form-control">
             <option>No</option>
             <option>Yes</option>
         </select>
         </span>
-    </li>
-    <li class="none">
-        <label>How was Mahjong reached ?</label>
+                    </li>
+                    <li class="none">
+                        <label>How was Mahjong reached ?</label>
         <span class="button icon-dialog">
             <select name="reachMahjong" id="reachMahjong">
                 <option>To the Celestial Empire</option>
@@ -258,9 +258,9 @@
                 <option>With the last tile of the Wall</option>
             </select>
         </span>
-    </li>
-    <li class="none">
-        <label>What is this Mahjong ?</label>
+                    </li>
+                    <li class="none">
+                        <label>What is this Mahjong ?</label>
         <span class="button icon-dialog">
             <select name="typeMahjong" id="typeMahjong">
                 <option>?</option>
@@ -272,61 +272,61 @@
                 <option>Typhoon</option>
             </select>
         </span>
-    </li>
-        <fieldset name="bonusMahjong">
-    <li class="none" name="chows" id="noChow">
-        <label class="pack-radio"><input type="radio" name="chows"  value="1"/><span>No Chow</span></label>
-    </li>
-    <li class="none" name="chows" id="fourChows">
-        <label class="pack-radio"><input type="radio" name="chows"  value="15"/><span>4 Chows & 1 Pair</span></label>
-    </li>
-    <li class="none" name="pure" id="wok">
-        <label class="pack-radio"><input type="radio" name="pure"  value="2"/><span>Wok</span></label>
-    </li>
-    <li class="none" name="pure" id="pureHand">
-        <label class="pack-radio"><input type="radio" name="pure"  value="3"/><span>Pure Hand</span></label>
-    </li>
-    <li class="none" name="yin" id="yinYang">
-        <label class="pack-radio"><input type="radio" name="yin"  value="3"/><span>Yin Yang</span></label>
-    </li>
-    <li class="none" name="yin" id="hulk">
-        <label class="pack-radio"><input type="radio" name="yin"  value="2"/><span>Hulk</span></label>
-    </li>
-    <li class="none" id="hidden">
-        <label class="pack-checkbox"><input type="checkbox"  value="1"/><span>Hidden</span></label>
-    </li>
-    <li class="none" id="honorable">
-        <label class="pack-checkbox"><input type="checkbox"  value="4"/><span>Honorable</span></label>
-    </li>
-    <li class="none" id="kingKong">
-        <label class="pack-checkbox"><input type="checkbox"  value="4"/><span>King Kong</span></label>
-    </li>
-    <li class="none" id="nineArks">
-        <label class="pack-checkbox"><input type="checkbox"  value="1"/><span>9 Arks</span></label>
-    </li>
-    <li class="none" id="worthy">
-        <label class="pack-checkbox"><input type="checkbox"  value="10"/><span>Worthy</span></label>
-    </li>
+                    </li>
+                    <fieldset name="bonusMahjong">
+                        <li class="none" name="chows">
+                            <label class="pack-radio"><input type="radio" name="chows" id="noChow" value="1"/><span>No Chow</span></label>
+                        </li>
+                        <li class="none" name="chows">
+                            <label class="pack-radio"><input type="radio" name="chows" id="fourChows" value="15"/><span>4 Chows & 1 Pair</span></label>
+                        </li>
+                        <li class="none" name="pure">
+                            <label class="pack-radio"><input type="radio" name="pure" id="wok" value="2"/><span>Wok</span></label>
+                        </li>
+                        <li class="none" name="pure">
+                            <label class="pack-radio"><input type="radio" name="pure" id="pureHand" value="3"/><span>Pure Hand</span></label>
+                        </li>
+                        <li class="none" name="yin">
+                            <label class="pack-radio"><input type="radio" name="yin" id="yinYang" value="3"/><span>Yin Yang</span></label>
+                        </li>
+                        <li class="none" name="yin" >
+                            <label class="pack-radio"><input type="radio" name="yin" id="hulk" value="2"/><span>Hulk</span></label>
+                        </li>
+                        <li class="none">
+                            <label class="pack-checkbox"><input type="checkbox" id="hidden" value="1"/><span>Hidden</span></label>
+                        </li>
+                        <li class="none">
+                            <label class="pack-checkbox"><input type="checkbox" id="honorable" value="4"/><span>Honorable</span></label>
+                        </li>
+                        <li class="none">
+                            <label class="pack-checkbox"><input type="checkbox" id="kingKong" value="4"/><span>King Kong</span></label>
+                        </li>
+                        <li class="none">
+                            <label class="pack-checkbox"><input type="checkbox" id="nineArks" value="1"/><span>9 Arks</span></label>
+                        </li>
+                        <li class="none">
+                            <label class="pack-checkbox"><input type="checkbox" id="worthy" value="10"/><span>Worthy</span></label>
+                        </li>
+                    </fieldset>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="checkMahjong"/><span>Checked ?</span></label>
+                    </li>
+                </ol>
             </fieldset>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="checkMahjong"/><span>Checked ?</span></label>
-    </li>
-    </ol>
-</fieldset>
 
-<fieldset name="complementsForScore" class="none">
-    <legend>Complements for score</legend>
-    <ol>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="pairPlayerWind" value="2"/><span>Pair of Player Wind</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="pairDominantWind" value="2"/><span>Pair of Dominant Wind</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxPairDragon"/><span>Pair of Dragon</span></label>
-    </li>
-    <li class="none" name="pairDragon">
+            <fieldset name="complementsForScore" class="none">
+                <legend>Complements for score</legend>
+                <ol>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="pairPlayerWind" value="2"/><span>Pair of Player Wind</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="pairDominantWind" value="2"/><span>Pair of Dominant Wind</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxPairDragon"/><span>Pair of Dragon</span></label>
+                    </li>
+                    <li class="none" name="pairDragon">
         <span class="button icon-dialog">
         <select id="pairDragon">
             <option value="0" selected>0</option>
@@ -335,14 +335,14 @@
             <option value="6">3</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="chow" value="1"/><span>1 Chow at least (not to check if Mahjong)</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMinor"/><span>Pung of revealed ordinary minor tiles</span></label>
-    </li>
-    <li class="none" name="revealedPungMinor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="chow" value="1"/><span>1 Chow at least (not to check if Mahjong)</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMinor"/><span>Pung of revealed ordinary minor tiles</span></label>
+                    </li>
+                    <li class="none" name="revealedPungMinor">
         <span class="button icon-dialog">
         <select id="revealedPungMinor">
             <option value="0" selected>0</option>
@@ -352,11 +352,11 @@
             <option value="8">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxPungMinor"/><span>Pung of <em>hidden ordinary minor</em> tiles</span></label>
-    </li>
-    <li class="none" name="pungMinor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxPungMinor"/><span>Pung of <em>hidden ordinary minor</em> tiles</span></label>
+                    </li>
+                    <li class="none" name="pungMinor">
         <span class="button icon-dialog">
         <select id="pungMinor">
             <option value="0" selected>0</option>
@@ -366,11 +366,11 @@
             <option value="16">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMajor"/><span>Pung of revealed ordinary major tiles</span></label>
-    </li>
-    <li class="none" name="revealedPungMajor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungMajor"/><span>Pung of revealed ordinary major tiles</span></label>
+                    </li>
+                    <li class="none" name="revealedPungMajor">
         <span class="button icon-dialog">
         <select id="revealedPungMajor">
             <option value="0" selected>0</option>
@@ -380,11 +380,11 @@
             <option value="16">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxPungMajor"/><span>Pung of <em>hidden ordinary major</em> tiles</span></label>
-    </li>
-    <li class="none" name="pungMajor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxPungMajor"/><span>Pung of <em>hidden ordinary major</em> tiles</span></label>
+                    </li>
+                    <li class="none" name="pungMajor">
         <span class="button icon-dialog">
         <select id="pungMajor">
             <option value="0" selected>0</option>
@@ -394,11 +394,11 @@
             <option value="32">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungWind"/><span>Pung of revealed Wind</span></label>
-    </li>
-    <li class="none" name="revealedPungWind">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungWind"/><span>Pung of revealed Wind</span></label>
+                    </li>
+                    <li class="none" name="revealedPungWind">
         <span class="button icon-dialog">
         <select id="revealedPungWind">
             <option value="0" selected>0</option>
@@ -408,11 +408,11 @@
             <option value="16">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxPungWind"/><span>Pung of <em>hidden Wind</em></span></label>
-    </li>
-    <li class="none" name="pungWind">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxPungWind"/><span>Pung of <em>hidden Wind</em></span></label>
+                    </li>
+                    <li class="none" name="pungWind">
         <span class="button icon-dialog">
         <select id="pungWind">
             <option value="0" selected>0</option>
@@ -422,11 +422,11 @@
             <option value="32">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungDragon"/><span>Pung of revealed Dragon</span></label>
-    </li>
-    <li class="none" name="revealedPungDragon">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedPungDragon"/><span>Pung of revealed Dragon</span></label>
+                    </li>
+                    <li class="none" name="revealedPungDragon">
         <span class="button icon-dialog">
         <select id="revealedPungDragon">
             <option value="0" selected>0</option>
@@ -436,11 +436,11 @@
             <option value="16">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxPungDragon"/><span>Pung of <em>hidden Dragon</em></span></label>
-    </li>
-    <li class="none" name="pungDragon">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxPungDragon"/><span>Pung of <em>hidden Dragon</em></span></label>
+                    </li>
+                    <li class="none" name="pungDragon">
         <span class="button icon-dialog">
         <select id="pungDragon">
             <option value="0" selected>0</option>
@@ -450,11 +450,11 @@
             <option value="32">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMinor"><span>Kong of revealed ordinary minor tiles</span></label>
-    </li>
-    <li class="none" name="revealedKongMinor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMinor"><span>Kong of revealed ordinary minor tiles</span></label>
+                    </li>
+                    <li class="none" name="revealedKongMinor">
         <span class="button icon-dialog">
         <select id="revealedKongMinor">
             <option value="0" selected>0</option>
@@ -464,11 +464,11 @@
             <option value="32">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxKongMinor"><span>Kong of <em>hidden ordinary minor</em> tiles</span></label>
-    </li>
-    <li class="none" name="kongMinor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxKongMinor"><span>Kong of <em>hidden ordinary minor</em> tiles</span></label>
+                    </li>
+                    <li class="none" name="kongMinor">
         <span class="button icon-dialog">
         <select id="kongMinor">
             <option value="0" selected>0</option>
@@ -478,11 +478,11 @@
             <option value="64">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMajor"/><span>Kong of revealed ordinary major tiles</span></label>
-    </li>
-    <li class="none" name="revealedKongMajor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongMajor"/><span>Kong of revealed ordinary major tiles</span></label>
+                    </li>
+                    <li class="none" name="revealedKongMajor">
         <span class="button icon-dialog">
         <select id="revealedKongMajor">
             <option value="0" selected>0</option>
@@ -492,11 +492,11 @@
             <option value="64">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxKongMajor"/><span>Kong of <em>hidden ordinary major</em> tiles</span></label>
-    </li>
-    <li class="none" name="kongMajor">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxKongMajor"/><span>Kong of <em>hidden ordinary major</em> tiles</span></label>
+                    </li>
+                    <li class="none" name="kongMajor">
         <span class="button icon-dialog">
         <select id="kongMajor">
             <option value="0" selected>0</option>
@@ -506,11 +506,11 @@
             <option value="128">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongWind"/><span>Kong of revealed Wind</span></label>
-    </li>
-    <li class="none" name="revealedKongWind">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongWind"/><span>Kong of revealed Wind</span></label>
+                    </li>
+                    <li class="none" name="revealedKongWind">
         <span class="button icon-dialog">
         <select id="revealedKongWind">
             <option value="0" selected>0</option>
@@ -520,11 +520,11 @@
             <option value="64">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxKongWind"/><span>Kong of <em>hidden Wind</em></span></label>
-    </li>
-    <li class="none" name="kongWind">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxKongWind"/><span>Kong of <em>hidden Wind</em></span></label>
+                    </li>
+                    <li class="none" name="kongWind">
         <span class="button icon-dialog">
         <select id="kongWind">
             <option value="0" selected>0</option>
@@ -534,11 +534,11 @@
             <option value="128">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongDragon"/><span>Kong of revealed Dragon</span></label>
-    </li>
-    <li class="none" name="revealedKongDragon">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxRevealedKongDragon"/><span>Kong of revealed Dragon</span></label>
+                    </li>
+                    <li class="none" name="revealedKongDragon">
         <span class="button icon-dialog">
         <select id="revealedKongDragon">
             <option value="0" selected>0</option>
@@ -548,11 +548,11 @@
             <option value="64">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxKongDragon"/><span>Kong of <em>hidden Dragon</em></span></label>
-    </li>
-    <li class="none" name="kongDragon">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxKongDragon"/><span>Kong of <em>hidden Dragon</em></span></label>
+                    </li>
+                    <li class="none" name="kongDragon">
         <span class="button icon-dialog">
         <select id="kongDragon">
             <option value="0" selected>0</option>
@@ -562,17 +562,17 @@
             <option value="128">4</option>
         </select>
         </span>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungPlayerWind"/><span>Kong/Pung of Player Wind</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungDominantWind"/><span>Kong/Pung of Dominant Wind</span></label>
-    </li>
-    <li class="allday">
-        <label class="pack-checkbox"><input type="checkbox" id="boxKongPungDragon"/><span>Kong/Pung of Dragon</span></label>
-    </li>
-    <li class="none" name="kongPungDragon">
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungPlayerWind"/><span>Kong/Pung of Player Wind</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" value="1" id="kongPungDominantWind"/><span>Kong/Pung of Dominant Wind</span></label>
+                    </li>
+                    <li class="allday">
+                        <label class="pack-checkbox"><input type="checkbox" id="boxKongPungDragon"/><span>Kong/Pung of Dragon</span></label>
+                    </li>
+                    <li class="none" name="kongPungDragon">
         <span class="button icon-dialog">
         <select id="kongPungDragon">
             <option value="0" selected>0</option>
@@ -581,20 +581,20 @@
             <option value="3">3</option>
         </select>
         </span>
-    </li>
-    </ol>
-</fieldset>
-</form>
-</section>
+                    </li>
+                </ol>
+            </fieldset>
+        </form>
+    </section>
 </section>
 
 <section id="settings" role="region" class="skin-dark left" data-position="left">
     <header>
-    <menu type="toolbar">
-      <a id="btn-settings-hide"><span class="icon icon-menu">hide settings</span></a>
-    </menu>
-    <h1>Settings</h1>
-  </header>
+        <menu type="toolbar">
+            <a id="btn-settings-hide"><span class="icon icon-menu">hide settings</span></a>
+        </menu>
+        <h1>Settings</h1>
+    </header>
     <section data-type="list">
         <ul>
             <li><a id="btn-rules-show"><p>Rules</p></a></li>
@@ -675,7 +675,7 @@
             <span class="credit-sub">Application development</span>
             <p>
                 <span class="it"><em>Christophe Bastin, Florie Depuiset</em> with greatest thanks to Jonathan Verdy for preliminary version</span>
-             </p>
+            </p>
             <span class="credit-sub">Icon design</span>
             <p>
                 <span class="it"><em>Oriana Depuiset</em></span>
