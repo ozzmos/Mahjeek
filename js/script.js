@@ -149,13 +149,13 @@
 
         document.querySelector("#checkFlowersSeasons").addEventListener("change", function() {
             if (document.querySelector("#checkFlowersSeasons").checked == true) {
-                document.querySelector("fieldset[id='mahjongmahjong']").className = 'allday';
+                document.querySelector("div[id='mahjongmahjong']").className = 'allday';
             } else if (document.querySelector("#checkFlowersSeasons").checked == false) {
                 document.getElementById("flowersSeasons").selectedIndex = 0;
                 document.getElementById("flowerOrSeason").checked = false;
                 document.getElementById("flowerAndSeason").checked = false;
                 document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
-                document.querySelector("fieldset[id='mahjongmahjong']").className = 'none';
+                document.querySelector("div[id='mahjongmahjong']").className = 'none';
             }
         });
 
@@ -166,7 +166,7 @@
                 for (var x=0; x<elmts.length; x++) {
                     elmts[x].className = "allday";
                 }
-                var elements = document.querySelectorAll("fieldset[name='bonusMahjong'] > li");
+                var elements = document.querySelectorAll("div[name='bonusMahjong'] > li");
                 if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
                     for (var i = 0; i <elements.length; ++i) {
                         elements[i].classList.remove("allday");
@@ -210,7 +210,7 @@
 
 
         document.querySelector("#typeMahjong").addEventListener("change", function () {
-            var elements = document.querySelectorAll("fieldset[name='bonusMahjong'] > li");
+            var elements = document.querySelectorAll("div[name='bonusMahjong'] > li");
             if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
                for (var i = 0; i <elements.length; ++i) {
                     elements[i].classList.remove("allday");
@@ -285,13 +285,13 @@
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
             if (document.querySelector("#checkMahjong").checked == true) {
-                document.querySelector("fieldset[name='complementsForScore']").className = 'allday';
+                document.querySelector("div[name='complementsForScore']").className = 'allday';
             } else if (document.querySelector("#checkMahjong").checked == false) {
                 var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".allday");
                 for (var x=0; x<(elmts.length-1); x++) {
                     elmts[x].className = "none";
                 }
-                document.querySelector("fieldset[name='complementsForScore']").className = 'none';
+                document.querySelector("div[name='complementsForScore']").className = 'none';
                 document.getElementById("mahjong").selectedIndex = 0;
                 document.getElementById("reachMahjong").selectedIndex = 0;
                 document.getElementById("typeMahjong").selectedIndex = 0;
