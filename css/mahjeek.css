@@ -19,11 +19,6 @@ select {
     background: none repeat 0 0 transparent;
 }
 
-
-#page {
-    /*padding: 40px 15px;*/
-}
-
 a{
     text-decoration: none;
 }
@@ -43,32 +38,9 @@ a{
     color: #FFF;
 }
 
-
-
-#home ul li a p {
-    /*font-size: 1.6rem;*/
-}
-
-#Tableau {
-	background-color:#968552;
-	position:absolute;
-	top:0;
-	left:50%;
-}
-
 .error {
     color:#ff0000;
     text-align:center;
-}
-
-
-#list-games {
-}
-
-.game-date {
-    font-size: 1.3rem;
-    /*display: block;*/
-    color: #777777;
 }
 
 .main-scroll {
@@ -78,10 +50,6 @@ a{
 
 form {
     margin: 1rem 1.5rem;
-}
-
-form ol li {
-    margin:5px 0;
 }
 
 ul li > label {
@@ -118,8 +86,6 @@ ul li > label.pack-switch > input ~ span:after {
   right: 0;
 }
 
-
-
 #settings ul li {
     width: 100%;
     border-bottom: 0.1rem solid #596068;
@@ -146,12 +112,9 @@ ul li > label.pack-switch > input ~ span:after {
     text-decoration: none;
 }
 
-
 #rules div {
     margin:1rem;
 }
-
-
 
 #rules p {
     font-size: 1.6rem;
@@ -220,23 +183,12 @@ section[role="region"][data-position="left"] {
     position: absolute;
 }
 
-/*[data-position="right"]{
-    position: absolute;
-    left: 0;
-    top: 0;
-    right:0;
-    bottom:0;
-    *//*z-index: 100;*//*
-    transform: translateX(100%);
-}*/
-
 #edit-game footer {
     padding-top: 0.7rem;
     margin: 1rem 1.5rem;
     border-top: 0.1rem solid #DBDBDB;
 }
 
-/* Fieldset */
 fieldset {
   position: relative;
   overflow: hidden;
@@ -248,13 +200,8 @@ fieldset {
   line-height: 1em;
 }
 
-.none {
-  display: none;
-}
-
 em {
 font-style: normal;
-/*text-decoration: underline;*/
 font-weight: 500;
 }
 

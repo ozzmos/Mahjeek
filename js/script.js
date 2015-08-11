@@ -8,8 +8,12 @@
     var current_game;
     var current_game_id;
 
+    var ul_li_mahjongmahjong = document.getElementById("mahjongmahjong").querySelectorAll("ul li");
+    var div_bonusMahjong_li = document.querySelectorAll("div[name='bonusMahjong'] li");
+    var div_complementsForScore_li_name = document.querySelectorAll("div[id='complementsForScore'] li[name]");
 
     function addEventListeners () {
+
 
         // HOME VIEW
         document.querySelector("#btn-home-add").addEventListener("click", function () {
@@ -59,6 +63,33 @@
             document.querySelector("#edit-game").className = 'rightToCurrent';
         });
 
+        document.querySelector("#player1-hand-input").addEventListener("click", function () {
+            resetPage();
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
+        });
+
+        document.querySelector("#player2-hand-input").addEventListener("click", function () {
+            resetPage();
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
+        });
+
+        document.querySelector("#player3-hand-input").addEventListener("click", function () {
+            resetPage();
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
+        });
+
+        document.querySelector("#player4-hand-input").addEventListener("click", function () {
+            resetPage();
+            shCalculationGame(this);
+            document.querySelector("#current-game").className = 'currentToLeft';
+            document.querySelector("#calculation-game").className = 'rightToCurrent';
+        });
 
         // EDIT GAME VIEW
         document.querySelector("#btn-edit-game-cancel").addEventListener("click", function () {
@@ -80,42 +111,10 @@
             document.querySelector("#current-game").className = 'rightToCurrent';
         });
 
-        // CURRENT GAME VIEW
-        document.querySelector("#player1-hand-input").addEventListener("click", function () {
-            resetCalculationFormValues();
-            resetCalculationForm();
-            shCalculationGame(this);
-            document.querySelector("#current-game").className = 'currentToLeft';
-            document.querySelector("#calculation-game").className = 'rightToCurrent';
-        });
-
-        document.querySelector("#player2-hand-input").addEventListener("click", function () {
-            resetCalculationFormValues();
-            resetCalculationForm();
-            shCalculationGame(this);
-            document.querySelector("#current-game").className = 'currentToLeft';
-            document.querySelector("#calculation-game").className = 'rightToCurrent';
-        });
-
-        document.querySelector("#player3-hand-input").addEventListener("click", function () {
-            resetCalculationFormValues();
-            resetCalculationForm();
-            shCalculationGame(this);
-            document.querySelector("#current-game").className = 'currentToLeft';
-            document.querySelector("#calculation-game").className = 'rightToCurrent';
-        });
-
-        document.querySelector("#player4-hand-input").addEventListener("click", function () {
-            resetCalculationFormValues();
-            resetCalculationForm();
-            shCalculationGame(this);
-            document.querySelector("#current-game").className = 'currentToLeft';
-            document.querySelector("#calculation-game").className = 'rightToCurrent';
-        });
-
         // CALCULATION GAME VIEW
         document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
             calcul();
+            resetPage();
             document.querySelector("#calculation-game").className = 'currentToRight';
             document.querySelector("#current-game").className = 'leftToCurrent';
         });
@@ -123,59 +122,49 @@
         document.querySelector("#btn-calculation-game-cancel").addEventListener("click", function () {
             document.querySelector("#calculation-game").className = 'currentToRight';
             document.querySelector("#current-game").className = 'leftToCurrent';
-            resetCalculationFormValues();
+            resetPage();
         });
 
-        /*Additions by Florie in CALCULATION GAME VIEW*/
         document.querySelector("#flowersSeasons").addEventListener("change", function() {
             document.getElementById("flowerOrSeason").checked = false;
             document.getElementById("flowerAndSeason").checked = false;
             document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
             if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 1) {
-                document.querySelector("li[name='flowerOrSeason']").style.display = 'block';
-                document.querySelector("li[name='flowerAndSeason']").className = 'none';
-                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").style.display = 'inline';
+                document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 2 ||
                 parseInt(document.getElementById("flowersSeasons").selectedIndex) == 3){
-                document.querySelector("li[name='flowerOrSeason']").style.display = 'block';
-                document.querySelector("li[name='flowerAndSeason']").style.display = 'block';
-                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").style.display = 'inline';
+                document.querySelector("li[name='flowerAndSeason']").style.display = 'inline';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) >= 4) {
-                document.querySelector("li[name='flowerOrSeason']").style.display = 'block';
-                document.querySelector("li[name='flowerAndSeason']").style.display = 'block';
-                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'block';
+                document.querySelector("li[name='flowerOrSeason']").style.display = 'inline';
+                document.querySelector("li[name='flowerAndSeason']").style.display = 'inline';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'inline';
             } else if (parseInt(document.getElementById("flowersSeasons").selectedIndex) == 0) {
-                document.querySelector("li[name='flowerOrSeason']").className = 'none';
-                document.querySelector("li[name='flowerAndSeason']").className = 'none';
-                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").className = 'none';
+                document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
+                document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
+                document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
             }
         });
 
         document.querySelector("#checkFlowersSeasons").addEventListener("change", function() {
             if (document.querySelector("#checkFlowersSeasons").checked == true) {
-                document.querySelector("div[id='mahjongmahjong']").style.display = 'block';
+                document.getElementById("mahjongmahjong").style.display = 'block';
             } else if (document.querySelector("#checkFlowersSeasons").checked == false) {
                 document.getElementById("flowersSeasons").selectedIndex = 0;
                 document.getElementById("flowerOrSeason").checked = false;
                 document.getElementById("flowerAndSeason").checked = false;
                 document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
-                document.querySelector("div[id='mahjongmahjong']").className = 'none';
+                document.getElementById("mahjongmahjong").style.display = 'none';
             }
         });
 
-        /* What is this Mahjong */
         document.querySelector("#mahjong").addEventListener("change", function() {
             if (parseInt(document.querySelector("#mahjong").selectedIndex) == 1) {
-                var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".none");
-                for (var x=0; x<elmts.length; x++) {
-                    elmts[x].className = "allday";
-                }
-                var elements = document.querySelectorAll("div[name='bonusMahjong'] > li");
-                if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
-                    for (var i = 0; i <elements.length; ++i) {
-                        elements[i].classList.remove("allday");
-                        elements[i].classList.add("none");
-                    }
+                for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
+                    ul_li_mahjongmahjong[x].style.display = 'inline';
                 }
                 document.getElementById("reachMahjong").selectedIndex = 0;
                 document.getElementById("typeMahjong").selectedIndex = 0;
@@ -191,9 +180,8 @@
                 document.getElementById("nineArks").checked = false;
                 document.getElementById("worthy").checked = false;
             } else if (parseInt(document.querySelector("#mahjong").selectedIndex) == 0) {
-                var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".allday");
-                for (var x=0; x<(elmts.length-1); x++) {
-                    elmts[x].className = "none";
+                for (var x=1; x<ul_li_mahjongmahjong.length-1; x++) {
+                    ul_li_mahjongmahjong[x].style.display = 'none';
                 }
                 document.getElementById("reachMahjong").selectedIndex = 0;
                 document.getElementById("typeMahjong").selectedIndex = 0;
@@ -211,91 +199,81 @@
             }
         });
 
-
-
         document.querySelector("#typeMahjong").addEventListener("change", function () {
-            var elements = document.querySelectorAll("div[name='bonusMahjong'] > li");
             if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
-               for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.remove("allday");
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 1) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.remove("none");
-                    elements[i].classList.add("allday");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'inline';
                 }
-
+                div_bonusMahjong_li[9].style.display = 'none';
+                div_bonusMahjong_li[10].style.display = 'none';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 2) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length-1;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
-                document.querySelector("#pureHand").classList.remove("none");
-                document.querySelector("#pureHand").classList.add("allday");
-                document.querySelector("#wok").classList.remove("none");
-                document.querySelector("#wok").classList.add("allday");
-                document.querySelector("#hulk").classList.remove("none");
-                document.querySelector("#hulk").classList.add("allday");
-                document.querySelector("#yinYang").classList.remove("none");
-                document.querySelector("#yinYang").classList.add("allday");
-                document.querySelector("#honorable").classList.remove("none");
-                document.querySelector("#honorable").classList.add("allday");
+                div_bonusMahjong_li[2].style.display = 'inline';
+                div_bonusMahjong_li[3].style.display = 'inline';
+                div_bonusMahjong_li[4].style.display = 'inline';
+                div_bonusMahjong_li[5].style.display = 'inline';
+                div_bonusMahjong_li[7].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 3) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
-                document.querySelector("#nineArks").classList.remove("none");
-                document.querySelector("#nineArks").classList.add("allday");
+                div_bonusMahjong_li[9].style.display = 'inline';
             }
              else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 4) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
-                document.querySelector("#worthy").classList.remove("none");
-                document.querySelector("#worthy").classList.add("allday");
+                div_bonusMahjong_li[10].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 5) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
-                document.querySelector("#noChow").classList.remove("none");
-                document.querySelector("#noChow").classList.add("allday");
-                document.querySelector("#pureHand").classList.remove("none");
-                document.querySelector("#pureHand").classList.add("allday");
-                document.querySelector("#hidden").classList.remove("none");
-                document.querySelector("#hidden").classList.add("allday");
-                document.querySelector("#kingKong").classList.remove("none");
-                document.querySelector("#kingKong").classList.add("allday");
-                document.querySelector("#honorable").classList.remove("none");
-                document.querySelector("#honorable").classList.add("allday");
+                div_bonusMahjong_li[0].style.display = 'inline';
+                div_bonusMahjong_li[3].style.display = 'inline';
+                div_bonusMahjong_li[6].style.display = 'inline';
+                div_bonusMahjong_li[7].style.display = 'inline';
+                div_bonusMahjong_li[8].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 6) {
-                for (var i = 0; i <elements.length; ++i) {
-                    elements[i].classList.add("none");
+                for (var x=0; x<div_bonusMahjong_li.length;x++) {
+                    div_bonusMahjong_li[x].style.display = 'none';
                 }
-                document.querySelector("#pureHand").classList.remove("none");
-                document.querySelector("#pureHand").classList.add("allday");
-                document.querySelector("#hidden").classList.remove("none");
-                document.querySelector("#hidden").classList.add("allday");
-                document.querySelector("#kingKong").classList.remove("none");
-                document.querySelector("#kingKong").classList.add("allday");
-                document.querySelector("#honorable").classList.remove("none");
-                document.querySelector("#honorable").classList.add("allday");
+                div_bonusMahjong_li[3].style.display = 'inline';
+                div_bonusMahjong_li[6].style.display = 'inline';
+                div_bonusMahjong_li[7].style.display = 'inline';
+                div_bonusMahjong_li[8].style.display = 'inline';
             }
         });
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
             if (document.querySelector("#checkMahjong").checked == true) {
-                document.querySelector("div[name='complementsForScore']").style.display = 'block';
+                document.querySelector("div[id='complementsForScore']").style.display = 'block';
+                /*if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2)
+                    var ee = document.querySelectorAll("div[id='complementsForScore'] ul li\:not(\:nth-child(-n+3))");
+                    for (x=0; x<ee.length; x++) {
+                        ee[x].style.display = 'none';
+                    }
+                /*} else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
+                    var ee = document.querySelectorAll("div[id='complementsForScore'] ul li\:not(\:nth-child(-n+3))");
+                    for (x=0; x<ee.length; x++) {
+                        ee[x].style.display = 'none';
+                    }
+                }*/
             } else if (document.querySelector("#checkMahjong").checked == false) {
-                var elmts = document.getElementById("mahjongmahjong").querySelectorAll(".allday");
-                for (var x=0; x<(elmts.length-1); x++) {
-                    elmts[x].className = "none";
+                for (var x=1; x<(ul_li_mahjongmahjong.length-1); x++) {
+                    ul_li_mahjongmahjong[x].style.display = 'none';
                 }
-                document.querySelector("div[name='complementsForScore']").className = 'none';
+                document.querySelector("div[id='complementsForScore']").style.display = 'none';
                 document.getElementById("mahjong").selectedIndex = 0;
                 document.getElementById("reachMahjong").selectedIndex = 0;
                 document.getElementById("typeMahjong").selectedIndex = 0;
@@ -316,164 +294,163 @@
 
         document.querySelector("#boxPairDragon").addEventListener("change", function () {
             if (document.querySelector("#boxPairDragon").checked == true) {
-                document.querySelector("li[name='pairDragon']").style.display = 'block';
+                document.querySelector("li[name='pairDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxPairDragon").checked == false) {
-                document.querySelector("li[name='pairDragon']").className = 'none';
+                document.querySelector("li[name='pairDragon']").style.display = 'none';
                 document.getElementById("pairDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungMinor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungMinor").checked == true) {
-                document.querySelector("li[name='revealedPungMinor']").style.display = 'block';
+                document.querySelector("li[name='revealedPungMinor']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedPungMinor").checked == false) {
-                document.querySelector("li[name='revealedPungMinor']").className = 'none';
+                document.querySelector("li[name='revealedPungMinor']").style.display = 'none';
                 document.getElementById("revealedPungMinor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungMinor").addEventListener("change", function () {
             if (document.querySelector("#boxPungMinor").checked == true) {
-                document.querySelector("li[name='pungMinor']").style.display = 'block';
+                document.querySelector("li[name='pungMinor']").style.display = 'inline';
             } else if (document.querySelector("#boxPungMinor").checked == false) {
-                document.querySelector("li[name='pungMinor']").className = 'none';
+                document.querySelector("li[name='pungMinor']").style.display = 'none';
                 document.getElementById("pungMinor").selectedIndex = 0;
             }
         });
         document.querySelector("#boxRevealedPungMajor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungMajor").checked == true) {
-                document.querySelector("li[name='revealedPungMajor']").style.display = 'block';
+                document.querySelector("li[name='revealedPungMajor']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedPungMajor").checked == false) {
-                document.querySelector("li[name='revealedPungMajor']").className = 'none';
+                document.querySelector("li[name='revealedPungMajor']").style.display = 'none';
                 document.getElementById("revealedPungMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungMajor").addEventListener("change", function () {
             if (document.querySelector("#boxPungMajor").checked == true) {
-                document.querySelector("li[name='pungMajor']").style.display = 'block';
+                document.querySelector("li[name='pungMajor']").style.display = 'inline';
             } else if (document.querySelector("#boxPungMajor").checked == false) {
-                document.querySelector("li[name='pungMajor']").className = 'none';
+                document.querySelector("li[name='pungMajor']").style.display = 'none';
                 document.getElementById("pungMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungWind").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungWind").checked == true) {
-                document.querySelector("li[name='revealedPungWind']").style.display = 'block';
+                document.querySelector("li[name='revealedPungWind']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedPungWind").checked == false) {
-                document.querySelector("li[name='revealedPungWind']").className = 'none';
+                document.querySelector("li[name='revealedPungWind']").style.display = 'none';
                 document.getElementById("revealedPungWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungWind").addEventListener("change", function () {
             if (document.querySelector("#boxPungWind").checked == true) {
-                document.querySelector("li[name='pungWind']").style.display = 'block';
+                document.querySelector("li[name='pungWind']").style.display = 'inline';
             } else if (document.querySelector("#boxPungWind").checked == false) {
-                document.querySelector("li[name='pungWind']").className = 'none';
+                document.querySelector("li[name='pungWind']").style.display = 'none';
                 document.getElementById("pungWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedPungDragon").checked == true) {
-                document.querySelector("li[name='revealedPungDragon']").style.display = 'block';
+                document.querySelector("li[name='revealedPungDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedPungDragon").checked == false) {
-                document.querySelector("li[name='revealedPungDragon']").className = 'none';
+                document.querySelector("li[name='revealedPungDragon']").style.display = 'none';
                 document.getElementById("revealedPungDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxPungDragon").checked == true) {
-                document.querySelector("li[name='pungDragon']").style.display = 'block';
+                document.querySelector("li[name='pungDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxPungDragon").checked == false) {
-                document.querySelector("li[name='pungDragon']").className = 'none';
+                document.querySelector("li[name='pungDragon']").style.display = 'none';
                 document.getElementById("pungDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongMinor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongMinor").checked == true) {
-                document.querySelector("li[name='revealedKongMinor']").style.display = 'block';
+                document.querySelector("li[name='revealedKongMinor']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedKongMinor").checked == false) {
-                document.querySelector("li[name='revealedKongMinor']").className = 'none';
+                document.querySelector("li[name='revealedKongMinor']").style.display = 'none';
                 document.getElementById("revealedKongMinor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongMinor").addEventListener("change", function () {
             if (document.querySelector("#boxKongMinor").checked == true) {
-                document.querySelector("li[name='kongMinor']").style.display = 'block';
+                document.querySelector("li[name='kongMinor']").style.display = 'inline';
             } else if (document.querySelector("#boxKongMinor").checked == false) {
-                document.querySelector("li[name='kongMinor']").className = 'none';
+                document.querySelector("li[name='kongMinor']").style.display = 'none';
                 document.getElementById("kongMinor").selectedIndex = 0;
             }
         });
         document.querySelector("#boxRevealedKongMajor").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongMajor").checked == true) {
-                document.querySelector("li[name='revealedKongMajor']").style.display = 'block';
+                document.querySelector("li[name='revealedKongMajor']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedKongMajor").checked == false) {
-                document.querySelector("li[name='revealedKongMajor']").className = 'none';
+                document.querySelector("li[name='revealedKongMajor']").style.display = 'none';
                 document.getElementById("revealedKongMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongMajor").addEventListener("change", function () {
             if (document.querySelector("#boxKongMajor").checked == true) {
-                document.querySelector("li[name='kongMajor']").style.display = 'block';
+                document.querySelector("li[name='kongMajor']").style.display = 'inline';
             } else if (document.querySelector("#boxKongMajor").checked == false) {
-                document.querySelector("li[name='kongMajor']").className = 'none';
+                document.querySelector("li[name='kongMajor']").style.display = 'none';
                 document.getElementById("kongMajor").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongWind").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongWind").checked == true) {
-                document.querySelector("li[name='revealedKongWind']").style.display = 'block';
+                document.querySelector("li[name='revealedKongWind']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedKongWind").checked == false) {
-                document.querySelector("li[name='revealedKongWind']").className = 'none';
+                document.querySelector("li[name='revealedKongWind']").style.display = 'none';
                 document.getElementById("revealedKongWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongWind").addEventListener("change", function () {
             if (document.querySelector("#boxKongWind").checked == true) {
-                document.querySelector("li[name='kongWind']").style.display = 'block';
+                document.querySelector("li[name='kongWind']").style.display = 'inline';
             } else if (document.querySelector("#boxKongWind").checked == false) {
-                document.querySelector("li[name='kongWind']").className = 'none';
+                document.querySelector("li[name='kongWind']").style.display = 'none';
                 document.getElementById("kongWind").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxRevealedKongDragon").addEventListener("change", function () {
             if (document.querySelector("#boxRevealedKongDragon").checked == true) {
-                document.querySelector("li[name='revealedKongDragon']").style.display = 'block';
+                document.querySelector("li[name='revealedKongDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxRevealedKongDragon").checked == false) {
-                document.querySelector("li[name='revealedKongDragon']").className = 'none';
+                document.querySelector("li[name='revealedKongDragon']").style.display = 'none';
                 document.getElementById("revealedKongDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongDragon").addEventListener("change", function () {
             if (document.querySelector("#boxKongDragon").checked == true) {
-                document.querySelector("li[name='kongDragon']").style.display = 'block';
+                document.querySelector("li[name='kongDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxKongDragon").checked == false) {
-                document.querySelector("li[name='kongDragon']").className = 'none';
+                document.querySelector("li[name='kongDragon']").style.display = 'none';
                 document.getElementById("kongDragon").selectedIndex = 0;
             }
         });
 
         document.querySelector("#boxKongPungDragon").addEventListener("change", function () {
             if (document.querySelector("#boxKongPungDragon").checked == true) {
-                document.querySelector("li[name='kongPungDragon']").style.display = 'block';
+                document.querySelector("li[name='kongPungDragon']").style.display = 'inline';
             } else if (document.querySelector("#boxKongPungDragon").checked == false) {
-                document.querySelector("li[name='kongPungDragon']").className = 'none';
+                document.querySelector("li[name='kongPungDragon']").style.display = 'none';
                 document.getElementById("kongPungDragon").selectedIndex = 0;
             }
         });
-        /*End of additions by Florie*/
 
         // SETTINGS VIEW
         document.querySelector("#btn-settings-hide").addEventListener("click", function () {
@@ -572,14 +549,12 @@
                     document.getElementById("g-list").appendChild(gameElement);
                 }
 
-
                 // move to the next item in the cursor
                 cursor.continue();
             }
         };
         console.log("games listed !");
     }
-
 
     function checkNewGameForm() {
         if(!document.getElementById("gameName").value) {
@@ -594,7 +569,6 @@
     function formatDate(d) {
         var day;
         var month;
-
         if(d.getDate() < 10){
             day = "0" + d.getDate();
         }
@@ -602,12 +576,11 @@
             day = d.getDate();
         }
         if(d.getMonth() < 10){
-            month = "0" + d.getMonth();
+            month = "0" + (d.getMonth()+1);
         }
         else{
-            month = d.getMonth();
+            month = d.getMonth()+1;
         }
-
         return day + "/" + month + "/" + d.getFullYear();
     }
 
@@ -663,8 +636,6 @@
         value.player3 = player3;
         value.player4 = player4;
 
-
-
         var store = transaction.objectStore('game');
         var request = store.add(value);
         request.onsuccess = function (e) {
@@ -719,7 +690,6 @@
             current_game = game_result;
             current_game_id = game_id;
 
-
             document.getElementById("player1_value").innerHTML = "East Wind - Player 1 : " + current_game.player1.name;
             document.getElementById("player2_value").innerHTML = "South Wind - Player 2 : " + current_game.player2.name;
             document.getElementById("player3_value").innerHTML = "West Wind - Player 3 : " + current_game.player3.name;
@@ -769,7 +739,6 @@
             current_game.player3.name = player3_name;
             current_game.player4.name = player4_name;
 
-
             // Push the object in the database
             var requestUpdate = objectStore.put(data);
             requestUpdate.onerror = function(event) {
@@ -797,6 +766,11 @@
             console.log("delete error…");
             console.log(e);
         }
+
+        document.getElementById("player1-hand-input").disabled = false;
+        document.getElementById("player2-hand-input").disabled = false;
+        document.getElementById("player3-hand-input").disabled = false;
+        document.getElementById("player4-hand-input").disabled = false;
     }
 
     function shCalculationGame(input) {
@@ -806,23 +780,7 @@
 
     }
 
-    function resetCalculationForm() {
-        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
-        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
-        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
-        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
-        //var elements = document.querySelectorAll("div[name='bonusMahjong'] > li");
-        //for (var i = 0; i <elements.length; ++i) {
-        //    elements[i].style.display = 'none';
-        //}
-        document.querySelector("div[name='complementsForScore']").style.display = 'none';
-
-
-
-
-    }
-
-    function resetCalculationFormValues() {/*modified by Florie for new form of july 2015*/
+    function resetPage() {
         document.getElementById("flowersSeasons").selectedIndex = 0;
         document.getElementById("flowerOrSeason").checked = false;
         document.getElementById("flowerAndSeason").checked = false;
@@ -884,11 +842,23 @@
         document.getElementById("kongPungDominantWind").checked = false;
         document.getElementById("boxKongPungDragon").checked = false;
         document.getElementById("kongPungDragon").selectedIndex = 0;
+        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
+        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
+        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
+        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
+        for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
+            ul_li_mahjongmahjong[x].style.display = 'none';
+        }
+        for (var x=0; x<div_bonusMahjong_li.length;x++) {
+            div_bonusMahjong_li[x].style.display = 'none';
+        }
+        document.querySelector("div[id='complementsForScore']").style.display = 'none';
+        for (var x=0; x<div_complementsForScore_li_name.length;x++) {
+            div_complementsForScore_li_name[x].style.display = 'none';
+        }
     }
 
-    function calcul() {//modified by Florie following new rules of calculations, Ids…
-//            resetPage(); problème!
-//intégrer le cachage des allday en none
+    function calcul() {
             var points = 0;
             var multiplicateur = 0;
 
@@ -917,89 +887,89 @@
             }
             if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 1) {
                 if (document.getElementById("noChow").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#noChow").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
                 }
                 if (document.getElementById("fourChows").checked == true) {
-                    points = points + parseInt(document.getElementById("#fourChows").value);
+                    points = points + parseInt(document.getElementById("fourChows").value);
                 }
                 if (document.getElementById("wok").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
                 }
                 if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
                 }
                 if (document.getElementById("yinYang").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#yinYang").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
                 }
                 if (document.getElementById("hulk").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#hulk").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
                 }
                 if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#hidden").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
                 }
                 if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#honorable").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
                 }
                 if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#kingKong").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
                 }
             } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2) {
                 multiplicateur = multiplicateur + 3;
                 if (document.getElementById("wok").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
                 }
                 if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
                 }
                 if (document.getElementById("yinYang").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#yinYang").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
                 }
                 if (document.getElementById("hulk").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#hulk").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
                 }
                 if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#honorable").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
                 }
             } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
                 multiplicateur = multiplicateur + 5;
                 if (document.getElementById("nineArks").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#nineArks").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("nineArks").value);
                 }
             } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 4) {
                 multiplicateur = multiplicateur + 4;
                 if (document.getElementById("worthy").checked == true) {
-                    points = points + parseInt(document.getElementById("#worthy").value);
+                    points = points + parseInt(document.getElementById("worthy").value);
                 }
             } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 5) {
                 multiplicateur = multiplicateur + 1;
                 if (document.getElementById("noChow").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#noChow").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
                 }
                 if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
                 }
                 if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#hidden").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
                 }
                 if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#honorable").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
                 }
                 if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#kingKong").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
                 }
             } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 6) {
                 multiplicateur = multiplicateur + 2;
                 if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#fourChows").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
                 }
                 if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#hidden").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
                 }
                 if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#honorable").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
                 }
                 if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("#kingKong").value);
+                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
                 }
             }
 
@@ -1173,8 +1143,6 @@
                         break;
                 }
 
-
-
                 // Push the object in the database
                 var requestUpdate = objectStore.put(data);
                 requestUpdate.onerror = function(event) {
@@ -1192,4 +1160,3 @@ initializeDB();
 addEventListeners();
 /* end of IIFE */
 }) ();
-
