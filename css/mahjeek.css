@@ -1,0 +1,223 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+html,body {
+    overflow-x: hidden;   /* fix android horizontal scroll */
+}
+
+body {
+    margin: 0;
+    position: relative;  /* fix android horizontal scroll */
+
+}
+
+select {
+    width: 100%;
+    border: medium none;
+    font-size: 1.7rem;
+    background: none repeat 0 0 transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
+#home,  #about, #rules {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+#new-game, #current-game, #edit-game, #calculation-game {
+    background-color: #F4F4F4;
+    color: #000000;
+}
+
+#settings {
+    background-color: #2C353B;
+    color: #FFF;
+}
+
+.error {
+    color:#ff0000;
+    text-align:center;
+}
+
+.main-scroll {
+    overflow-y: auto;
+    height: calc(100% - 5rem);
+}
+
+form {
+    margin: 1rem 1.5rem;
+}
+
+ul li > label {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+ul li > label > span:after {
+    right: 0;
+    left: auto;
+}
+
+
+input {
+    border:0 none;
+}
+
+ul li > label:not([for]),
+ul li > label.pack-checkbox,
+ul li > label.pack-radio,
+ul li > label.pack-switch {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+ul li > label.pack-checkbox > span:after,
+ul li > label.pack-radio > span:after,
+ul li > label.pack-switch > input ~ span:after {
+  left: auto;
+  right: 0;
+}
+
+#settings ul li {
+    width: 100%;
+    border-bottom: 0.1rem solid #596068;
+    margin:0;
+}
+
+#settings ul li:last-child {
+    border-bottom: none;
+}
+
+#settings ul li a p {
+    color: #FFF;
+    text-decoration: none;
+    font-size:1.6rem;
+
+}
+
+#settings ul li a:hover {
+    cursor: default;
+}
+
+#settings ul li a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#rules div {
+    margin:1rem;
+}
+
+#rules p {
+    font-size: 1.6rem;
+}
+
+#about p {
+    font-size:1.6rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: #000000;
+}
+
+.credit-title {
+    display: block;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.credit-sub {
+    font-size:1.4rem;
+    color:#000000;
+    text-decoration: underline;
+}
+
+#about-rules {
+    text-align: justify;
+    margin: 1rem 1rem 1rem;
+}
+
+#about-credit {
+    margin: 1rem 1rem 1rem;
+    text-align: center;
+}
+
+.it {
+    font-style: italic;
+}
+
+/* cancel section[role="region"] default properties */
+section[role="region"]:not(#drawer) {
+    transition: none 0s ease 0s;
+    left: 0;
+    z-index: 0;
+    padding-left: 0;
+}
+
+#settings > header:first-child {
+    background-color: #2C353B;
+}
+
+#about > header:first-child {
+    background-color: #2C353B;
+}
+
+#rules > header:first-child {
+    background-color: #2C353B;
+}
+
+section[role="region"][data-position="right"] {
+    position: absolute;
+}
+
+section[role="region"][data-position="left"] {
+    position: absolute;
+}
+
+#edit-game footer {
+    padding-top: 0.7rem;
+    margin: 1rem 1.5rem;
+    border-top: 0.1rem solid #DBDBDB;
+}
+
+fieldset {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0.3rem;/*changed from 0 to 0.3rem by Florie*/
+  border-radius: 0.3rem;
+  border: 0.1rem solid rgba(0,0,0,.2);
+  font-size: 1.8rem;
+  line-height: 1em;
+}
+
+em {
+font-style: normal;
+font-weight: 500;
+}
+
+fieldset + fieldset {
+  margin-top: 1.5rem;
+}
+
+fieldset legend {
+  -moz-box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 0.5rem 0 1.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #333;
+  line-height: 4rem;
+}
