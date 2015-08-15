@@ -7,14 +7,11 @@
     var input_player;
     var current_game;
     var current_game_id;
-
     var ul_li_mahjongmahjong = document.getElementById("mahjongmahjong").querySelectorAll("ul li");
     var div_bonusMahjong_li = document.querySelectorAll("div[name='bonusMahjong'] li");
     var div_complementsForScore_li_name = document.querySelectorAll("div[id='complementsForScore'] li[name]");
 
     function addEventListeners () {
-
-
         // HOME VIEW
         document.querySelector("#btn-home-add").addEventListener("click", function () {
             // reset form fields
@@ -113,7 +110,7 @@
 
         // CALCULATION GAME VIEW
         document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
-            calcul();
+            saveScoreToDB();
             resetPage();
             document.querySelector("#calculation-game").className = 'currentToRight';
             document.querySelector("#current-game").className = 'leftToCurrent';
@@ -151,6 +148,8 @@
 
         document.querySelector("#checkFlowersSeasons").addEventListener("change", function() {
             if (document.querySelector("#checkFlowersSeasons").checked == true) {
+                var tempScore = calculScore();
+                alert(tempScore);
                 document.getElementById("mahjongmahjong").style.display = 'block';
             } else if (document.querySelector("#checkFlowersSeasons").checked == false) {
                 document.getElementById("flowersSeasons").selectedIndex = 0;
@@ -158,6 +157,10 @@
                 document.getElementById("flowerAndSeason").checked = false;
                 document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
                 document.getElementById("mahjongmahjong").style.display = 'none';
+                if (document.getElementById("checkMahjong").checked = true) {
+                    resetFormComplements ();
+                }
+                resetFormMahjong ();
             }
         });
 
@@ -180,22 +183,10 @@
                 document.getElementById("nineArks").checked = false;
                 document.getElementById("worthy").checked = false;
             } else if (parseInt(document.querySelector("#mahjong").selectedIndex) == 0) {
-                for (var x=1; x<ul_li_mahjongmahjong.length-1; x++) {
-                    ul_li_mahjongmahjong[x].style.display = 'none';
+                if (document.getElementById("checkMahjong").checked = true) {
+                    resetFormComplements ();
                 }
-                document.getElementById("reachMahjong").selectedIndex = 0;
-                document.getElementById("typeMahjong").selectedIndex = 0;
-                document.getElementById("noChow").checked = false;
-                document.getElementById("fourChows").checked = false;
-                document.getElementById("wok").checked = false;
-                document.getElementById("pureHand").checked = false;
-                document.getElementById("yinYang").checked = false;
-                document.getElementById("hulk").checked = false;
-                document.getElementById("hidden").checked = false;
-                document.getElementById("honorable").checked = false;
-                document.getElementById("kingKong").checked = false;
-                document.getElementById("nineArks").checked = false;
-                document.getElementById("worthy").checked = false;
+                resetFormMahjong ();
             }
         });
 
@@ -257,6 +248,8 @@
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
             if (document.querySelector("#checkMahjong").checked == true) {
+                var tempScore = calculScore();
+                alert(tempScore);
                 document.querySelector("div[id='complementsForScore']").style.display = 'block';
                 /*if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2)
                     var ee = document.querySelectorAll("div[id='complementsForScore'] ul li\:not(\:nth-child(-n+3))");
@@ -270,25 +263,15 @@
                     }
                 }*/
             } else if (document.querySelector("#checkMahjong").checked == false) {
-                for (var x=1; x<(ul_li_mahjongmahjong.length-1); x++) {
-                    ul_li_mahjongmahjong[x].style.display = 'none';
-                }
-                document.querySelector("div[id='complementsForScore']").style.display = 'none';
-                document.getElementById("mahjong").selectedIndex = 0;
-                document.getElementById("reachMahjong").selectedIndex = 0;
-                document.getElementById("typeMahjong").selectedIndex = 0;
-                document.getElementById("noChow").checked = false;
-                document.getElementById("fourChows").checked = false;
-                document.getElementById("wok").checked = false;
-                document.getElementById("pureHand").checked = false;
-                document.getElementById("yinYang").checked = false;
-                document.getElementById("hulk").checked = false;
-                document.getElementById("hidden").checked = false;
-                document.getElementById("honorable").checked = false;
-                document.getElementById("kingKong").checked = false;
-                document.getElementById("nineArks").checked = false;
-                document.getElementById("worthy").checked = false;
-                document.getElementById("checkMahjong").checked = false;
+                resetFormComplements ();
+                resetFormMahjong ();
+            }
+        });
+
+        document.querySelector("#finalCheck").addEventListener("change", function () {
+            if (document.querySelector("#finalCheck").checked == true) {
+                var tempScore = calculScore();
+                alert(tempScore);
             }
         });
 
@@ -649,7 +632,8 @@
             console.log("Your game can\'t be saved : "+ e.value);
         };
 
-        document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
+        document.getElementById("hand").innerHTML = "Hand n° " + value.hand + " / ";
+        document.getElementById("tourWind").innerHTML = 'Tour Wind : East / ';
         document.getElementById("player1_value").innerHTML = "East Wind - Player 1 : " + value.player1.name;
         document.getElementById("player2_value").innerHTML = "South Wind - Player 2 : " +value.player2.name;
         document.getElementById("player3_value").innerHTML = "West Wind - Player 3 : " +value.player3.name;
@@ -781,11 +765,24 @@
     }
 
     function resetPage() {
+        resetFormFlowers ();
+        resetFormMahjong ();
+        resetFormComplements ();
+    }
+
+    function resetFormFlowers () {
         document.getElementById("flowersSeasons").selectedIndex = 0;
         document.getElementById("flowerOrSeason").checked = false;
         document.getElementById("flowerAndSeason").checked = false;
         document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
         document.getElementById("checkFlowersSeasons").checked = false;
+        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
+        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
+        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
+        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
+    }
+
+    function resetFormMahjong () {
         document.getElementById("mahjong").selectedIndex = 0;
         document.getElementById("reachMahjong").selectedIndex = 0;
         document.getElementById("typeMahjong").selectedIndex = 0;
@@ -801,8 +798,19 @@
         document.getElementById("nineArks").checked = false;
         document.getElementById("worthy").checked = false;
         document.getElementById("checkMahjong").checked = false;
+        for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
+            ul_li_mahjongmahjong[x].style.display = 'none';
+        }
+        for (var x=0; x<div_bonusMahjong_li.length;x++) {
+            div_bonusMahjong_li[x].style.display = 'none';
+        }
+        document.querySelector("div[id='complementsForScore']").style.display = 'none';
+    }
+
+    function resetFormComplements () {
         document.getElementById("pairPlayerWind").checked = false;
         document.getElementById("pairDominantWind").checked = false;
+        document.getElementById("pairTourWind").checked = false;
         document.getElementById("boxPairDragon").checked = false;
         document.getElementById("pairDragon").selectedIndex = 0;
         document.getElementById("chow").checked = false;
@@ -842,24 +850,13 @@
         document.getElementById("kongPungDominantWind").checked = false;
         document.getElementById("boxKongPungDragon").checked = false;
         document.getElementById("kongPungDragon").selectedIndex = 0;
-        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
-        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
-        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
-        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
-        for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
-            ul_li_mahjongmahjong[x].style.display = 'none';
-        }
-        for (var x=0; x<div_bonusMahjong_li.length;x++) {
-            div_bonusMahjong_li[x].style.display = 'none';
-        }
         document.querySelector("div[id='complementsForScore']").style.display = 'none';
         for (var x=0; x<div_complementsForScore_li_name.length;x++) {
             div_complementsForScore_li_name[x].style.display = 'none';
         }
-    }
-
-    function calcul() {
-            var points = 0;
+}
+    function calculScore() {
+        var points = 0;
             var multiplicateur = 0;
 
             //Flowers&Seasons
@@ -980,6 +977,9 @@
             if (document.getElementById("pairDominantWind").checked == true) {
                 points = points + parseInt(document.getElementById("pairDominantWind").value);
             }
+            if (document.getElementById("pairTourWind").checked == true) {
+                points = points + parseInt(document.getElementById("pairTourWind").value);
+            }
             if (document.getElementById("boxPairDragon").checked == true) {
                 points = points + parseInt(document.getElementById("pairDragon").selectedIndex)*2;
             }
@@ -1047,7 +1047,11 @@
             //Definitive score
             resultat = (Math.ceil(points/10)*10) * Math.pow(2,multiplicateur);
 
-            input_score.value = resultat;
+            return resultat;
+    }
+
+    function saveScoreToDB() {
+            input_score.value = calculScore();
 
             // Request the database object to update
             var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
@@ -1066,10 +1070,20 @@
                 console.log("Hand player 3 : " + data.player3.hand);
                 console.log("Hand player 4 : " + data.player4.hand);
 
+                if (data.hand < 5) {/*gérer le compteur de main*/
+                document.getElementById("tourWind").innerHTML = 'Tour Wind : East / ';
+                } else if (data.hand < 9) {
+                    document.getElementById("tourWind").innerHTML = 'Tour Wind : South / ';
+                } else if (data.hand < 13) {
+                    document.getElementById("tourWind").innerHTML = 'Tour Wind : West / ';
+                } else if (data.hand < 17) {
+                    document.getElementById("tourWind").innerHTML = 'Tour Wind : North / ';
+                }
+
                 switch(input_player) {
                     case("player1"):
                         // update the values in the object
-                        data.player1.score += resultat;
+                        data.player1.score += input_score.value;
                         data.player1.hand += 1;
 
                         // desactivate input field to prevent cheat
@@ -1088,7 +1102,7 @@
                         break;
                     case("player2"):
                         // update the values in the object
-                        data.player2.score += resultat;
+                        data.player2.score += input_score.value;
                          data.player2.hand += 1;
 
                         // desactivate input field to prevent cheat
@@ -1107,7 +1121,7 @@
                         break;
                     case("player3"):
                         // update the values in the object
-                        data.player3.score += resultat;
+                        data.player3.score += input_score.value;
                         data.player3.hand += 1;
                         // desactivate input field to prevent cheat
                         document.getElementById("player3-hand-input").disabled = true;
@@ -1125,7 +1139,7 @@
                         break;
                     case("player4"):
                         // update the values in the object
-                        data.player4.score += resultat;
+                        data.player4.score += input_score.value;
                         data.player4.hand += 1;
                         // desactivate input field to prevent cheat
                         document.getElementById("player4-hand-input").disabled = true;
