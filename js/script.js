@@ -8,13 +8,7 @@
     var current_game;
     var current_game_id;
 
-    var ul_li_mahjongmahjong = document.getElementById("mahjongmahjong").querySelectorAll("ul li");
-    var div_bonusMahjong_li = document.querySelectorAll("div[name='bonusMahjong'] li");
-    var div_complementsForScore_li_name = document.querySelectorAll("div[id='complementsForScore'] li[name]");
-
     function addEventListeners () {
-
-
         // HOME VIEW
         document.querySelector("#btn-home-add").addEventListener("click", function () {
             // reset form fields
@@ -58,9 +52,22 @@
         });
 
         document.querySelector("#btn-current-game-edit").addEventListener("click", function () {
-
             document.querySelector("#current-game").className = 'currentToLeft';
             document.querySelector("#edit-game").className = 'rightToCurrent';
+        });
+
+        document.querySelector("#chooseDominantWind").addEventListener("change", function () {
+            temp = parseInt(document.querySelector("#chooseDominantWind").selectedIndex);
+            if (temp == 1) {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : East";
+            } else if (temp == 2) {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : South";
+            } else if (temp == 3) {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : West";
+            } else if (temp == 4) {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : North";
+            }
+            saveDominantWind(temp);
         });
 
         document.querySelector("#player1-hand-input").addEventListener("click", function () {
@@ -113,7 +120,7 @@
 
         // CALCULATION GAME VIEW
         document.querySelector("#btn-calculation-game-done").addEventListener("click", function () {
-            calcul();
+            saveScoreToDB();
             resetPage();
             document.querySelector("#calculation-game").className = 'currentToRight';
             document.querySelector("#current-game").className = 'leftToCurrent';
@@ -158,11 +165,16 @@
                 document.getElementById("flowerAndSeason").checked = false;
                 document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
                 document.getElementById("mahjongmahjong").style.display = 'none';
+                if (document.getElementById("checkMahjong").checked = true) {
+                    resetFormComplements ();
+                }
+                resetFormMahjong ();
             }
         });
 
         document.querySelector("#mahjong").addEventListener("change", function() {
             if (parseInt(document.querySelector("#mahjong").selectedIndex) == 1) {
+                var ul_li_mahjongmahjong = document.getElementById("mahjongmahjong").querySelectorAll("ul li");
                 for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
                     ul_li_mahjongmahjong[x].style.display = 'inline';
                 }
@@ -180,32 +192,21 @@
                 document.getElementById("nineArks").checked = false;
                 document.getElementById("worthy").checked = false;
             } else if (parseInt(document.querySelector("#mahjong").selectedIndex) == 0) {
-                for (var x=1; x<ul_li_mahjongmahjong.length-1; x++) {
-                    ul_li_mahjongmahjong[x].style.display = 'none';
+                if (document.getElementById("checkMahjong").checked = true) {
+                    resetFormComplements ();
                 }
-                document.getElementById("reachMahjong").selectedIndex = 0;
-                document.getElementById("typeMahjong").selectedIndex = 0;
-                document.getElementById("noChow").checked = false;
-                document.getElementById("fourChows").checked = false;
-                document.getElementById("wok").checked = false;
-                document.getElementById("pureHand").checked = false;
-                document.getElementById("yinYang").checked = false;
-                document.getElementById("hulk").checked = false;
-                document.getElementById("hidden").checked = false;
-                document.getElementById("honorable").checked = false;
-                document.getElementById("kingKong").checked = false;
-                document.getElementById("nineArks").checked = false;
-                document.getElementById("worthy").checked = false;
+                resetFormMahjong ();
             }
         });
 
         document.querySelector("#typeMahjong").addEventListener("change", function () {
+            var div_bonusMahjong_li = document.querySelectorAll("div[name='bonusMahjong'] li");
             if (parseInt(document.querySelector("#typeMahjong").selectedIndex) == 0) {
-                for (var x=0; x<div_bonusMahjong_li.length;x++) {
-                    div_bonusMahjong_li[x].style.display = 'none';
-                }
+                resetFormBonusMahjong ();
+
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 1) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length;x++) {
                     div_bonusMahjong_li[x].style.display = 'inline';
                 }
@@ -213,28 +214,31 @@
                 div_bonusMahjong_li[10].style.display = 'none';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 2) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length-1;x++) {
                     div_bonusMahjong_li[x].style.display = 'none';
                 }
-                div_bonusMahjong_li[2].style.display = 'inline';
                 div_bonusMahjong_li[3].style.display = 'inline';
                 div_bonusMahjong_li[4].style.display = 'inline';
                 div_bonusMahjong_li[5].style.display = 'inline';
                 div_bonusMahjong_li[7].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 3) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length;x++) {
                     div_bonusMahjong_li[x].style.display = 'none';
                 }
                 div_bonusMahjong_li[9].style.display = 'inline';
             }
              else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 4) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length;x++) {
                     div_bonusMahjong_li[x].style.display = 'none';
                 }
                 div_bonusMahjong_li[10].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 5) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length;x++) {
                     div_bonusMahjong_li[x].style.display = 'none';
                 }
@@ -245,6 +249,7 @@
                 div_bonusMahjong_li[8].style.display = 'inline';
             }
             else if(parseInt(document.querySelector("#typeMahjong").selectedIndex) == 6) {
+                resetFormBonusMahjong ();
                 for (var x=0; x<div_bonusMahjong_li.length;x++) {
                     div_bonusMahjong_li[x].style.display = 'none';
                 }
@@ -256,39 +261,105 @@
         });
 
         document.querySelector("#checkMahjong").addEventListener("change", function() {
-            if (document.querySelector("#checkMahjong").checked == true) {
-                document.querySelector("div[id='complementsForScore']").style.display = 'block';
-                /*if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2)
-                    var ee = document.querySelectorAll("div[id='complementsForScore'] ul li\:not(\:nth-child(-n+3))");
+            var ee = document.querySelectorAll("div[id='complementsForScore'] ul li");
+            if (document.getElementById("checkMahjong").checked == true) {
+                if (parseInt(document.getElementById("mahjong").selectedIndex) == 0) {
+                    document.querySelector("div[id='complementsForScore']").style.display = 'block';
                     for (x=0; x<ee.length; x++) {
+                        ee[x].style.display = 'inline';
+                    }
+                    for (x=5; x<12; x+=2) {
+                            ee[x].style.display = 'none';
+                    }
+                    for (x=16; x<27; x+=2) {
                         ee[x].style.display = 'none';
                     }
-                /*} else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
-                    var ee = document.querySelectorAll("div[id='complementsForScore'] ul li\:not(\:nth-child(-n+3))");
-                    for (x=0; x<ee.length; x++) {
+                    for (x=29; x<36; x+=2) {
                         ee[x].style.display = 'none';
                     }
-                }*/
-            } else if (document.querySelector("#checkMahjong").checked == false) {
-                for (var x=1; x<(ul_li_mahjongmahjong.length-1); x++) {
-                    ul_li_mahjongmahjong[x].style.display = 'none';
+                    for (x=38; x<45; x+=2) {
+                        ee[x].style.display = 'none';
+                    }
+                } else if (parseInt(document.getElementById("mahjong").selectedIndex) == 1) {
+                    document.querySelector("div[id='complementsForScore']").style.display = 'block';
+                    if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 1) {
+                        for (x=0; x<ee.length; x++) {
+                            ee[x].style.display = 'inline';
+                        }
+                        for (x=5; x<12; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=16; x<27; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=29; x<36; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=38; x<45; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        ee[45].style.display = 'none';
+                        ee[46].style.display = 'none';
+                    } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2 ||
+                    parseInt(document.getElementById("typeMahjong").selectedIndex) == 4) {
+                        for (x=0; x<ee.length-2; x++) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=0; x<4; x++) {
+                            ee[x].style.display = 'inline';
+                        }
+                        for (x=14; x<16; x++) {
+                            ee[x].style.display = 'inline';
+                        }
+                    } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
+                        for (x=0; x<ee.length-2; x++) {
+                            ee[x].style.display = 'none';
+                        }
+                        ee[36].style.display = 'inline';
+                        ee[39].style.display = 'inline';
+                        ee[43].style.display = 'inline';
+                    } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 5) {
+                        for (x=0; x<ee.length; x++) {
+                            ee[x].style.display = 'inline';
+                        }
+                        for (x=5; x<12; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        ee[15].style.display = 'none';
+                        for (x=16; x<27; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=29; x<36; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        for (x=38; x<45; x+=2) {
+                            ee[x].style.display = 'none';
+                        }
+                        ee[45].style.display = 'none';
+                        ee[46].style.display = 'none';
+                    } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 6) {
+                        for (x=0; x<ee.length-2; x++) {
+                            ee[x].style.display = 'none';
+                        }
+                        ee[0].style.display = 'inline';
+                        for (x=4; x<13; x+=2) {
+                            ee[x].style.display = 'inline';
+                        }
+                        for (x=13; x<16; x++) {
+                            ee[x].style.display = 'inline';
+                        }
+                    }
                 }
-                document.querySelector("div[id='complementsForScore']").style.display = 'none';
-                document.getElementById("mahjong").selectedIndex = 0;
-                document.getElementById("reachMahjong").selectedIndex = 0;
-                document.getElementById("typeMahjong").selectedIndex = 0;
-                document.getElementById("noChow").checked = false;
-                document.getElementById("fourChows").checked = false;
-                document.getElementById("wok").checked = false;
-                document.getElementById("pureHand").checked = false;
-                document.getElementById("yinYang").checked = false;
-                document.getElementById("hulk").checked = false;
-                document.getElementById("hidden").checked = false;
-                document.getElementById("honorable").checked = false;
-                document.getElementById("kingKong").checked = false;
-                document.getElementById("nineArks").checked = false;
-                document.getElementById("worthy").checked = false;
-                document.getElementById("checkMahjong").checked = false;
+            } else if (document.getElementById("checkMahjong").checked == false) {
+                resetFormComplements ();
+                resetFormMahjong ();
+            }
+        });
+
+        document.querySelector("#finalCheck").addEventListener("change", function () {
+            if (document.querySelector("#finalCheck").checked == true) {
+                var tempScore = calculScore();
+                alert(tempScore);
             }
         });
 
@@ -514,7 +585,6 @@
         }
     }
 
-
     function shNewGame() {
         document.getElementById("new-game-form").reset();
     }
@@ -569,13 +639,13 @@
     function formatDate(d) {
         var day;
         var month;
-        if(d.getDate() < 10){
+        if(d.getDate() < 9){
             day = "0" + d.getDate();
         }
         else{
             day = d.getDate();
         }
-        if(d.getMonth() < 10){
+        if(d.getMonth() < 9){
             month = "0" + (d.getMonth()+1);
         }
         else{
@@ -609,6 +679,11 @@
 
         value.game_name = game_name;
         value.hand = 1;
+        value.hand_tour_wind = "East";
+        value.hand_dominant_wind = {};
+        for (x=0;x<16;x++) {
+            value.hand_dominant_wind[x] = "";
+        }
         value.game_date = game_date;
 
         player1.name = player1_name;
@@ -649,11 +724,13 @@
             console.log("Your game can\'t be saved : "+ e.value);
         };
 
-        document.getElementById("hand").innerHTML = "Hand n° " + value.hand;
-        document.getElementById("player1_value").innerHTML = "East Wind - Player 1 : " + value.player1.name;
-        document.getElementById("player2_value").innerHTML = "South Wind - Player 2 : " +value.player2.name;
-        document.getElementById("player3_value").innerHTML = "West Wind - Player 3 : " +value.player3.name;
-        document.getElementById("player4_value").innerHTML = "North Wind - Player 4 : " +value.player4.name;
+        document.getElementById("hand").innerHTML = "Hand n° " + value.hand + " / ";
+        document.getElementById("tourWind").innerHTML = "Tour Wind : " + value.hand_tour_wind + " / ";
+        document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + value.hand_dominant_wind[value.hand-1];
+        document.getElementById("player1_value").innerHTML = "East Wind : " + value.player1.name;
+        document.getElementById("player2_value").innerHTML = "South Wind : " + value.player2.name;
+        document.getElementById("player3_value").innerHTML = "West Wind : " + value.player3.name;
+        document.getElementById("player4_value").innerHTML = "North Wind : " + value.player4.name;
 
         // reset scores
         document.getElementById("player1-score").innerHTML = "Score : " + value.player1.score + " points";
@@ -690,10 +767,38 @@
             current_game = game_result;
             current_game_id = game_id;
 
-            document.getElementById("player1_value").innerHTML = "East Wind - Player 1 : " + current_game.player1.name;
-            document.getElementById("player2_value").innerHTML = "South Wind - Player 2 : " + current_game.player2.name;
-            document.getElementById("player3_value").innerHTML = "West Wind - Player 3 : " + current_game.player3.name;
-            document.getElementById("player4_value").innerHTML = "North Wind - Player 4 : " + current_game.player4.name;
+            document.getElementById("hand").innerHTML = "Hand n° " + game_result.hand + " / ";
+            if (game_result.hand == 1 || game_result.hand == 2 || game_result.hand == 3 || game_result.hand == 4) {
+                game_result.hand_tour_wind = "East";
+            } else if (game_result.hand == 5 || game_result.hand == 6 || game_result.hand == 7 || game_result.hand == 8) {
+                game_result.hand_tour_wind = "South";
+            } else if (game_result.hand == 9 || game_result.hand == 10 || game_result.hand == 11 || game_result.hand == 12) {
+                game_result.hand_tour_wind = "West";
+            } else if (game_result.hand == 13 || game_result.hand == 14 || game_result.hand == 15 || game_result.hand == 16) {
+                game_result.hand_tour_wind = "North";
+            }
+            document.getElementById("tourWind").innerHTML = "Tour Wind : " + game_result.hand_tour_wind + " / ";
+            var tt = document.querySelector("form[id='current-game-form'] ul li:nth-child(2)");
+            var ttt = document.querySelector("form[id='current-game-form'] ul li:nth-child(3)");
+            if (game_result.hand == 1 || game_result.hand == 5 || game_result.hand == 9 || game_result.hand == 13) {
+                tt.style.display = 'inline';
+                ttt.style.display = 'inline';
+            } else {
+                tt.style.display = 'none';
+                ttt.style.display = 'none';
+            }
+            if (game_result.hand_dominant_wind[parseInt(game_result.hand)-1] != "") {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + game_result.hand_dominant_wind[parseInt(game_result.hand)-1];
+                tt.style.display = 'none';
+                ttt.style.display = 'none';
+            } else {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : undefined";
+                document.getElementById("chooseDominantWind").selectedIndex = 0;
+            }
+            document.getElementById("player1_value").innerHTML = "East Wind : " + current_game.player1.name;
+            document.getElementById("player2_value").innerHTML = "South Wind : " + current_game.player2.name;
+            document.getElementById("player3_value").innerHTML = "West Wind : " + current_game.player3.name;
+            document.getElementById("player4_value").innerHTML = "North Wind : " + current_game.player4.name;
             document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
             document.getElementById("player2-score").innerHTML = "Score : " + current_game.player2.score + " points";
             document.getElementById("player3-score").innerHTML = "Score : " + current_game.player3.score + " points";
@@ -777,18 +882,40 @@
         input_score = input;
         input_player = input_score.name;
         console.log(input_player);
-
     }
 
     function resetPage() {
+        resetFormFlowers ();
+        resetFormMahjong ();
+        resetFormComplements ();
+    }
+
+    function resetFormFlowers () {
         document.getElementById("flowersSeasons").selectedIndex = 0;
         document.getElementById("flowerOrSeason").checked = false;
         document.getElementById("flowerAndSeason").checked = false;
         document.getElementById("fourFlowersAndOrFourSeasons").checked = false;
         document.getElementById("checkFlowersSeasons").checked = false;
+        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
+        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
+        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
+        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
+    }
+
+    function resetFormMahjong () {
         document.getElementById("mahjong").selectedIndex = 0;
         document.getElementById("reachMahjong").selectedIndex = 0;
         document.getElementById("typeMahjong").selectedIndex = 0;
+        resetFormBonusMahjong ();
+        document.getElementById("checkMahjong").checked = false;
+        var ul_li_mahjongmahjong = document.getElementById("mahjongmahjong").querySelectorAll("ul li");
+        for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
+            ul_li_mahjongmahjong[x].style.display = 'none';
+        }
+        document.querySelector("div[id='complementsForScore']").style.display = 'none';
+    }
+
+    function resetFormBonusMahjong () {
         document.getElementById("noChow").checked = false;
         document.getElementById("fourChows").checked = false;
         document.getElementById("wok").checked = false;
@@ -800,9 +927,16 @@
         document.getElementById("kingKong").checked = false;
         document.getElementById("nineArks").checked = false;
         document.getElementById("worthy").checked = false;
-        document.getElementById("checkMahjong").checked = false;
+        var div_bonusMahjong_li = document.querySelectorAll("div[name='bonusMahjong'] li");
+        for (var x=0; x<div_bonusMahjong_li.length;x++) {
+            div_bonusMahjong_li[x].style.display = 'none';
+        }
+    }
+
+    function resetFormComplements () {
         document.getElementById("pairPlayerWind").checked = false;
         document.getElementById("pairDominantWind").checked = false;
+        document.getElementById("pairTourWind").checked = false;
         document.getElementById("boxPairDragon").checked = false;
         document.getElementById("pairDragon").selectedIndex = 0;
         document.getElementById("chow").checked = false;
@@ -842,318 +976,478 @@
         document.getElementById("kongPungDominantWind").checked = false;
         document.getElementById("boxKongPungDragon").checked = false;
         document.getElementById("kongPungDragon").selectedIndex = 0;
-        document.querySelector("li[name='flowerOrSeason']").style.display = 'none';
-        document.querySelector("li[name='flowerAndSeason']").style.display = 'none';
-        document.querySelector("li[name='fourFlowersAndOrFourSeasons']").style.display = 'none';
-        document.querySelector("div[id='mahjongmahjong']").style.display = 'none';
-        for (var x=1; x<ul_li_mahjongmahjong.length-12; x++) {
-            ul_li_mahjongmahjong[x].style.display = 'none';
-        }
-        for (var x=0; x<div_bonusMahjong_li.length;x++) {
-            div_bonusMahjong_li[x].style.display = 'none';
-        }
+        document.getElementById("finalCheck").checked = false;
         document.querySelector("div[id='complementsForScore']").style.display = 'none';
+        var div_complementsForScore_li_name = document.querySelectorAll("div[id='complementsForScore'] li[name]");
         for (var x=0; x<div_complementsForScore_li_name.length;x++) {
             div_complementsForScore_li_name[x].style.display = 'none';
         }
+}
+    function calculScore() {
+        var points = 0;
+        var multiplicateur = 0;
+
+        //Flowers&Seasons
+        var inputNbFlowers = document.getElementById("flowersSeasons").selectedIndex * 4;
+        points = points + inputNbFlowers;
+        if (document.getElementById("flowerOrSeason").checked == true) {
+            multiplicateur = multiplicateur + parseInt(document.getElementById("flowerOrSeason").value);
+        } else if (document.getElementById("flowerAndSeason").checked == true) {
+           multiplicateur = multiplicateur + parseInt(document.getElementById("flowerAndSeason").value);
+        } else if (document.getElementById("fourFlowersAndOrFourSeasons").checked == true) {
+            multiplicateur = multiplicateur + parseInt(document.getElementById("fourFlowersAndOrFourSeasons").value);
+        }
+
+        //Mahjong
+        if (parseInt(document.getElementById("mahjong").selectedIndex) != 0) {
+            points = points + 20;
+        }
+        if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 1) {
+            multiplicateur = multiplicateur + b;
+        } else if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 2) {
+            points = points + 5;
+        } else if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 3) {
+            points = points + 5;
+            multiplicateur = multiplicateur + 1;
+        }
+        if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 1) {
+            if (document.getElementById("noChow").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
+            }
+            if (document.getElementById("fourChows").checked == true) {
+                points = points + parseInt(document.getElementById("fourChows").value);
+            }
+            if (document.getElementById("wok").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
+            }
+            if (document.getElementById("pureHand").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
+            }
+            if (document.getElementById("yinYang").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
+            }
+            if (document.getElementById("hulk").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
+            }
+            if (document.getElementById("hidden").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
+            }
+            if (document.getElementById("honorable").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
+            }
+            if (document.getElementById("kingKong").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
+            }
+        } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2) {
+            multiplicateur = multiplicateur + 3;
+            if (document.getElementById("wok").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
+            }
+            if (document.getElementById("pureHand").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
+            }
+            if (document.getElementById("yinYang").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
+            }
+            if (document.getElementById("hulk").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
+            }
+            if (document.getElementById("honorable").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
+            }
+        } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
+            multiplicateur = multiplicateur + 5;
+            if (document.getElementById("nineArks").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("nineArks").value);
+            }
+        } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 4) {
+            multiplicateur = multiplicateur + 3;
+            if (document.getElementById("worthy").checked == true) {
+                points = points + parseInt(document.getElementById("worthy").value);
+            }
+        } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 5) {
+            multiplicateur = multiplicateur + 1;
+            if (document.getElementById("noChow").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
+            }
+            if (document.getElementById("pureHand").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
+            }
+            if (document.getElementById("hidden").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
+            }
+            if (document.getElementById("honorable").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
+            }
+            if (document.getElementById("kingKong").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
+            }
+        } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 6) {
+            multiplicateur = multiplicateur + 2;
+            if (document.getElementById("pureHand").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
+            }
+            if (document.getElementById("hidden").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
+            }
+            if (document.getElementById("honorable").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
+            }
+            if (document.getElementById("kingKong").checked == true) {
+                multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
+            }
+        }
+
+        //Complements
+        if (document.getElementById("pairPlayerWind").checked == true) {
+            points = points + parseInt(document.getElementById("pairPlayerWind").value);
+        }
+        if (document.getElementById("pairDominantWind").checked == true) {
+            points = points + parseInt(document.getElementById("pairDominantWind").value);
+        }
+        if (document.getElementById("pairTourWind").checked == true) {
+            points = points + parseInt(document.getElementById("pairTourWind").value);
+        }
+        if (document.getElementById("boxPairDragon").checked == true) {
+            points = points + parseInt(document.getElementById("pairDragon").selectedIndex)*2;
+        }
+        if (document.getElementById("chow").checked == true) {
+            points = points + parseInt(document.getElementById("chow").value);
+        }
+        if (document.getElementById("boxRevealedPungMinor").checked == true) {
+            points = points + parseInt(document.getElementById("revealedPungMinor").selectedIndex)*2;
+        }
+        if (document.getElementById("boxPungMinor").checked == true) {
+            points = points + parseInt(document.getElementById("pungMinor").selectedIndex)*4;
+        }
+        if (document.getElementById("boxRevealedPungMajor").checked == true) {
+            points = points + parseInt(document.getElementById("revealedPungMajor").selectedIndex)*4;
+        }
+        if (document.getElementById("boxPungMajor").checked == true) {
+            points = points + parseInt(document.getElementById("pungMajor").selectedIndex)*8;
+        }
+        if (document.getElementById("boxRevealedPungWind").checked == true) {
+            points = points + parseInt(document.getElementById("revealedPungWind").selectedIndex)*4;
+        }
+        if (document.getElementById("boxPungWind").checked == true) {
+            points = points + parseInt(document.getElementById("pungWind").selectedIndex)*8;
+        }
+        if (document.getElementById("boxRevealedPungDragon").checked == true) {
+            points = points + parseInt(document.getElementById("revealedPungDragon").selectedIndex)*4;
+        }
+        if (document.getElementById("boxPungDragon").checked == true) {
+            points = points + parseInt(document.getElementById("pungDragon").selectedIndex)*8;
+        }
+        if (document.getElementById("boxRevealedKongMinor").checked == true) {
+            points = points + parseInt(document.getElementById("revealedKongMinor").selectedIndex)*8;
+        }
+        if (document.getElementById("boxKongMinor").checked == true) {
+            points = points + parseInt(document.getElementById("kongMinor").selectedIndex)*16;
+        }
+        if (document.getElementById("boxRevealedKongMajor").checked == true) {
+            points = points + parseInt(document.getElementById("revealedKongMajor").selectedIndex)*16;
+        }
+        if (document.getElementById("boxKongMajor").checked == true) {
+            points = points + parseInt(document.getElementById("kongMajor").selectedIndex)*32;
+        }
+        if (document.getElementById("boxRevealedKongWind").checked == true) {
+            points = points + parseInt(document.getElementById("revealedKongWind").selectedIndex)*16;
+        }
+        if (document.getElementById("boxKongWind").checked == true) {
+            points = points + parseInt(document.getElementById("kongWind").selectedIndex)*32;
+        }
+        if (document.getElementById("boxRevealedKongDragon").checked == true) {
+            points = points + parseInt(document.getElementById("revealedKongDragon").selectedIndex)*16;
+        }
+        if (document.getElementById("boxKongDragon").checked == true) {
+            points = points + parseInt(document.getElementById("kongDragon").selectedIndex*32);
+        }
+        if (document.getElementById("kongPungPlayerWind").checked == true) {
+           multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungPlayerWind").value);
+        }
+        if (document.getElementById("kongPungDominantWind").checked == true) {
+            multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungDominantWind").value);
+        }
+        if (document.getElementById("boxKongPungDragon").checked == true) {
+            multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungDragon").selectedIndex);
+        }
+
+        //Definitive score
+        resultat = (Math.ceil(points/10)*10) * Math.pow(2,multiplicateur);
+
+        return resultat;
     }
 
-    function calcul() {
-            var points = 0;
-            var multiplicateur = 0;
+    function saveScoreToDB() {
+        input_score.value = calculScore();
 
-            //Flowers&Seasons
-            var inputNbFlowers = document.getElementById("flowersSeasons").selectedIndex * 4;
-            points = points + inputNbFlowers;
-            if (document.getElementById("flowerOrSeason").checked == true) {
-                multiplicateur = multiplicateur + parseInt(document.getElementById("flowerOrSeason").value);
-            } else if (document.getElementById("flowerAndSeason").checked == true) {
-               multiplicateur = multiplicateur + parseInt(document.getElementById("flowerAndSeason").value);
-            } else if (document.getElementById("fourFlowersAndOrFourSeasons").checked == true) {
-                multiplicateur = multiplicateur + parseInt(document.getElementById("fourFlowersAndOrFourSeasons").value);
-            }
+        // Request the database object to update
+        var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
+        var request = objectStore.get(current_game_id);
 
-            //Mahjong
-            if (parseInt(document.getElementById("mahjong").selectedIndex) != 0) {
-                points = points + 20;
+        request.onerror = function (event) {
+        console.log("There is no game with id " + current_game_id);
+        };
+
+        request.onsuccess = function (event) {
+        // Do something with the request.result!
+            data = request.result;
+            current_game = data;
+            var tt = document.querySelector("form[id='current-game-form'] ul li:nth-child(2)");
+            var ttt = document.querySelector("form[id='current-game-form'] ul li:nth-child(3)");
+            console.log("Hand player 1 : " + data.player1.hand);
+            console.log("Hand player 2 : " + data.player2.hand);
+            console.log("Hand player 3 : " + data.player3.hand);
+            console.log("Hand player 4 : " + data.player4.hand);
+            if (data.hand == 1 || data.hand == 2 || data.hand == 3 || data.hand == 4) {
+                data.hand_tour_wind = "East";
+            } else if (data.hand == 5 || data.hand == 6 || data.hand == 7 || data.hand == 8) {
+                data.hand_tour_wind = "South";
+            } else if (data.hand == 9 || data.hand == 10 || data.hand == 11 || data.hand == 12) {
+                data.hand_tour_wind = "West";
+            } else if (data.hand == 13 || data.hand == 14 || data.hand == 15 || data.hand == 16) {
+                data.hand_tour_wind = "North";
             }
-            if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 1) {
-                multiplicateur = multiplicateur + b;
-            } else if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 2) {
-                points = points + 5;
-            } else if (parseInt(document.getElementById("reachMahjong").selectedIndex) == 3) {
-                points = points + 5;
-                multiplicateur = multiplicateur + 1;
+            if (data.hand == 1 || data.hand == 5 || data.hand == 9 || data.hand == 13) {
+                tt.style.display = 'inline';
+                ttt.style.display = 'inline';
+            } else {
+                tt.style.display = 'none';
+                ttt.style.display = 'none';
             }
-            if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 1) {
-                if (document.getElementById("noChow").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
-                }
-                if (document.getElementById("fourChows").checked == true) {
-                    points = points + parseInt(document.getElementById("fourChows").value);
-                }
-                if (document.getElementById("wok").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
-                }
-                if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
-                }
-                if (document.getElementById("yinYang").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
-                }
-                if (document.getElementById("hulk").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
-                }
-                if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
-                }
-                if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
-                }
-                if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
-                }
-            } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 2) {
-                multiplicateur = multiplicateur + 3;
-                if (document.getElementById("wok").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("wok").value);
-                }
-                if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
-                }
-                if (document.getElementById("yinYang").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("yinYang").value);
-                }
-                if (document.getElementById("hulk").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("hulk").value);
-                }
-                if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
-                }
-            } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 3) {
-                multiplicateur = multiplicateur + 5;
-                if (document.getElementById("nineArks").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("nineArks").value);
-                }
-            } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 4) {
-                multiplicateur = multiplicateur + 4;
-                if (document.getElementById("worthy").checked == true) {
-                    points = points + parseInt(document.getElementById("worthy").value);
-                }
-            } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 5) {
-                multiplicateur = multiplicateur + 1;
-                if (document.getElementById("noChow").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("noChow").value);
-                }
-                if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
-                }
-                if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
-                }
-                if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
-                }
-                if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
-                }
-            } else if (parseInt(document.getElementById("typeMahjong").selectedIndex) == 6) {
-                multiplicateur = multiplicateur + 2;
-                if (document.getElementById("pureHand").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("pureHand").value);
-                }
-                if (document.getElementById("hidden").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("hidden").value);
-                }
-                if (document.getElementById("honorable").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("honorable").value);
-                }
-                if (document.getElementById("kingKong").checked == true) {
-                    multiplicateur = multiplicateur + parseInt(document.getElementById("kingKong").value);
-                }
+            if (data.hand_dominant_wind[parseInt(data.hand)-1] != "") {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + data.hand_dominant_wind[parseInt(data.hand)-1];
+                tt.style.display = 'none';
+                ttt.style.display = 'none';
+            } else {
+                document.getElementById("dominantWind").innerHTML = "Dominant Wind : undefined";
+                document.getElementById("chooseDominantWind").selectedIndex = 0;
             }
 
-            //Complements
-            if (document.getElementById("pairPlayerWind").checked == true) {
-                points = points + parseInt(document.getElementById("pairPlayerWind").value);
-            }
-            if (document.getElementById("pairDominantWind").checked == true) {
-                points = points + parseInt(document.getElementById("pairDominantWind").value);
-            }
-            if (document.getElementById("boxPairDragon").checked == true) {
-                points = points + parseInt(document.getElementById("pairDragon").selectedIndex)*2;
-            }
-            if (document.getElementById("chow").checked == true) {
-                points = points + parseInt(document.getElementById("chow").value);
-            }
-            if (document.getElementById("boxRevealedPungMinor").checked == true) {
-                points = points + parseInt(document.getElementById("revealedPungMinor").selectedIndex)*2;
-            }
-            if (document.getElementById("boxPungMinor").checked == true) {
-                points = points + parseInt(document.getElementById("pungMinor").selectedIndex)*4;
-            }
-            if (document.getElementById("boxRevealedPungMajor").checked == true) {
-                points = points + parseInt(document.getElementById("revealedPungMajor").selectedIndex)*4;
-            }
-            if (document.getElementById("boxPungMajor").checked == true) {
-                points = points + parseInt(document.getElementById("pungMajor").selectedIndex)*8;
-            }
-            if (document.getElementById("boxRevealedPungWind").checked == true) {
-                points = points + parseInt(document.getElementById("revealedPungWind").selectedIndex)*4;
-            }
-            if (document.getElementById("boxPungWind").checked == true) {
-                points = points + parseInt(document.getElementById("pungWind").selectedIndex)*8;
-            }
-            if (document.getElementById("boxRevealedPungDragon").checked == true) {
-                points = points + parseInt(document.getElementById("revealedPungDragon").selectedIndex)*4;
-            }
-            if (document.getElementById("boxPungDragon").checked == true) {
-                points = points + parseInt(document.getElementById("pungDragon").selectedIndex)*8;
-            }
-            if (document.getElementById("boxRevealedKongMinor").checked == true) {
-                points = points + parseInt(document.getElementById("revealedKongMinor").selectedIndex)*8;
-            }
-            if (document.getElementById("boxKongMinor").checked == true) {
-                points = points + parseInt(document.getElementById("kongMinor").selectedIndex)*16;
-            }
-            if (document.getElementById("boxRevealedKongMajor").checked == true) {
-                points = points + parseInt(document.getElementById("revealedKongMajor").selectedIndex)*16;
-            }
-            if (document.getElementById("boxKongMajor").checked == true) {
-                points = points + parseInt(document.getElementById("kongMajor").selectedIndex)*32;
-            }
-            if (document.getElementById("boxRevealedKongWind").checked == true) {
-                points = points + parseInt(document.getElementById("revealedKongWind").selectedIndex)*16;
-            }
-            if (document.getElementById("boxKongWind").checked == true) {
-                points = points + parseInt(document.getElementById("kongWind").selectedIndex)*32;
-            }
-            if (document.getElementById("boxRevealedKongDragon").checked == true) {
-                points = points + parseInt(document.getElementById("revealedKongDragon").selectedIndex)*16;
-            }
-            if (document.getElementById("boxKongDragon").checked == true) {
-                points = points + parseInt(document.getElementById("kongDragon").selectedIndex*32);
-            }
-            if (document.getElementById("kongPungPlayerWind").checked == true) {
-                multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungPlayerWind").value);
-            }
-            if (document.getElementById("kongPungDominantWind").checked == true) {
-                multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungDominantWind").value);
-            }
-            if (document.getElementById("boxKongPungDragon").checked == true) {
-                multiplicateur = multiplicateur + parseInt(document.getElementById("kongPungDragon").selectedIndex);
+            switch(input_player) {
+                case("player1"):
+                    // update the values in the object
+                    data.player1.score += parseInt(input_score.value);
+                    data.player1.hand += 1;
+
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player1-hand-input").disabled = true;
+                    document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand) {
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand + " / ";
+                        if (data.hand == 1 || data.hand == 2 || data.hand == 3 || data.hand == 4) {
+                            data.hand_tour_wind = "East";
+                        } else if (data.hand == 5 || data.hand == 6 || data.hand == 7 || data.hand == 8) {
+                            data.hand_tour_wind = "South";
+                        } else if (data.hand == 9 || data.hand == 10 || data.hand == 11 || data.hand == 12) {
+                            data.hand_tour_wind = "West";
+                        } else if (data.hand == 13 || data.hand == 14 || data.hand == 15 || data.hand == 16) {
+                            data.hand_tour_wind = "North";
+                        }
+                        document.getElementById("tourWind").innerHTML = "Tour Wind : " + data.hand_tour_wind + " / ";
+                        if (data.hand == 1 || data.hand == 5 || data.hand == 9 || data.hand == 13) {
+                            tt.style.display = 'inline';
+                            ttt.style.display = 'inline';
+                        } else {
+                            tt.style.display = 'none';
+                            ttt.style.display = 'none';
+                        }
+                        document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + data.hand_dominant_wind[data.hand-1];
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
+                    break;
+                case("player2"):
+                    // update the values in the object
+                    data.player2.score += parseInt(input_score.value);
+                     data.player2.hand += 1;
+
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player2-hand-input").disabled = true;
+                    document.getElementById("player2-score").innerHTML =  "Score : " + current_game.player2.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand + " / ";
+                        if (data.hand == 1 || data.hand == 2 || data.hand == 3 || data.hand == 4) {
+                            data.hand_tour_wind = "East";
+                        } else if (data.hand == 5 || data.hand == 6 || data.hand == 7 || data.hand == 8) {
+                            data.hand_tour_wind = "South";
+                        } else if (data.hand == 9 || data.hand == 10 || data.hand == 11 || data.hand == 12) {
+                            data.hand_tour_wind = "West";
+                        } else if (data.hand == 13 || data.hand == 14 || data.hand == 15 || data.hand == 16) {
+                            data.hand_tour_wind = "North";
+                        }
+                        document.getElementById("tourWind").innerHTML = "Tour Wind : " + data.hand_tour_wind + " / ";
+                        if (data.hand == 1 || data.hand == 5 || data.hand == 9 || data.hand == 13) {
+                            tt.style.display = 'inline';
+                            ttt.style.display = 'inline';
+                        } else {
+                            tt.style.display = 'none';
+                            ttt.style.display = 'none';
+                        }
+                        document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + data.hand_dominant_wind[data.hand-1];
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
+                    break;
+                case("player3"):
+                    // update the values in the object
+                    data.player3.score += parseInt(input_score.value);
+                    data.player3.hand += 1;
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player3-hand-input").disabled = true;
+                    document.getElementById("player3-score").innerHTML =  "Score : " + current_game.player3.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
+                        if (data.hand == 1 || data.hand == 2 || data.hand == 3 || data.hand == 4) {
+                            data.hand_tour_wind = "East";
+                        } else if (data.hand == 5 || data.hand == 6 || data.hand == 7 || data.hand == 8) {
+                            data.hand_tour_wind = "South";
+                        } else if (data.hand == 9 || data.hand == 10 || data.hand == 11 || data.hand == 12) {
+                            data.hand_tour_wind = "West";
+                        } else if (data.hand == 13 || data.hand == 14 || data.hand == 15 || data.hand == 16) {
+                            data.hand_tour_wind = "North";
+                        }
+                        document.getElementById("tourWind").innerHTML = "Tour Wind : " + data.hand_tour_wind + " / ";
+                        if (data.hand == 1 || data.hand == 5 || data.hand == 9 || data.hand == 13) {
+                            tt.style.display = 'inline';
+                            ttt.style.display = 'inline';
+                        } else {
+                            tt.style.display = 'none';
+                            ttt.style.display = 'none';
+                        }
+                        document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + data.hand_dominant_wind[data.hand-1];
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand + " / ";
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
+                    break;
+                case("player4"):
+                    // update the values in the object
+                    data.player4.score += parseInt(input_score.value);
+                    data.player4.hand += 1;
+                    // desactivate input field to prevent cheat
+                    document.getElementById("player4-hand-input").disabled = true;
+                    document.getElementById("player4-score").innerHTML = "Score : " + current_game.player4.score + " points";
+                    if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
+                        console.log("The hand number will be updated");
+                        data.hand +=1;
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand + " / ";
+                        if (data.hand == 1 || data.hand == 2 || data.hand == 3 || data.hand == 4) {
+                            data.hand_tour_wind = "East";
+                        } else if (data.hand == 5 || data.hand == 6 || data.hand == 7 || data.hand == 8) {
+                            data.hand_tour_wind = "South";
+                        } else if (data.hand == 9 || data.hand == 10 || data.hand == 11 || data.hand == 12) {
+                            data.hand_tour_wind = "West";
+                        } else if (data.hand == 13 || data.hand == 14 || data.hand == 15 || data.hand == 16) {
+                            data.hand_tour_wind = "North";
+                        }
+                        document.getElementById("tourWind").innerHTML = "Tour Wind : " + data.hand_tour_wind + " / ";
+                        if (data.hand == 1 || data.hand == 5 || data.hand == 9 || data.hand == 13) {
+                            tt.style.display = 'inline';
+                            ttt.style.display = 'inline';
+                        } else {
+                            tt.style.display = 'none';
+                            ttt.style.display = 'none';
+                        }
+                        document.getElementById("dominantWind").innerHTML = "Dominant Wind : " + data.hand_dominant_wind[data.hand-1];
+                        document.getElementById("hand").innerHTML = "Hand n° " + data.hand + " / ";
+                        document.getElementById("player1-hand-input").disabled = false;
+                        document.getElementById("player2-hand-input").disabled = false;
+                        document.getElementById("player3-hand-input").disabled = false;
+                        document.getElementById("player4-hand-input").disabled = false;
+                        document.getElementById("current-game-form").reset();
+                    }
+                    break;
+                }
+            if (data.hand == 17) {
+                document.getElementById("player1-hand-input").disabled = true;
+                document.getElementById("player2-hand-input").disabled = true;
+                document.getElementById("player3-hand-input").disabled = true;
+                document.getElementById("player4-hand-input").disabled = true;
+                alert("End of the game");
             }
 
-            //Definitive score
-            resultat = (Math.ceil(points/10)*10) * Math.pow(2,multiplicateur);
-
-            input_score.value = resultat;
-
-            // Request the database object to update
-            var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
-            var request = objectStore.get(current_game_id);
-
-            request.onerror = function (event) {
-            console.log("There is no game with id " + current_game_id);
+            // Push the object in the database
+            var requestUpdate = objectStore.put(data);
+            requestUpdate.onerror = function(event) {
+                console.log("Unable to update the database");
             };
 
-            request.onsuccess = function (event) {
-                // Do something with the request.result!
-                data = request.result;
-                current_game = data;
-                console.log("Hand player 1 : " + data.player1.hand);
-                console.log("Hand player 2 : " + data.player2.hand);
-                console.log("Hand player 3 : " + data.player3.hand);
-                console.log("Hand player 4 : " + data.player4.hand);
-
-                switch(input_player) {
-                    case("player1"):
-                        // update the values in the object
-                        data.player1.score += resultat;
-                        data.player1.hand += 1;
-
-                        // desactivate input field to prevent cheat
-                        document.getElementById("player1-hand-input").disabled = true;
-                        document.getElementById("player1-score").innerHTML = "Score : " + current_game.player1.score + " points";
-                        if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
-                            console.log("The hand number will be updated");
-                            data.hand +=1;
-                            document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
-                            document.getElementById("player1-hand-input").disabled = false;
-                            document.getElementById("player2-hand-input").disabled = false;
-                            document.getElementById("player3-hand-input").disabled = false;
-                            document.getElementById("player4-hand-input").disabled = false;
-                            document.getElementById("current-game-form").reset();
-                        }
-                        break;
-                    case("player2"):
-                        // update the values in the object
-                        data.player2.score += resultat;
-                         data.player2.hand += 1;
-
-                        // desactivate input field to prevent cheat
-                        document.getElementById("player2-hand-input").disabled = true;
-                        document.getElementById("player2-score").innerHTML =  "Score : " + current_game.player2.score + " points";
-                        if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
-                            console.log("The hand number will be updated");
-                            data.hand +=1;
-                            document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
-                            document.getElementById("player1-hand-input").disabled = false;
-                            document.getElementById("player2-hand-input").disabled = false;
-                            document.getElementById("player3-hand-input").disabled = false;
-                            document.getElementById("player4-hand-input").disabled = false;
-                            document.getElementById("current-game-form").reset();
-                        }
-                        break;
-                    case("player3"):
-                        // update the values in the object
-                        data.player3.score += resultat;
-                        data.player3.hand += 1;
-                        // desactivate input field to prevent cheat
-                        document.getElementById("player3-hand-input").disabled = true;
-                        document.getElementById("player3-score").innerHTML =  "Score : " + current_game.player3.score + " points";
-                        if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
-                            console.log("The hand number will be updated");
-                            data.hand +=1;
-                            document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
-                            document.getElementById("player1-hand-input").disabled = false;
-                            document.getElementById("player2-hand-input").disabled = false;
-                            document.getElementById("player3-hand-input").disabled = false;
-                            document.getElementById("player4-hand-input").disabled = false;
-                            document.getElementById("current-game-form").reset();
-                        }
-                        break;
-                    case("player4"):
-                        // update the values in the object
-                        data.player4.score += resultat;
-                        data.player4.hand += 1;
-                        // desactivate input field to prevent cheat
-                        document.getElementById("player4-hand-input").disabled = true;
-                        document.getElementById("player4-score").innerHTML = "Score : " + current_game.player4.score + " points";
-                        if(data.player1.hand == data.player2.hand && data.player1.hand == data.player3.hand && data.player1.hand == data.player4.hand){
-                            console.log("The hand number will be updated");
-                            data.hand +=1;
-                            document.getElementById("hand").innerHTML = "Hand n° " + data.hand;
-                            document.getElementById("player1-hand-input").disabled = false;
-                            document.getElementById("player2-hand-input").disabled = false;
-                            document.getElementById("player3-hand-input").disabled = false;
-                            document.getElementById("player4-hand-input").disabled = false;
-                            document.getElementById("current-game-form").reset();
-                        }
-                        break;
-                }
-
-                // Push the object in the database
-                var requestUpdate = objectStore.put(data);
-                requestUpdate.onerror = function(event) {
-                    console.log("Unable to update the database");
-                };
-
-                requestUpdate.onsuccess = function (event) {
-                    console.log("The database has been updated");
-                };
-
+            requestUpdate.onsuccess = function (event) {
+                console.log("The database has been updated");
             };
+
+        };
+    }
+
+    function saveDominantWind(result) {
+        // Request the database object to update
+        var objectStore = db.transaction(["game"], "readwrite").objectStore("game");
+        var request = objectStore.get(current_game_id);
+
+        request.onerror = function (event) {
+        console.log("There is no game with id " + current_game_id);
+        };
+
+        request.onsuccess = function (event) {
+        // Do something with the request.result!
+            data = request.result;
+            var listOfWinds = {};
+            listOfWinds[1] = "East";
+            listOfWinds[2] = "South";
+            listOfWinds[3] = "West";
+            listOfWinds[4] = "North";
+            listOfWinds[5] = "East";
+            listOfWinds[6] = "South";
+            listOfWinds[7] = "West";
+            listOfWinds[8] = "North";
+            if (data.hand == 1) {
+                data.hand_dominant_wind[data.hand-1] = listOfWinds[result];
+                data.hand_dominant_wind[data.hand-1+1] = listOfWinds[result+1];
+                data.hand_dominant_wind[data.hand-1+2] = listOfWinds[result+2];
+                data.hand_dominant_wind[data.hand-1+3] = listOfWinds[result+3];
+            } else if (data.hand == 5) {
+                data.hand_dominant_wind[data.hand-1] = listOfWinds[result];
+                data.hand_dominant_wind[data.hand-1+1] = listOfWinds[result+1];
+                data.hand_dominant_wind[data.hand-1+2] = listOfWinds[result+2];
+                data.hand_dominant_wind[data.hand-1+3] = listOfWinds[result+3];
+            } else if (data.hand == 9) {
+                data.hand_dominant_wind[data.hand-1] = listOfWinds[result];
+                data.hand_dominant_wind[data.hand-1+1] = listOfWinds[result+1];
+                data.hand_dominant_wind[data.hand-1+2] = listOfWinds[result+2];
+                data.hand_dominant_wind[data.hand-1+3] = listOfWinds[result+3];
+            } else if (data.hand == 13) {
+                data.hand_dominant_wind[data.hand-1] = listOfWinds[result];
+                data.hand_dominant_wind[data.hand-1+1] = listOfWinds[result+1];
+                data.hand_dominant_wind[data.hand-1+2] = listOfWinds[result+2];
+                data.hand_dominant_wind[data.hand-1+3] = listOfWinds[result+3];
+            }
+        // Push the object in the database
+            var requestUpdate = objectStore.put(data);
+            requestUpdate.onerror = function(event) {
+                console.log("Unable to update the database");
+            };
+
+            requestUpdate.onsuccess = function (event) {
+                console.log("The database has been updated");
+            };
+        }
     }
 
 initializeDB();
