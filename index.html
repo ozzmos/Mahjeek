@@ -51,25 +51,25 @@
                     <input type="text" placeholder="Game name" required="" id="gameName">
                 </li>
                 <li>
-                    <label>Wind East - player 1</label>
+                    <label>Wind East</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 1" id="player1">
                 </li>
                 <li>
-                    <label>Wind South - player 2</label>
+                    <label>Wind South</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 2"  id="player2">
                 </li>
                 <li>
-                    <label>Wind West - player 3</label>
+                    <label>Wind West</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 3"  id="player3">
                 </li>
                 <li>
-                    <label>Wind North - player 4</label>
+                    <label>Wind North</label>
                 </li>
                 <li>
                     <input type="text" placeholder="Name player 4"  id="player4">
@@ -147,6 +147,19 @@
             <ul>
                 <li>
                     <label id="hand">Hand </label><label id="tourWind">Tour Wind :</label><label id="dominantWind">Dominant Wind :</label>
+                </li>
+
+                <li><label id="chooseDominantWindLabel">Choose the Dominant Wind for the current Hand</label></li>
+                <li>
+                    <span class="button icon icon-dialog">
+                        <select id="chooseDominantWind">
+                            <option>Undefined</option>
+                            <option>East</option>
+                            <option>South</option>
+                            <option>West</option>
+                            <option>North</option>
+                        </select>
+                    </span>
                 </li>
 
                 <li><label id="player1_value"></label></li>
@@ -267,7 +280,7 @@
                         <span class="button icon icon-dialog">
                             <label for="typeMahjong"></label>
                             <select name="typeMahjong" id="typeMahjong">
-                                <option>?</option>
+                                <option>Choose in the list…</option>
                                 <option>Basic</option>
                                 <option>7 Dwarves</option>
                                 <option>9 Doors</option>
@@ -614,8 +627,9 @@
                     </li>
                     <li>Chows</li>
                     <li>
-                        <label class="pack-checkbox"><input type="checkbox" id="chow" value="1"/><span>1 Chow at least (not to check if Mahjong)</span></label>
+                        <label class="pack-checkbox"><input type="checkbox" id="chow" value="1"/><span>1 Chow at least</span></label>
                     </li>
+                    <li>Final Check</li>
                     <li>
                         <label class="pack-checkbox"><input type="checkbox" id="finalCheck"/><span>Everything checked ?</span></label>
                     </li>
